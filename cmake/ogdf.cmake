@@ -63,7 +63,7 @@ file(GLOB_RECURSE ogdf_headers include/ogdf/*.h)
 file(GLOB_RECURSE ogdf_sources src/ogdf/*.cpp)
 set(ogdf_sources "${ogdf_sources};${ogdf_headers}")
 add_library(OGDF "${ogdf_sources}")
-target_link_libraries(OGDF PUBLIC COIN)
+# target_link_libraries(OGDF PUBLIC COIN)
 group_files(ogdf_sources "ogdf")
 target_compile_features(OGDF PUBLIC cxx_range_for)
 
@@ -176,7 +176,7 @@ install(TARGETS OGDF
   EXPORT OgdfTargets
   LIBRARY DESTINATION "${OGDF_INSTALL_LIBRARY_DIR}"
   ARCHIVE DESTINATION "${OGDF_INSTALL_LIBRARY_DIR}"
-  INCLUDES DESTINATION "${COIN_INSTALL_INCLUDE_DIR}"
+  # INCLUDES DESTINATION "${COIN_INSTALL_INCLUDE_DIR}"
   PUBLIC_HEADER DESTINATION "${OGDF_INSTALL_INCLUDE_DIR}")
 install(DIRECTORY "${PROJECT_BINARY_DIR}/include/ogdf" include/ogdf
   DESTINATION "${OGDF_INSTALL_INCLUDE_DIR}"

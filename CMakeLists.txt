@@ -20,8 +20,31 @@ set(CMAKE_CXX_STANDARD 11)
 
 include(compiler-specifics)
 include(group-files)
-include(coin)
+# include(coin)
+
+find_package(COIN REQUIRED)
+set(COIN_SOLVER "CLP" CACHE STRING "Linear program solver to be used by COIN.")
+set_property(CACHE COIN_SOLVER PROPERTY STRINGS CLP CPX GRB)
+set(COIN_SOLVER_IS_EXTERNAL 0)
+# target_link_libraries(${YOUR_TARGET_NAME}
+# PRIVATE
+#     libCbc libCgl libOsiClp libOsi libClp libCoinUtils
+# )
+SET(COIN_INSTALL_INCLUDE_DIR ${COIN_INCLUDE_DIR})
+
 include(ogdf)
+target_link_libraries(OGDF PUBLIC ${COIN_LIBRARIES})
+target_include_directories(OGDF SYSTEM PUBLIC ${COIN_INCLUDE_DIR})
+
+find_package(Backward)
+target_link_libraries(OGDF PUBLIC Backward::Backward)
+target_include_directories(OGDF SYSTEM PUBLIC ${BACKWARD_INCLUDE_DIRS})
+
+find_package(pugixml)
+target_link_libraries(OGDF PUBLIC pugixml pugixml::pugixml)
+get_target_property(PUGIXML_INCLUDE_DIRECTORIES pugixml::pugixml INTERFACE_INCLUDE_DIRECTORIES)
+target_include_directories(OGDF SYSTEM PUBLIC ${PUGIXML_INCLUDE_DIRECTORIES})
+message(STATUS "${PUGIXML_INCLUDE_DIRECTORIES}")
 
 include(make-user-target)
 include(tests)
