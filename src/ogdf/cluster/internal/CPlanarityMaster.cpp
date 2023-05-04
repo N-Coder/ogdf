@@ -150,6 +150,7 @@ CPlanarityMaster::~CPlanarityMaster() {
 	delete m_solutionGraph; // done in base class
 #endif
 	delete m_ssg;
+    delete m_ca;
 }
 
 
@@ -236,7 +237,7 @@ double CPlanarityMaster::clusterConnection(cluster c, GraphCopy &gc) {
 	// If so, compute the number of edges that have at least to be added
 	// to make the cluster induced graph connected.
 	if (c->cCount() == 0) { 	//cluster \p c is a leaf cluster
-		GraphCopy *inducedC = new GraphCopy((const Graph&) gc);
+		GraphCopy inducedC{(const Graph&) gc};
 #if 0
 		List<node> clusterNodes;
 #endif
@@ -247,22 +248,21 @@ double CPlanarityMaster::clusterConnection(cluster c, GraphCopy &gc) {
 
 		// Delete all nodes from \a inducedC that do not belong to the cluster,
 		// in order to obtain the cluster induced graph.
-		node v = inducedC->firstNode();
+		node v = inducedC.firstNode();
 		while (v != nullptr)  {
 			node w = v->succ();
-			if (!vInC[inducedC->original(v)]) inducedC->delNode(v);
+			if (!vInC[inducedC.original(v)]) inducedC.delNode(v);
 			v = w;
 		}
 
 		// Determine number of connected components of cluster induced graph.
 		//Todo: check could be skipped
-		if (!isConnected(*inducedC)) {
+		if (!isConnected(inducedC)) {
 
-			NodeArray<int> conC(*inducedC);
+			NodeArray<int> conC(inducedC);
 			//at least #connected components - 1 edges have to be added.
-			connectNum = connectedComponents(*inducedC,conC) - 1;
+			connectNum = connectedComponents(inducedC,conC) - 1;
 		}
-		delete inducedC;
 	// Cluster \p c is an "inner" cluster. Process all child clusters first.
 	} else {	//c->cCount is != 0, process all child clusters first
 		for (cluster cc : c->children) {
@@ -270,7 +270,7 @@ double CPlanarityMaster::clusterConnection(cluster c, GraphCopy &gc) {
 		}
 
 		// Create cluster induced graph.
-		GraphCopy *inducedC = new GraphCopy((const Graph&)gc);
+		GraphCopy inducedC{(const Graph&)gc};
 #if 0
 		List<node> clusterNodes;
 #endif
@@ -278,10 +278,10 @@ double CPlanarityMaster::clusterConnection(cluster c, GraphCopy &gc) {
 		for (node w : m_cNodes[c]) {
 			vInC[gc.copy(w)] = true;
 		}
-		node v = inducedC->firstNode();
+		node v = inducedC.firstNode();
 		while (v!=nullptr)  {
 			node w = v->succ();
-			if (!vInC[inducedC->original(v)]) inducedC->delNode(v);
+			if (!vInC[inducedC.original(v)]) inducedC.delNode(v);
 			v = w;
 		}
 
@@ -292,21 +292,20 @@ double CPlanarityMaster::clusterConnection(cluster c, GraphCopy &gc) {
 			getClusterNodes(cc,oChildClusterNodes);
 			// Compute corresponding nodes of graph \a inducedC.
 			for (node w : oChildClusterNodes) {
-				node copy = inducedC->copy(gc.copy(w));
+				node copy = inducedC.copy(gc.copy(w));
 				cChildClusterNodes.pushBack(copy);
 			}
-			inducedC->collapse(cChildClusterNodes);
+			inducedC.collapse(cChildClusterNodes);
 			oChildClusterNodes.clear();
 			cChildClusterNodes.clear();
 		}
 		// Now, check \a inducedC for connectivity.
-		if (!isConnected(*inducedC)) {
+		if (!isConnected(inducedC)) {
 
-			NodeArray<int> conC(*inducedC);
+			NodeArray<int> conC(inducedC);
 			//at least #connected components - 1 edges have to added.
-			connectNum += connectedComponents(*inducedC,conC) - 1;
+			connectNum += connectedComponents(inducedC,conC) - 1;
 		}
-		delete inducedC;
 	}
 	return connectNum;
 }
@@ -747,6 +746,7 @@ void CPlanarityMaster::initializeOptimization() {
 	// of recomputing parts here. However, in the enclosing module,
 	// we might work on a larger input graph that is partitioned,
 	// i.e. we might get a copy of a part here only.
+	delete m_ca;
 	m_ca = new ClusterAnalysis(*m_C, false); //use outer active lists, but no indy bag info
 
 	if (pricing())
@@ -1094,6 +1094,7 @@ void CPlanarityMaster::getCoefficients(
 //(to guarantee that the list is non-empty if input is not c-planar)
 void CPlanarityMaster::terminateOptimization() {
 	delete m_ca;
+    m_ca = nullptr;
 
 	char prefix[4] = "CP-";
 	char fprefix[3] = "F-";

@@ -82,7 +82,7 @@ bool ClusterPlanarity::isClusterPlanar(const ClusterGraph &CG, NodePairs &addedE
 		// We can solve the c-planarity testing for all indyBags independently,
 		// and in case all are c-planar, also our input c-graph is c-planar.
 		const int numIndyBags = ca.numberOfIndyBags();
-		std::vector<GraphCopy*> theGraphs(numIndyBags); //Stores copies for the bag graphs.
+		std::vector<GraphCopy*> theGraphs(numIndyBags, nullptr); //Stores copies for the bag graphs.
 #ifdef OGDF_DEBUG
 		std::cout << "Number of IndyBags "<<numIndyBags<<"\n";
 #endif
@@ -199,7 +199,12 @@ bool ClusterPlanarity::isClusterPlanar(const ClusterGraph &CG, NodePairs &addedE
 				Logger::slout() << "Number of edges added for IndyBag: "<<ae.size()<<"\n";
 #endif
 				result = result && imresult;
-				if (!result) return result;
+				if (!result) {
+					for (auto ptr : theGraphs) {
+						delete ptr;
+					}
+					return result;
+				}
 				for(const auto &np : ae) {
 					addedEdges.emplaceBack(theGraphs[i]->original(np.source), theGraphs[i]->original(np.target));
 				}
@@ -210,6 +215,9 @@ bool ClusterPlanarity::isClusterPlanar(const ClusterGraph &CG, NodePairs &addedE
 				Logger::slout() << "IndyBag number "<<i<<" skipped due to size\n";
 			}
 #endif
+		}
+		for (auto ptr : theGraphs) {
+			delete ptr;
 		}
 
 		// We test consistency by summing up the number of vertices.

@@ -104,7 +104,7 @@ void ClusterAnalysis::cleanUp()
 	{
 		delete m_bagindex[v];
 	}
-	if (m_indyBags) delete m_indyBagRoots;
+	if (m_indyBags) delete[] m_indyBagRoots;
 }
 
 int ClusterAnalysis::outerActive(cluster c) const {return (*m_oanum)[c];}
@@ -382,7 +382,7 @@ void ClusterAnalysis::computeIndyBags() {
 	const Graph &G = m_C->constGraph();
 
 	// Store the root cluster of each indyBag
-	delete m_indyBagRoots;
+	delete[] m_indyBagRoots;
 	// Intermediate storage during computation, maximum of #vertices possible
 #ifdef OGDF_DEBUG
 	Array<cluster> bagRoots(0,G.numberOfNodes(),nullptr);
@@ -588,21 +588,6 @@ void ClusterAnalysis::computeBags() {
 		const cluster c = ccleafs.popFrontRet();
 		Skiplist<int*> cbags; //Stores bag indexes ocurring in c
 
-		auto storeResult = [&] {
-			for (node v : clists[cind[c]]) {
-				int theid = uf.find(setid[v]);
-				(*m_bagindex[v])[c] = theid;
-				if (!cbags.isElement(&theid)) {
-					cbags.add(new int(theid));
-				}
-				// push into list of outer active vertices
-				if (m_storeoalists && isOuterActive(v, c)) {
-					(*m_oalists)[c].pushBack(v);
-				}
-			}
-			(*m_bags)[c] = cbags.size(); // store number of bags of c
-		};
-
 		if (m_storeoalists){
 			//no outeractive vertices detected so far
 			(*m_oalists)[c].clear();
@@ -625,8 +610,6 @@ void ClusterAnalysis::computeBags() {
 			}
 			// Now all chunks in the leaf cluster are computed
 			// update for parent is done in the else case
-
-			storeResult();
 		}
 		else {
 			// ?We construct the vertex list by concatenating
@@ -656,14 +639,29 @@ void ClusterAnalysis::computeBags() {
 					int theid = uf.find(setid[*itvc]);
 
 					if (theid != inid)
-						uf.link(inid,theid);
+						inid = uf.link(inid, theid);
 					clists[cind[c]].pushBack(*itvc);
 					++itvc;
 				}
 			}
-
-			storeResult();
 		}
+
+		{ // store result
+			for (node v : clists[cind[c]]) {
+				int theid = uf.find(setid[v]);
+				(*m_bagindex[v])[c] = theid;
+				if (!cbags.isElement(&theid)) {
+					cbags.add(new int(theid));
+				}
+				// push into list of outer active vertices
+				if (m_storeoalists && isOuterActive(v, c)) {
+					(*m_oalists)[c].pushBack(v);
+				}
+			}
+			(*m_bags)[c] = cbags.size(); // store number of bags of c
+			cbags.clear(true);
+		}
+
 		// Now we update the status of the parent cluster and,
 		// in case all its children are processed, add it to
 		// the process queue.
