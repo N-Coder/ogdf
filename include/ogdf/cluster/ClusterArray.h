@@ -123,12 +123,12 @@ public:
 
 
 	//! Constructs an empty cluster array associated with no graph.
-	ClusterArray() : Array<T>(), ClusterArrayBase() { }
+	ClusterArray() : Array<T>(), ClusterArrayBase(), m_x() { }
 
 	//! Constructs a cluster array associated with \p C.
 	ClusterArray(const ClusterGraph &C) :
 		Array<T>(C.clusterArrayTableSize()),
-		ClusterArrayBase(&C) { }
+		ClusterArrayBase(&C), m_x() { }
 
 	//! Constructs a cluster array associated with \p C.
 	/**

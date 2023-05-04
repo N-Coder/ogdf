@@ -127,10 +127,10 @@ public:
 
 
 	//! Constructs an empty adjacency entry array associated with no graph.
-	AdjEntryArray() : Array<T>(), AdjEntryArrayBase() { }
+	AdjEntryArray() : Array<T>(), AdjEntryArrayBase(), m_x() { }
 
 	//! Constructs an adjacency entry array associated with \p G.
-	explicit AdjEntryArray(const Graph &G) : Array<T>(G.adjEntryArrayTableSize()), AdjEntryArrayBase(&G) { }
+	explicit AdjEntryArray(const Graph &G) : Array<T>(G.adjEntryArrayTableSize()), AdjEntryArrayBase(&G), m_x() { }
 
 	//! Constructs an adjacency entry array associated with \p G.
 	/**

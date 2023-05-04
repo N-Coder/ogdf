@@ -121,10 +121,10 @@ public:
 
 
 	//! Constructs an empty node array associated with no graph.
-	NodeArray() : Array<T>(), NodeArrayBase() { }
+	NodeArray() : Array<T>(), NodeArrayBase(), m_x() { }
 
 	//! Constructs a node array associated with \p G.
-	NodeArray(const Graph &G) : Array<T>(G.nodeArrayTableSize()), NodeArrayBase(&G) { }
+	NodeArray(const Graph &G) : Array<T>(G.nodeArrayTableSize()), NodeArrayBase(&G), m_x() { }
 
 	//! Constructs a node array associated with \p G.
 	/**
