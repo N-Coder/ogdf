@@ -76,6 +76,8 @@ enum class Attribute {
 	EdgeSubGraph,
 	EdgeBends,
 
+	NodeAdjOrder,
+
 	Unknown // Has to be the last one!
 };
 

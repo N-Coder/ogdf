@@ -48,6 +48,7 @@ private:
 
 	 // Maps GraphML node id to Graph node.
 	std::unordered_map<string, node> m_nodeId;
+	std::unordered_map<string, edge> m_edgeId;
 
 	// Maps attribute id to its name.
 	std::unordered_map<string, string> m_attrName;
@@ -85,7 +86,10 @@ private:
 		Graph &G, ClusterGraph &C, ClusterGraphAttributes *CA,
 		const cluster &rootCluster, const pugi::xml_node clusterRoot);
 
+	bool readNodeAdjOrder(ClusterGraph *CG, Graph &G, const pugi::xml_node &rootTag);
+
 	bool m_error;
+	std::string m_adjOrder;
 
 public:
 	explicit GraphMLParser(std::istream &in);

@@ -88,6 +88,8 @@ std::string toString(const Attribute &attr)
 	case Attribute::EdgeSubGraph: return "subgraphs";
 	case Attribute::EdgeBends: return "bends";
 
+	case Attribute::NodeAdjOrder: return "adjOrder";
+
 	// default case (to avoid compiler warnings)
 	default: return "unknown";
 	}

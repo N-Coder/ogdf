@@ -77,6 +77,10 @@ GraphMLParser::GraphMLParser(std::istream &in) : m_error(false)
 		}
 
 		m_attrName[idAttr.value()] = nameAttr.value();
+
+		if (graphml::toAttribute(m_attrName[idAttr.value()]) == graphml::Attribute::NodeAdjOrder) {
+			m_adjOrder = idAttr.value();
+		}
 	}
 }
 
@@ -226,6 +230,8 @@ bool GraphMLParser::readData(
 			GA.weight(v) = text.as_int();
 		}
 		break;
+	case graphml::Attribute::NodeAdjOrder:
+		break;
 	default:
 		GraphIO::logger.lout(Logger::Level::Minor) << "Unknown node attribute: \"" << keyId.value() << "\"." << std::endl;
 	}
@@ -370,6 +376,8 @@ bool GraphMLParser::readData(
 	case Attribute::ClusterStroke:
 		CA.strokeColor(c) = text.get();
 		break;
+	case graphml::Attribute::NodeAdjOrder:
+		break;
 	default:
 		GraphIO::logger.lout(Logger::Level::Minor) << "Unknown cluster attribute with \""
 		             << keyId.value()
@@ -403,12 +411,51 @@ bool GraphMLParser::readNodes(
 
 		pugi::xml_node clusterTag = nodeTag.child("graph");
 		if (clusterTag) {
-			GraphIO::logger.lout(Logger::Level::Minor) << "Nested graphs are not fully supported." << std::endl;
-			return readNodes(G, GA, clusterTag);
+			GraphIO::logger.lout(Logger::Level::Minor) << "Nested graphs are not fully supported in non-Clustered graphs." << std::endl;
+			if (!readNodes(G, GA, clusterTag)) {
+				return false;
+			}
 		}
 	}
 
 	return readEdges(G, GA, rootTag);
+
+}
+
+bool GraphMLParser::readNodeAdjOrder(ClusterGraph *CG, Graph &G, const pugi::xml_node &rootTag)
+{
+	for (pugi::xml_node nodeTag: rootTag.children("node")) {
+		pugi::xml_node clusterTag = nodeTag.child("graph");
+		pugi::xml_node adjOrderTag = nodeTag.find_child_by_attribute("data", "key", m_adjOrder.c_str());
+		if (!adjOrderTag) continue;
+		node v = m_nodeId[nodeTag.attribute("id").value()];
+		std::istringstream iss(adjOrderTag.child_value());
+		List<adjEntry> order;
+		std::string eId;
+		while (iss >> eId) {
+			bool source = false;
+			if (eId[0] == '-') {
+				source = true;
+				eId.erase(0, 1);
+			}
+			if (m_edgeId.find(eId) == m_edgeId.end()) {
+				GraphIO::logger.lout() << "Node " << nodeTag.attribute("id").value() << " has edge " << eId
+									   << " with unknown ID in its adjOrder list." << std::endl;
+				return false;
+			}
+			edge e = m_edgeId[eId];
+			order.pushBack(source ? e->adjSource() : e->adjTarget());
+		}
+		if (clusterTag && CG) {
+			((cluster) v)->adjEntries.conc(order);
+			if (!readNodeAdjOrder(CG, G, clusterTag)) {
+				return false;
+			}
+		} else {
+			G.sort(v, order);
+		}
+	}
+	return true;
 }
 
 
@@ -447,6 +494,11 @@ bool GraphMLParser::readEdges(
 		}
 
 		const edge e = G.newEdge(sourceIt->second, targetIt->second);
+
+		pugi::xml_attribute idAttr = edgeTag.attribute("id");
+		if (idAttr) {
+			m_edgeId[idAttr.value()] = e;
+		}
 
 		// Search for data-key attributes if GA given, return false on error.
 		if(GA && !readAttributes(*GA, e, edgeTag)) {
@@ -487,6 +539,7 @@ bool GraphMLParser::readClusters(
 		} else {
 			// Got a cluster node - read it recursively.
 			const cluster c = C.newCluster(rootCluster);
+			m_nodeId[idAttr.value()] = (node) c;
 			if (!readClusters(G, C, CA, c, clusterTag)) {
 				return false;
 			}
@@ -511,7 +564,7 @@ bool GraphMLParser::read(Graph &G)
 	G.clear();
 	m_nodeId.clear();
 
-	return readNodes(G, nullptr, m_graphTag);
+	return readNodes(G, nullptr, m_graphTag) && (m_adjOrder.empty() || readNodeAdjOrder(nullptr, G, m_graphTag));
 }
 
 
@@ -528,7 +581,7 @@ bool GraphMLParser::read(Graph &G, GraphAttributes &GA)
 	G.clear();
 	m_nodeId.clear();
 
-	return readNodes(G, &GA, m_graphTag);
+	return readNodes(G, &GA, m_graphTag) && (m_adjOrder.empty() || readNodeAdjOrder(nullptr, G, m_graphTag));
 }
 
 
@@ -541,7 +594,17 @@ bool GraphMLParser::read(Graph &G, ClusterGraph &C)
 	G.clear();
 	m_nodeId.clear();
 
-	return readClusters(G, C, nullptr, C.rootCluster(), m_graphTag);
+	if (!readClusters(G, C, nullptr, C.rootCluster(), m_graphTag)) {
+		return false;
+	}
+	if (!m_adjOrder.empty()) {
+		if (!readNodeAdjOrder(&C, G, m_graphTag)) {
+			return false;
+		} else {
+			C.adjAvailable(true);
+		}
+	}
+	return true;
 }
 
 
@@ -554,7 +617,17 @@ bool GraphMLParser::read(Graph &G, ClusterGraph &C, ClusterGraphAttributes &CA)
 	G.clear();
 	m_nodeId.clear();
 
-	return readClusters(G, C, &CA, C.rootCluster(), m_graphTag);
+	if (!readClusters(G, C, &CA, C.rootCluster(), m_graphTag)) {
+		return false;
+	}
+	if (!m_adjOrder.empty()) {
+		if (!readNodeAdjOrder(&C, G, m_graphTag)) {
+			return false;
+		} else {
+			C.adjAvailable(true);
+		}
+	}
+	return true;
 }
 
 }
