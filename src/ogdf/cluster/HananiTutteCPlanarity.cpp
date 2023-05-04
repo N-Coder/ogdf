@@ -291,7 +291,7 @@ bool HananiTutteCPlanarity::CLinearSystem::solve()
 	return solver.solve2();
 }
 
-class HananiTutteCPlanarity::CGraph {
+class HananiTutteCPlanarity::CGraph : public HananiTutteSolver {
 
 	const ClusterGraph &m_cg;
 
@@ -302,20 +302,12 @@ class HananiTutteCPlanarity::CGraph {
 
 	CLinearSystem m_ls;
 
-	int64_t m_tPrepare;
-	int64_t m_tCreateSparse;
-	int64_t m_tSolve;
-
-
 public:
 	explicit CGraph(const ClusterGraph &C);
+	~CGraph() override = default;
 
-	bool cplanar(int &nRows, int &nCols);
-	Verification cpcheck(int &nRows, int &nCols);
-
-	int64_t timePrepare() const { return m_tPrepare; }
-	int64_t timeCreateSparse() const { return m_tCreateSparse; }
-	int64_t timesolve() const { return m_tSolve; }
+	bool test(Stats &stats) override;
+	bool verify(Stats &stats) override;
 
 private:
 
@@ -363,43 +355,41 @@ HananiTutteCPlanarity::CGraph::CGraph(const ClusterGraph &C)
 	}
 }
 
-bool HananiTutteCPlanarity::CGraph::cplanar(int &nRows, int &nCols)
+bool HananiTutteCPlanarity::CGraph::test(Stats &stats)
 {
-	m_tCreateSparse = m_tSolve = 0;
+	stats = Stats();
 	time_point<high_resolution_clock> tStart = high_resolution_clock::now();
 
-	nRows = nCols = 0;
 	prepareLinearSystem();
 
 	time_point<high_resolution_clock> tAfterPrepare = high_resolution_clock::now();
-	m_tPrepare = duration_cast<std::chrono::milliseconds>(tAfterPrepare-tStart).count();
+	stats.tPrepare = duration_cast<std::chrono::milliseconds>(tAfterPrepare-tStart).count();
 
 	// trivial?
-	if(m_ls.objects().size() == 0)
+	if(m_ls.objects().empty())
 		return true;
 
 	createSparse();
-	nRows = m_ls.numberOfConditions();
-	nCols = m_ls.numberOfMoves();
+	stats.nRows = m_ls.numberOfRows();
+	stats.nColumns = m_ls.numberOfColumns();
+	stats.nConditions = m_ls.numberOfConditions();
+	stats.nMoves = m_ls.numberOfMoves();
 
 	time_point<high_resolution_clock> tAfterCreateSparse = high_resolution_clock::now();
-	m_tCreateSparse = duration_cast<std::chrono::milliseconds>(tAfterCreateSparse-tAfterPrepare).count();
+	stats.tCreateSparse = duration_cast<std::chrono::milliseconds>(tAfterCreateSparse-tAfterPrepare).count();
 
 	// return success
 	bool solvable = m_ls.solve();
 	time_point<high_resolution_clock> tAfterSolve = high_resolution_clock::now();
-	m_tSolve = duration_cast<std::chrono::milliseconds>(tAfterSolve-tAfterCreateSparse).count();
+	stats.tSolve = duration_cast<std::chrono::milliseconds>(tAfterSolve-tAfterCreateSparse).count();
 
 	return solvable;
 }
 
-HananiTutteCPlanarity::Verification HananiTutteCPlanarity::CGraph::cpcheck(int &nRows, int &nCols)
+bool HananiTutteCPlanarity::CGraph::verify(Stats &stats)
 {
-	if(!cplanar(nRows,nCols)) {
-		return Verification::nonCPlanarVerified;
-	}
-
-	int nR, nC;
+	time_point<high_resolution_clock> tStart = high_resolution_clock::now();
+	Stats tmp_stats;
 	m_cbeRot.init(m_cg);
 
 	for(cluster c : m_cg.clusters) {
@@ -425,7 +415,7 @@ HananiTutteCPlanarity::Verification HananiTutteCPlanarity::CGraph::cpcheck(int &
 				}
 
 				resetLinearSystem();
-				if(cplanar(nR,nC)) {
+				if(test(tmp_stats)) {
 					findNext = true;
 					remainingEdges.removeFirst(e);
 					break;
@@ -435,12 +425,15 @@ HananiTutteCPlanarity::Verification HananiTutteCPlanarity::CGraph::cpcheck(int &
 				}
 			}
 
-			if(!findNext)
-				return Verification::verificationFailed;
+			if(!findNext) {
+				stats.tCheck = duration_cast<std::chrono::milliseconds>(high_resolution_clock::now() - tStart).count();
+				return false;
+			}
 		}
 	}
 
-	return Verification::cPlanarVerified;
+	stats.tCheck = duration_cast<std::chrono::milliseconds>(high_resolution_clock::now() - tStart).count();
+	return true;
 }
 
 cluster HananiTutteCPlanarity::CGraph::cp(node u, node v, List<cluster> &path) const
@@ -948,8 +941,7 @@ void HananiTutteCPlanarity::CGraph::createSparse()
 
 HananiTutteCPlanarity::Verification HananiTutteCPlanarity::isCPlanar(const ClusterGraph &C, bool doPreproc, bool forceSolver, Solver solver)
 {
-	m_nRows = m_nCols = 0;
-	m_tPrepare = m_tCreateSparse = m_tSolve = 0;
+	m_stats = Stats();
 
 	Graph G;
 	ClusterGraph H(C,G);
@@ -957,11 +949,9 @@ HananiTutteCPlanarity::Verification HananiTutteCPlanarity::isCPlanar(const Clust
 
 	if(doPreproc)
 		preprocessing(H,G);
-	else {
-		m_numNodesPreproc = G.numberOfNodes();
-		m_numEdgesPreproc = G.numberOfEdges();
-		m_numClustersPreproc = C.numberOfClusters();
-	}
+	m_numNodesPreproc = G.numberOfNodes();
+	m_numEdgesPreproc = G.numberOfEdges();
+	m_numClustersPreproc = C.numberOfClusters();
 
 	for(edge e : G.edges) {
 		if(e->source()->index() > e->target()->index())
@@ -969,52 +959,7 @@ HananiTutteCPlanarity::Verification HananiTutteCPlanarity::isCPlanar(const Clust
 	}
 	makeParallelFree(G);
 
-	if(forceSolver) {
-		switch (solver) {
-		case Solver::HananiTutte:
-			{
-				m_status = Status::applyHananiTutte;
-				CGraph cgraph(H);
-				bool icp = cgraph.cplanar(m_nRows, m_nCols);
-
-				m_tPrepare = cgraph.timePrepare();
-				m_tCreateSparse = cgraph.timeCreateSparse();
-				m_tSolve = cgraph.timesolve();
-
-				return icp ? Verification::cPlanar : Verification::nonCPlanarVerified;
-			}
-
-		case Solver::HananiTutteVerify:
-			{
-				m_status = Status::applyHananiTutte;
-				CGraph cgraph(H);
-				return cgraph.cpcheck(m_nRows, m_nCols);
-			}
-
-		case Solver::ILP:
-			{
-				ClusterPlanarity cPlanarity;
-				cPlanarity.setTimeLimit("00:10:00");
-				bool icp = cPlanarity.isClusterPlanar(H);
-
-				switch (cPlanarity.getOptStatus())
-				{
-				case abacus::Master::Optimal:
-					m_status = Status::applyILP; break;
-				case abacus::Master::MaxCpuTime:
-				case abacus::Master::MaxCowTime:
-					m_status = Status::timeoutILP; break;
-				default:
-					m_status = Status::errorILP;
-				}
-
-				if (m_status != Status::applyILP)
-					return Verification::timeout;
-				return icp ? Verification::cPlanarVerified : Verification::nonCPlanarVerified;
-			}
-		}
-
-	} else {
+	if(!forceSolver) {
 		if(G.empty()) {
 			m_status = Status::emptyAfterPreproc;
 			return Verification::cPlanarVerified;
@@ -1028,54 +973,38 @@ HananiTutteCPlanarity::Verification HananiTutteCPlanarity::isCPlanar(const Clust
 			m_status = Status::nonPlanarAfterPreproc;
 			return Verification::nonCPlanarVerified;
 
-		} else {
-			switch (solver) {
-			case Solver::HananiTutte:
-				{
-					m_status = Status::applyHananiTutte;
-					CGraph cgraph(H);
-					bool icp = cgraph.cplanar(m_nRows, m_nCols);
-
-					m_tPrepare = cgraph.timePrepare();
-					m_tCreateSparse = cgraph.timeCreateSparse();
-					m_tSolve = cgraph.timesolve();
-
-					return icp ? Verification::cPlanar : Verification::nonCPlanarVerified;
-				}
-
-			case Solver::HananiTutteVerify:
-				{
-					m_status = Status::applyHananiTutte;
-					CGraph cgraph(H);
-					return cgraph.cpcheck(m_nRows, m_nCols);
-				}
-
-			case Solver::ILP:
-				{
-					ClusterPlanarity cPlanarity;
-					cPlanarity.setTimeLimit("00:10:00");
-					bool icp = cPlanarity.isClusterPlanar(H);
-
-					switch (cPlanarity.getOptStatus())
-					{
-					case abacus::Master::Optimal:
-						m_status = Status::applyILP; break;
-					case abacus::Master::MaxCpuTime:
-					case abacus::Master::MaxCowTime:
-						m_status = Status::timeoutILP; break;
-					default:
-						m_status = Status::errorILP;
-					}
-
-					if (m_status != Status::applyILP)
-						return Verification::timeout;
-					return icp ? Verification::cPlanarVerified : Verification::nonCPlanarVerified;
-				}
-			}
 		}
 	}
 
-	return Verification::verificationFailed;  // never reached (silence compiler warning)
+	if(solver == Solver::ILP) {
+		ClusterPlanarity cPlanarity;
+		cPlanarity.setTimeLimit("00:10:00");
+		bool icp = cPlanarity.isClusterPlanar(H);
+
+		switch (cPlanarity.getOptStatus())
+		{
+			case abacus::Master::Optimal:
+				m_status = Status::applyILP; break;
+			case abacus::Master::MaxCpuTime:
+			case abacus::Master::MaxCowTime:
+				m_status = Status::timeoutILP; break;
+			default:
+				m_status = Status::errorILP;
+		}
+
+		if (m_status != Status::applyILP)
+			return Verification::timeout;
+		return icp ? Verification::cPlanarVerified : Verification::nonCPlanarVerified;
+	}
+
+	m_status = Status::applyHananiTutte;
+	CGraph cgraph(H);
+	bool icp = cgraph.test(m_stats);
+	if (solver == Solver::HananiTutteVerify) {
+		return cgraph.verify(m_stats) ? Verification::cPlanarVerified : Verification ::verificationFailed;
+	} else {
+		return icp ? Verification::cPlanar : Verification::nonCPlanarVerified;
+	}
 }
 
 //#define OGDF_HANANI_TUTTE_CPLANARITY_OUTPUT
@@ -1310,10 +1239,10 @@ static bool preprocessStep(ClusterGraph &C, Graph &G)
 void HananiTutteCPlanarity::preprocessing(ClusterGraph &C, Graph &G)
 {
 	while(preprocessStep(C,G));
+}
 
-	m_numNodesPreproc = G.numberOfNodes();
-	m_numEdgesPreproc = G.numberOfEdges();
-	m_numClustersPreproc = C.numberOfClusters();
+HananiTutteCPlanarity::HananiTutteSolver* HananiTutteCPlanarity::getSolver(const ClusterGraph &C) {
+	return new CGraph(C);
 }
 
 }
