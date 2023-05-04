@@ -1293,6 +1293,7 @@ public:
 	 */
 	void resetEdgeIdCount(int maxId);
 
+	void resetNodeIdCount(int maxId);
 
 	//@}
 	/**

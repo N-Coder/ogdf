@@ -367,31 +367,28 @@ public:
 	 * A constructor.
 	 *
 	 * This constructor does only call init() or initNotConnected().
-	 * BCTree(\p G) is equivalent to BCTree(\p G, \c G.firstNode()).
 	 * \param G is the original graph.
-	 * \param callInitConnected decides which init is called, default call is init()
+	 * \param not_connected if set to true, will call initNotConnected() to process all connected components.
+	 * 	Otherwise, only the connected component of G.firstNode() will be processed.
 	 */
-	explicit BCTree (Graph& G, bool callInitConnected = false) : m_G(G), m_eStack(G.numberOfEdges()) {
-		if (!callInitConnected) {
-			init(G.firstNode());
-		}
-		else {
-			initNotConnected(G.firstNode());
-		}
-	}
+	explicit BCTree (Graph& G, bool not_connected = false) : BCTree(G, nullptr, not_connected) {};
 
 	/**
 	 * A constructor.
 	 *
 	 * This constructor does only call init() or initNotConnected().
 	 * \param G is the original graph.
-	 * \param vG is the vertex of the original graph which the DFS algorithm starts
-	 * \param callInitConnected decides which init is called, default call is init()
+	 * \param vG is the vertex of the original graph which the DFS algorithm starts, defaults to G.firstNode().
+	 * \param not_connected if set to true, will call initNotConnected() to process all connected components.
+	 * 	Otherwise, only the connected component of \p vG will be processed.
 	 */
-	BCTree (Graph& G, node vG, bool callInitConnected = false) : m_G(G), m_eStack(G.numberOfEdges()) {
-		if (!callInitConnected)
+	BCTree (Graph& G, node vG, bool not_connected = false) : m_G(G), m_eStack(G.numberOfEdges()) {
+		if (vG == nullptr)
+			vG = G.firstNode();
+		if (not_connected)
+			initNotConnected(vG);
+		else
 			init(vG);
-		else initNotConnected(vG);
 	}
 
 	/**
@@ -410,6 +407,11 @@ public:
 
 	//! Virtual destructor.
 	virtual ~BCTree () { }
+
+	BCTree(const BCTree &copy) = delete;
+	BCTree(BCTree &&move) = delete;
+	BCTree& operator=(const BCTree &copy) = delete;
+	BCTree& operator=(BCTree &&move) = delete;
 
 	//! Returns the original graph.
 	const Graph& originalGraph () const { return m_G; }
@@ -437,14 +439,14 @@ public:
 	 * given vertex of the original graph is belonging to.
 	 * \param vG is a vertex of the original graph.
 	 * \return a vertex of the BC-tree:
-	 * - If \p vG is not a cut-vertex, then typeOfGNode(\p vG) returns the very
+	 * - If \p vG is not a cut-vertex, then bcproper(\p vG) returns the very
 	 *   vertex of the BC-tree representing the unambiguous B-component which \p vG
 	 *   is belonging to.
-	 * - If \p vG is a cut-vertex, then typeOfGNode(\p vG) returns the very vertex
+	 * - If \p vG is a cut-vertex, then bcproper(\p vG) returns the very vertex
 	 *   of the BC-tree representing the unambiguous C-component which \p vG is
 	 *   belonging to.
 	 */
-	virtual node bcproper (node vG) const { return m_hNode_bNode[m_gNode_hNode[vG]]; }
+	node bcproper (node vG) const { return bccomp(m_gNode_hNode[vG]); }
 
 	/**
 	 * Returns the BC-tree-vertex representing the biconnected component
@@ -453,7 +455,30 @@ public:
 	 * \return the vertex of the BC-tree representing the B-component which \p eG
 	 * is belonging to.
 	 */
-	virtual node bcproper (edge eG) const { return m_hEdge_bNode[m_gEdge_hEdge[eG]]; }
+	node bcproper (edge eG) const { return bccomp(m_gEdge_hEdge[eG]); }
+
+	/**
+	 * Returns a BC-tree-vertex representing a biconnected component which a
+	 * given vertex of the auxiliary graph is belonging to.
+	 * \param vH is a vertex of the auxiliary graph.
+	 * \return a vertex of the BC-tree:
+	 * - If \p vH is not a cut-vertex, then bcproper(\p vH) returns the very
+	 *   vertex of the BC-tree representing the unambiguous B-component which \p vH
+	 *   is belonging to.
+	 * - If \p vH is a cut-vertex, then bcproper(\p vH) returns the very vertex
+	 *   of the BC-tree representing the unambiguous C-component which \p vH is
+	 *   belonging to.
+	 */
+	virtual node bccomp (node vH) const { return m_hNode_bNode[vH]; }
+
+	/**
+	 * Returns the BC-tree-vertex representing the biconnected component
+	 * which a given edge of the auxiliary graph is belonging to.
+	 * \param eH is an edge of the auxiliary graph.
+	 * \return the vertex of the BC-tree representing the B-component which \p eH
+	 * is belonging to.
+	 */
+	virtual node bccomp (edge eH) const { return m_hEdge_bNode[eH]; }
 
 	/**
 	 * Returns a vertex of the biconnected components graph corresponding to
@@ -483,7 +508,7 @@ public:
 	 * \param vH is a vertex of the biconnected components graph.
 	 * \return the vertex of the original graph which \p vH is corresponding to.
 	 */
-	node original (node vH) { return m_hNode_gNode[vH]; }
+	node original (node vH) const { return m_hNode_gNode[vH]; }
 
 	/**
 	 * Returns the edge of the original graph which a given edge of the
@@ -617,11 +642,6 @@ public:
 
 	//! @}
 private:
-	//! Copy constructor is undefined!
-	BCTree(const BCTree &) = delete;
-
-	//! Assignment operator is undefined!
-	BCTree &operator=(const BCTree &) = delete;
 
 	void initBasic(node vG);
 	void initEdges();

@@ -844,7 +844,7 @@ void ClusterGraph::delCluster(cluster c)
 	for(ClusterGraphObserver *obs : m_regObservers)
 		obs->clusterDeleted(c);
 
-	m_adjAvailable = false;
+	m_postOrderStart = nullptr;
 
 	c->m_parent->children.del(c->m_it);
 	c->m_it = ListIterator<cluster>();
@@ -878,6 +878,9 @@ void ClusterGraph::delCluster(cluster c)
 	}
 
 	clusters.del(c);
+	#ifdef OGDF_DEBUG
+	consistencyCheck();
+	#endif
 }
 
 
@@ -1253,28 +1256,81 @@ void ClusterGraph::postOrder(cluster c, SListPure<cluster> &L) const
 
 
 #ifdef OGDF_DEBUG
-void ClusterGraph::consistencyCheck() const
-{
-	ClusterArray<bool> visitedClusters((*this),false);
-	NodeArray<bool> visitedNodes((*m_pGraph),false);
+void ClusterGraph::consistencyCheck() const {
+	ClusterArray<bool> visitedClusters((*this), false);
+	NodeArray<bool> visitedNodes((*m_pGraph), false);
+	int visitedClustersC = 0, visitedNodesC = 0;
+	ClusterArray<int> clusterDepth;
+	if (m_updateDepth && m_depthUpToDate) {
+		clusterDepth.init((*this), -1);
+	}
 
-	cluster c = nullptr;
-	forall_postOrderClusters(c,(*this))
-	{
+	for (cluster c = firstPostOrderCluster(); c != nullptr; c = c->pSucc()) {
+		OGDF_ASSERT(!visitedClusters[c]);
 		visitedClusters[c] = true;
+		visitedClustersC++;
+		if (m_updateDepth && m_depthUpToDate) {
+			clusterDepth[c] = c->depth();
+		}
+		OGDF_ASSERT((c->parent() == nullptr) == (c == rootCluster()));
 
 		for (node v : c->nodes) {
-			OGDF_ASSERT(m_nodeMap[v] == c);
+			OGDF_ASSERT(clusterOf(v) == c);
+			OGDF_ASSERT(!visitedNodes[v]);
 			visitedNodes[v] = true;
+			visitedNodesC++;
+		}
+		for (cluster child : c->children) {
+			OGDF_ASSERT(visitedClusters[child]);
+			OGDF_ASSERT(child->parent() == c);
+		}
+	}
+	OGDF_ASSERT(visitedClustersC == numberOfClusters());
+
+	if (m_updateDepth && m_depthUpToDate) {
+		computeSubTreeDepth(rootCluster());
+	}
+	for (cluster c : clusters) {
+		OGDF_ASSERT(visitedClusters[c]);
+		if (!m_allowEmptyClusters) {
+			OGDF_ASSERT(c->nCount() + c->cCount() >= 1);
+		}
+		if (m_updateDepth && m_depthUpToDate) {
+			OGDF_ASSERT(clusterDepth[c] == c->depth());
 		}
 	}
 
-	for (cluster cl : clusters) {
-		OGDF_ASSERT(visitedClusters[cl]);
-	}
-
+	OGDF_ASSERT(visitedNodesC == m_pGraph->numberOfNodes());
 	for (node v : m_pGraph->nodes) {
 		OGDF_ASSERT(visitedNodes[v]);
+	}
+
+	if (m_adjAvailable) {
+		ClusterArray<List<edge>> boundaryCrossingEdges(*this);
+		for (edge e : constGraph().edges) {
+			List<cluster> path;
+			cluster lca = commonClusterPath(e->source(), e->target(), path);
+			for (cluster c : path) {
+				boundaryCrossingEdges[c].pushBack(e);
+			}
+			OGDF_ASSERT(boundaryCrossingEdges[lca].back() == e);
+			boundaryCrossingEdges[lca].popBack();
+		}
+		EdgeArray<cluster> clusterAssociation(constGraph(), nullptr);
+		for (cluster c : clusters) {
+			OGDF_ASSERT(c->adjEntries.size() == boundaryCrossingEdges[c].size());
+			for (adjEntry adj : c->adjEntries) {
+				OGDF_ASSERT(adj->graphOf() == getGraph());
+				OGDF_ASSERT(!c->isDescendant(clusterOf(adj->twinNode()), true));
+				OGDF_ASSERT(c->isDescendant(clusterOf(adj->theNode()), true));
+				OGDF_ASSERT(clusterAssociation[adj] == nullptr);
+				clusterAssociation[adj] = c;
+			}
+			for (edge e : boundaryCrossingEdges[c]) {
+				OGDF_ASSERT(clusterAssociation[e] == c);
+				clusterAssociation[e] = nullptr;
+			}
+		}
 	}
 }
 #endif
@@ -1284,90 +1340,24 @@ bool ClusterGraph::representsCombEmbedding() const
 {
 	if (!m_adjAvailable)
 		return false;
-
 #ifdef OGDF_DEBUG
 	consistencyCheck();
 #endif
 
-	cluster c = nullptr;
-	forall_postOrderClusters(c,(*this))
-	{
-#ifdef OGDF_HEAVY_DEBUG
-		Logger::slout() << "__________________________________________________________________"
-				<< std::endl << std::endl
-				<< "Testing cluster " << c << std::endl
-				<< "Check on AdjList of c" << std::endl;
-			for(adjEntry adjDD : c->adjEntries)
-				Logger::slout() << adjDD << ";  ";
-			Logger::slout() << std::endl;
-#endif
+	// FIXME this fails for disconnected graphs
+	for (cluster c = firstPostOrderCluster(); c != m_rootCluster; c = c->pSucc()) {
+		for (auto it = c->adjEntries.begin(); it.valid(); it++) {
+			adjEntry adj = *it;
+			adjEntry succAdj = *c->adjEntries.cyclicSucc(it);
 
-		if (c != m_rootCluster)
-		{
-			ListConstIterator<adjEntry> it;
-			it = c->firstAdj();
-			adjEntry start = *it;
-
-#ifdef OGDF_HEAVY_DEBUG
-			Logger::slout() << "firstAdj " << start << std::endl;
-#endif
-
-			while (it.valid())
-			{
-				AdjEntryArray<bool> visitedAdjEntries((*m_pGraph),false);
-
-				ListConstIterator<adjEntry> succ = it.succ();
-				adjEntry adj = *it;
-				adjEntry succAdj;
-
-				if (succ.valid())
-					succAdj = *succ;
-				else
-					succAdj = start;  // reached the last outgoing edge
-
-#ifdef OGDF_HEAVY_DEBUG
-				Logger::slout() << "Check next " << std::endl;
-				Logger::slout() << "current in adj list of" << adj << std::endl;
-				Logger::slout() << "succ in adj list of c " << succAdj << std::endl;
-				Logger::slout() << "cyclic succ in outer face " << adj->cyclicSucc() << std::endl;
-#endif
-
-
-				if (adj->cyclicSucc() != succAdj)
-					// run along the outer face of the cluster
-						// until you find the next outgoing edge
-				{
-					adjEntry next = adj->cyclicSucc();
-					adjEntry twin = next->twin();
-
-#ifdef OGDF_HEAVY_DEBUG
-					Logger::slout() << "Running along the outer face ... " << std::endl;
-					Logger::slout() << "next adj " << next << std::endl;
-					Logger::slout() << "twin adj " << twin << std::endl;
-#endif
-
-					if (visitedAdjEntries[twin])
-						return false;
-					visitedAdjEntries[twin] = true;
-					while ( next != succAdj)
-					{
-						next = twin->cyclicSucc();
-						twin = next->twin();
-#ifdef OGDF_HEAVY_DEBUG
-						Logger::slout() << "Running along the outer face ... " << std::endl;
-						Logger::slout() << "next adj " << next << std::endl;
-						Logger::slout() << "twin adj " << twin << std::endl;
-#endif
-						if (visitedAdjEntries[twin])
-							return false;
-						visitedAdjEntries[twin] = true;
-					}
-
+			// run along the outer face of the cluster until you find the next outgoing edge
+			adjEntry next = adj->cyclicSucc();
+			while (next != succAdj) {
+				if (next == adj->twin()) {
+					// we searched the whole face but didn't find our successor along the cluster border
+					return false;
 				}
-				// else
-				// next edge is also outgoing
-
-				it = succ;
+				next = next->twin()->cyclicSucc();
 			}
 		}
 	}

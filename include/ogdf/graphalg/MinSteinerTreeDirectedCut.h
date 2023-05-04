@@ -1202,7 +1202,7 @@ MinSteinerTreeDirectedCut<T>::Master::initializeParameters()
 		try {
 			this->readParameters(m_configfile);
 		}
-		catch (AlgorithmFailureException) {
+		catch (const AlgorithmFailureException&) {
 #ifdef OGDF_STP_EXACT_LOGGING
 			lout(Level::Alarm)
 				<< "Master::initializeParameters(): Error reading parameters."

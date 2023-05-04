@@ -40,19 +40,19 @@ namespace ogdf {
 
 void DynamicSPQRForest::init()
 {
-	m_bNode_SPQR.init(m_B, nullptr);
-	m_bNode_numS.init(m_B, 0);
-	m_bNode_numP.init(m_B, 0);
-	m_bNode_numR.init(m_B, 0);
-	m_tNode_type.init(m_T, TNodeType::SComp);
-	m_tNode_owner.init(m_T);
-	m_tNode_hRefEdge.init(m_T);
-	m_tNode_hEdges.init(m_T);
-	m_tNode_isMarked.init(m_T, false);
-	m_hEdge_position.init(m_H);
-	m_hEdge_tNode.init(m_H);
-	m_hEdge_twinEdge.init(m_H, nullptr);
-	m_htogc.init(m_H);
+    m_bNode_SPQR.init(m_B, nullptr);
+    m_bNode_numS.init(m_B, 0);
+    m_bNode_numP.init(m_B, 0);
+    m_bNode_numR.init(m_B, 0);
+    m_tNode_type.init(m_T, TNodeType::SComp);
+    m_tNode_owner.init(m_T, nullptr);
+    m_tNode_hRefEdge.init(m_T, nullptr);
+    m_tNode_hEdges.init(m_T, nullptr);
+    m_tNode_isMarked.init(m_T, false);
+    m_hEdge_position.init(m_H);
+    m_hEdge_tNode.init(m_H, nullptr);
+    m_hEdge_twinEdge.init(m_H, nullptr);
+    m_htogc.init(m_H, nullptr);
 }
 
 void DynamicSPQRForest::createSPQR(node vB) const
@@ -77,7 +77,7 @@ void DynamicSPQRForest::createSPQR(node vB) const
 
 	Triconnectivity tricComp(GC);
 
-	const GraphCopySimple& GCC = *tricComp.m_pGC;
+	const GraphCopySimple& GCC = *dynamic_cast<GraphCopySimple*>(tricComp.m_pG);
 
 	EdgeArray<node> partnerNode(GCC, nullptr);
 	EdgeArray<edge> partnerEdge(GCC, nullptr);

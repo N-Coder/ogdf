@@ -50,4 +50,15 @@ std::ostream Logger::nirvana(nullptr);
 
 bool Logger::m_globalstatisticmode = false;
 
+static char tabs[] = "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
+
+char *Logger::indenttabs() const {
+	int fore = sizeof(tabs);
+	int back = (m_indent + 1) * sizeof(char);
+	if (fore >= back)
+		return tabs + fore - back;
+	else
+		return tabs;
+}
+
 }

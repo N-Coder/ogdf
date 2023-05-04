@@ -68,7 +68,6 @@ public:
 
 private:
 	size_type m_size; //!< Number of entries.
-	const C &m_cmp;
 	using SpecImpl = Impl<T, C>;
 	SpecImpl *m_impl; //!< Underlying heap data structure.
 
@@ -84,7 +83,7 @@ public:
 	 * @param initialSize The initial capacity preference (ignored if not supported by underlying heap).
 	 */
 	explicit PriorityQueue(const C &cmp = C(), int initialSize = 128)
-	: m_size(0), m_cmp(cmp), m_impl(new SpecImpl(cmp, initialSize))
+	: m_size(0), m_impl(new SpecImpl(cmp, initialSize))
 	{
 	}
 
@@ -227,7 +226,7 @@ public:
 
 	//! Removes all the entries from the queue.
 	void clear() {
-		PriorityQueue tmp(m_cmp);
+		PriorityQueue tmp(m_impl->comparator());
 		tmp.swap(*this);
 	}
 
@@ -249,6 +248,11 @@ public:
 	*/
 	const T &value(handle pos) const {
 		return m_impl->value(pos);
+	}
+
+	//! Returns the comparator used for ordering elements.
+	const C &comparator() const {
+		return m_impl->comparator();
 	}
 };
 

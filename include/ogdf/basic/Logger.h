@@ -120,15 +120,32 @@ public:
 		Statistic
 	};
 
+	class Indent {
+		Logger *m_log;
+		int m_by;
+	public:
+		explicit Indent(Logger *log, int by = 1) : m_log(log), m_by(by) {
+			m_log->indent(m_by);
+		}
+
+		explicit Indent(Logger &log, int by = 1) : m_log(&log), m_by(by) {
+			m_log->indent(m_by);
+		}
+
+		~Indent() {
+			m_log->dedent(m_by);
+		}
+	};
+
 	//! creates a new Logger-object with LogMode::Global and local log-level equal globalLogLevel
 	Logger() : Logger(LogMode::Global, m_globalloglevel) {}
 	//! creates a new Logger-object with given log-mode and local log-level equal globalLogLevel
 	explicit Logger(LogMode m) : Logger(m, m_globalloglevel) {}
-	//! creates a new Logger-object with LogMode::Global and given local log-level
-	explicit Logger(Level level) : Logger(LogMode::Global, level) {}
+	//! creates a new Logger-object with LogMode::Log and given local log-level
+	explicit Logger(Level level) : Logger(LogMode::Log, level) {}
 	//! creates a new Logger-object with given log-mode and given local log-level
 	Logger(LogMode m, Level level) :
-		m_loglevel(level), m_logmode(m) {}
+		m_loglevel(level), m_logmode(m), m_indent(0) {}
 
 	//! \name Usage
 	//! @{
@@ -144,8 +161,16 @@ public:
 		}
 	}
 	//! stream for logging-output (local)
-	std::ostream& lout(Level level = Level::Default) const {
-		return is_lout(level) ? *world : nirvana;
+	std::ostream& lout(Level level = Level::Default, bool indent = true) const {
+		if (is_lout(level)) {
+			if (indent) {
+				return *world << indenttabs();
+			} else {
+				return *world;
+			}
+		} else {
+			return nirvana;
+		}
 	}
 	//! stream for statistic-output (local)
 	std::ostream& sout() const {
@@ -216,6 +241,24 @@ public:
 		m_logmode = m;
 	}
 
+	void indent(int by = 1) {
+		setIndent(m_indent + by);
+	}
+
+	void dedent(int by = 1) {
+		setIndent(m_indent - by);
+	}
+
+	OGDF_EXPORT char *indenttabs() const;
+
+	int getIndent() const {
+		return m_indent;
+	}
+
+	void setIndent(int indent) {
+		m_indent = std::max(0, indent);
+	}
+
 	//! @}
 	//! \name Global
 	//! @{
@@ -281,6 +324,8 @@ private:
 
 	Level m_loglevel;
 	LogMode m_logmode;
+	int m_indent;
+
 };
 
 inline std::ostream &operator<<(std::ostream &os, Logger::Level level) {

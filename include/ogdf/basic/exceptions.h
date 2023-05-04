@@ -162,7 +162,7 @@ enum class LibraryNotSupportedCode {
 /**
  * @ingroup exceptions
  */
-class OGDF_EXPORT Exception {
+class OGDF_EXPORT Exception : std::exception {
 
 private:
 
@@ -191,6 +191,10 @@ public:
 	 * Returns -1 if the line number is unknown.
 	 */
 	int line() const { return m_line; }
+
+	const char *what() const noexcept override {
+		return "Unknown OGDF Exception";
+	}
 };
 
 
@@ -272,6 +276,12 @@ public:
 
 	//! Returns the error code of the exception.
 	AlgorithmFailureCode exceptionCode() const { return m_exceptionCode; }
+
+	const char *what() const noexcept override {
+		return codeToString(m_exceptionCode);
+	}
+
+	static const char *codeToString(AlgorithmFailureCode code);
 
 private:
 	AlgorithmFailureCode m_exceptionCode; //!< The error code specifying the exception.

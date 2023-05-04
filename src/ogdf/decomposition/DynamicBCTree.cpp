@@ -38,8 +38,8 @@ namespace ogdf {
 
 void DynamicBCTree::init ()
 {
-	m_bNode_owner.init(m_B);
-	m_bNode_degree.init(m_B);
+	m_bNode_owner.init(m_B, nullptr);
+	m_bNode_degree.init(m_B, 0);
 	for (node vB : m_B.nodes) {
 		m_bNode_owner[vB] = vB;
 		m_bNode_degree[vB] = vB->degree();
@@ -143,18 +143,16 @@ node DynamicBCTree::find (node vB) const
 }
 
 
-node DynamicBCTree::bcproper (node vG) const
+node DynamicBCTree::bccomp (node vH) const
 {
-	if (!vG) return nullptr;
-	node vH = m_gNode_hNode[vG];
+	if (!vH) return nullptr;
 	return m_hNode_bNode[vH] = find(m_hNode_bNode[vH]);
 }
 
 
-node DynamicBCTree::bcproper (edge eG) const
+node DynamicBCTree::bccomp (edge eH) const
 {
-	if (!eG) return nullptr;
-	edge eH = m_gEdge_hEdge[eG];
+	if (!eH) return nullptr;
 	return m_hEdge_bNode[eH] = find(m_hEdge_bNode[eH]);
 }
 

@@ -199,7 +199,8 @@ void makeConnected(Graph &G, List<edge> &added)
 
 int connectedComponents(const Graph &G,
 		NodeArray<int> &component,
-		List<node> *isolated)
+		List<node> *isolated,
+		ArrayBuffer<node> *reprs)
 {
 	int nComponent = 0;
 	component.fill(-1);
@@ -211,6 +212,9 @@ int connectedComponents(const Graph &G,
 
 		if (isolated != nullptr && v->degree() == 0) {
 			isolated->pushBack(v);
+		}
+		if (reprs != nullptr) {
+			reprs->push(v);
 		}
 		S.push(v);
 		component[v] = nComponent;
