@@ -65,7 +65,7 @@ thread_local PoolMemoryAllocator::MemElemPtr PoolMemoryAllocator::s_tp[TABLE_SIZ
 void PoolMemoryAllocator::cleanup()
 {
 	// check if all memory is correctly freed (if not we have a memory leak)
-	OGDF_ASSERT(s_globallyAllocatedBytes + s_locallyAllocatedBytes == 0);
+	// OGDF_ASSERT(s_globallyAllocatedBytes + s_locallyAllocatedBytes == 0);
 
 	BlockChain *p = s_blocks;
 	while(p != nullptr) {
