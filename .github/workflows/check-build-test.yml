@@ -185,10 +185,10 @@ jobs:
             ${{ matrix.mode }} \
             ${{ startsWith(matrix.compiler, 'gcc') && 'gcc' || 'clang' }} \
             default_s \
-            ${{ matrix.compiler != 'clang:15' && '-DOGDF_INCLUDE_CGAL=ON' }} \
+            ${{ matrix.compiler != 'clang:15' && '-DOGDF_INCLUDE_CGAL=ON -DOGDF_USE_ASSERT_EXCEPTIONS=ON' || '' }} \
             -DOGDF_USE_ASSERT_EXCEPTIONS=ON -DOGDF_ARCH=haswell \
             -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
-        # extra flags used when collecting coverage are disabled here
+        # extra flags used when collecting coverage (on clang:15) are disabled here
         # ---
         # see "Cloud hosts used by GitHub-hosted runners" in the GH Actions docs
         # for the oldest used microarchitecture to use with OGDF_ARCH
@@ -225,7 +225,7 @@ jobs:
             ${{ matrix.mode }} \
             default_c \
             default_s \
-            -DOGDF_INCLUDE_CGAL=ON -DOGDF_USE_ASSERT_EXCEPTIONS=ON -DOGDF_ARCH=ivybridge \
+            -DOGDF_USE_ASSERT_EXCEPTIONS=ON -DOGDF_ARCH=ivybridge \
             -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
         # ivybridge is the oldest arch we encountered from SIGILL ccaching problems
       - uses: actions/upload-artifact@v4
