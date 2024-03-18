@@ -35,9 +35,10 @@
 
 #include <ogdf/basic/precondition.h>
 
-bool ogdf::dfsGenTreeRec(ogdf::UMLGraph& UG, ogdf::EdgeArray<bool, true>& used,
-		ogdf::NodeArray<int, true>& hierNumber, int hierNum, ogdf::node v,
-		ogdf::List<ogdf::edge>& fakedGens, bool fakeTree) {
+using namespace ogdf;
+
+bool dfsGenTreeRec(UMLGraph& UG, EdgeArray<bool, true>& used, NodeArray<int, true>& hierNumber,
+		int hierNum, node v, List<edge>& fakedGens, bool fakeTree) {
 	OGDF_ASSERT(hierNumber[v] == 0);
 	hierNumber[v] = hierNum;
 
@@ -82,7 +83,7 @@ bool ogdf::dfsGenTreeRec(ogdf::UMLGraph& UG, ogdf::EdgeArray<bool, true>& used,
 	return returnValue;
 }
 
-ogdf::edge ogdf::firstOutGen(ogdf::UMLGraph& UG, ogdf::node v, ogdf::EdgeArray<bool, true>&) {
+edge firstOutGen(UMLGraph& UG, node v, EdgeArray<bool, true>&) {
 	for (adjEntry adj : v->adjEntries) {
 		edge e = adj->theEdge();
 		if (e->target() == v) {
@@ -100,7 +101,7 @@ ogdf::edge ogdf::firstOutGen(ogdf::UMLGraph& UG, ogdf::node v, ogdf::EdgeArray<b
 	return nullptr;
 }
 
-bool ogdf::dfsGenTree(ogdf::UMLGraph& UG, ogdf::List<ogdf::edge>& fakedGens, bool fakeTree) {
+bool dfsGenTree(UMLGraph& UG, List<edge>& fakedGens, bool fakeTree) {
 	EdgeArray<bool> used(UG.constGraph(), false);
 #if 0
 	NodeArray<bool> visited(UG,false);
