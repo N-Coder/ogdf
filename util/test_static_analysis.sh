@@ -47,7 +47,7 @@ eval $opts
 make -j "$cores" build-all
 cp compile_commands.json ..
 cp compile_commands.json ../static-analysis
-cat CMakeFiles/OGDF.dir/compiler_depend.make \
+cat CMakeFiles/OGDF.dir/depend.make \
   | cut -d ":" -f 2 \
   | grep "include/ogdf" \
   | $OGDF_XARGS echo -n \
