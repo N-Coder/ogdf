@@ -93,8 +93,8 @@ jobs:
         uses: hendrikmuhs/ccache-action@v1.2
         with:
           key: ${{ github.job }}
-      - name: Set-up clang-tidy cache
-        uses: actions/cache@v4
+      - name: Restore clang-tidy cache
+        uses: actions/cache/restore@v3
         with:
           path: ${{ github.workspace }}/.ctcache
           key: clang-tidy-cache-${{ github.run_id }}.${{ github.run_attempt }}
@@ -112,7 +112,6 @@ jobs:
       - name: Report unused files
         run: |
           cat static-analysis/unused-headers.txt
-          [ -s static-analysis/used-headers.txt ] || { echo "error: no used headers found"; exit 1 }
       - name: Store static analysis results
         uses: actions/upload-artifact@v4
         if: always()
@@ -127,6 +126,12 @@ jobs:
           path: |
             ${{ github.workspace }}/ccache-debug
             ${{ github.workspace }}/ctcache-debug
+      - name: Save clang-tidy cache
+        uses: actions/cache/save@v3
+        if: always()
+        with:
+          path: ${{ github.workspace }}/.ctcache
+          key: clang-tidy-cache-${{ github.run_id }}.${{ github.run_attempt }}
 
   coverage:
     name: "Analyze Test Coverage"

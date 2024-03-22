@@ -59,6 +59,10 @@ echo "::endgroup::"
 
 # Check for unused headers
 echo "$(cat static-analysis/used-headers.txt | wc -l) used header files"
+if [ ! -s static-analysis/used-headers.txt ]; then
+  echo "error: no used headers found"
+  exit 1
+fi
 diff static-analysis/used-headers.txt static-analysis/all-headers.txt | sed -ne 's/^> //p' > static-analysis/unused-headers.txt
 echo "$(cat static-analysis/unused-headers.txt | wc -l) unused header files"
 
