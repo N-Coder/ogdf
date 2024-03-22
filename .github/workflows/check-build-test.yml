@@ -8,6 +8,7 @@ on:
 #   OGDF_UTILS_PREQUEL: "set -x"
 #   CCACHE_DEBUG: 1
 #   CCACHE_DEBUGDIR: ${{ github.workspace }}/ccache-debug
+#   VERBOSE: 1
 
 jobs:
   style:
@@ -58,7 +59,6 @@ jobs:
           key: ${{ github.job }}
       - name: Test self-sufficiency
         run: |
-          export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
           util/test_self-sufficiency.sh
       - uses: actions/upload-artifact@v4
         name: Upload ccache debug info
@@ -76,6 +76,16 @@ jobs:
     env:
       CCACHE_COMPILERCHECK: "%compiler% -v"
     steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+          RUNNER_CONTEXT: ${{ toJson(runner) }}
+          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
+        run: |
+          echo "{\"github\": $GITHUB_CONTEXT, \"steps\": $STEPS_CONTEXT, \"runner\": $RUNNER_CONTEXT, \"strategy\": $STRATEGY_CONTEXT}"
+          echo
+          env
       - name: "Add workspace as a safe directory in containers"
         run: git config --system --add safe.directory $GITHUB_WORKSPACE
       - uses: actions/checkout@v4
