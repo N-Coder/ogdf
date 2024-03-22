@@ -96,12 +96,14 @@ jobs:
       - name: Set-up clang-tidy cache
         uses: actions/cache@v4
         with:
-          path: .ctcache
-          key: clang-tidy-cache
+          path: ${{ github.workspace }}/.ctcache
+          key: clang-tidy-cache-${{ github.run_id }}.${{ github.run_attempt }}
+          restore-keys: clang-tidy-cache
       - name: Run analysis
         env:
-          CTCACHE_DIR: .ctcache
+          CTCACHE_DIR: ${{ github.workspace }}/.ctcache
           # CTCACHE_DUMP: ${{ env.CCACHE_DEBUG }} # defining the var is enough to enable
+          # CTCACHE_DUMP_DIR: ${{ github.workspace }}/ctcache-debug
         run: |
           util/test_static_analysis.sh -DOGDF_ARCH=haswell -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
           find .ctcache -mtime +7 -exec rm -rv \{} \;
@@ -121,10 +123,12 @@ jobs:
           path: static-analysis/
       - uses: actions/upload-artifact@v4
         name: Upload ccache debug info
-        if: ${{ env.CCACHE_DEBUG == 1 }}
+        if: ${{ env.CCACHE_DEBUG == 1 || env.CTCACHE_DUMP == 1 }}
         with:
           name: ${{ github.job }}
-          path: ${{ github.workspace }}/ccache-debug
+          path: |
+            ${{ github.workspace }}/ccache-debug
+            ${{ github.workspace }}/ctcache-debug
 
   coverage:
     name: "Analyze Test Coverage"
