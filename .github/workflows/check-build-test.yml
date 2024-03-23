@@ -101,7 +101,10 @@ jobs:
           restore-keys: clang-tidy-cache
       - name: Run analysis
         env:
+          CTCACHE_LOCAL: 1
           CTCACHE_DIR: ${{ github.workspace }}/.ctcache
+          CTCACHE_SAVE_OUTPUT: 1
+          CTCACHE_IGNORE_OUTPUT: 1
           # CTCACHE_DUMP: ${{ env.CCACHE_DEBUG }} # defining the var is enough to enable
           # CTCACHE_DUMP_DIR: ${{ github.workspace }}/ctcache-debug
         run: |

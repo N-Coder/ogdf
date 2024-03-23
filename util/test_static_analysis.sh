@@ -69,7 +69,7 @@ echo "$(cat static-analysis/unused-headers.txt | wc -l) unused header files"
 # Run clang-tidy
 echo "::group::($(date -Iseconds)) Run clang-tidy"
 if command -v clang-tidy-cache > /dev/null 2>&1; then
-  clang_tidy_command="clang-tidy-cache $(which clang-tidy)"
+  clang_tidy_command="$(which clang-tidy-cache) $(which clang-tidy)"
 else
   clang_tidy_command="$(which clang-tidy)"
 fi
