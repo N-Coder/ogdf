@@ -66,6 +66,10 @@ jobs:
         with:
           name: ${{ github.job }}
           path: ${{ github.workspace }}/ccache-debug
+      - name: Prune caches
+        run: .github/prune-caches.sh ccache-${{ github.job }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
   static-analysis:
@@ -135,6 +139,11 @@ jobs:
         with:
           path: ${{ github.workspace }}/.ctcache
           key: clang-tidy-cache-${{ github.run_id }}.${{ github.run_attempt }}
+      - uses: actions4gh/setup-gh@v1
+      - name: Prune caches
+        run: |
+          .github/prune-caches.sh clang-tidy-cache
+          .github/prune-caches.sh ccache-${{ github.job }}
 
   coverage:
     name: "Analyze Test Coverage"
@@ -167,6 +176,9 @@ jobs:
         with:
           name: ${{ github.job }}
           path: ${{ github.workspace }}/ccache-debug
+      - uses: actions4gh/setup-gh@v1
+      - name: Prune caches
+        run: .github/prune-caches.sh ccache-${{ github.job }}
 
 
   build-linux:
@@ -218,6 +230,9 @@ jobs:
         with:
           name: ${{ github.job }}-${{ env.GH_COMPILER_NAME }}-${{ matrix.mode }}
           path: ${{ github.workspace }}/ccache-debug
+      - uses: actions4gh/setup-gh@v1
+      - name: Prune caches
+        run: .github/prune-caches.sh ccache-${{ github.job }}-${{ matrix.compiler }}-${{ matrix.mode }}
 
   build-macos:
     name: "Test ${{ matrix.mode }} build on MacOS"
@@ -254,6 +269,8 @@ jobs:
         with:
           name: ${{ github.job }}-${{ matrix.mode }}
           path: ${{ github.workspace }}/ccache-debug
+      - name: Prune caches
+        run: .github/prune-caches.sh ccache-${{ github.job }}-${{ matrix.mode }}
 
   build-windows:
     name: "Test ${{ matrix.mode }} build on Windows"
@@ -280,6 +297,8 @@ jobs:
         with:
           name: ${{ github.job }}-${{ matrix.mode }}
           path: ${{ github.workspace }}/ccache-debug
+      - name: Prune caches
+        run: .github/prune-caches.sh ccache-${{ github.job }}-${{ matrix.mode }}
 
 
   # this is mostly used to keep the required status checks for PR merging simple
