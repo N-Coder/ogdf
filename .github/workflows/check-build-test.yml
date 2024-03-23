@@ -90,6 +90,11 @@ jobs:
           echo "{\"github\": $GITHUB_CONTEXT, \"steps\": $STEPS_CONTEXT, \"runner\": $RUNNER_CONTEXT, \"strategy\": $STRATEGY_CONTEXT}"
           echo
           env
+      - name: "Update clang-tidy-cache" # can be removed once we have a docker image that include https://github.com/matus-chochlik/ctcache/pull/42
+        run: |
+          wget https://raw.githubusercontent.com/matus-chochlik/ctcache/main/clang-tidy-cache
+          mv clang-tidy-cache /usr/bin/clang-tidy-cache
+          chmod +x /usr/bin/clang-tidy-cache
       - name: "Add workspace as a safe directory in containers"
         run: git config --system --add safe.directory $GITHUB_WORKSPACE
       - uses: actions/checkout@v4
@@ -112,9 +117,13 @@ jobs:
           # CTCACHE_DUMP: ${{ env.CCACHE_DEBUG }} # defining the var is enough to enable
           # CTCACHE_DUMP_DIR: ${{ github.workspace }}/ctcache-debug
         run: |
+          clang-tidy-cache --zero-stats
           util/test_static_analysis.sh -DOGDF_ARCH=haswell -DCMAKE_C_COMPILER_LAUNCHER=ccache -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
-          find .ctcache -mtime +7 -exec rm -rv \{} \;
           cat static-analysis/clang-tidy.txt | python3 -m clang_tidy_converter sq > static-analysis/clang-tidy.json
+          clang-tidy-cache --show-stats
+          du -sh $CTCACHE_DIR
+          find .ctcache -mtime +7 -exec rm -rv \{} \;
+          du -sh $CTCACHE_DIR
         shell: bash
       - name: Report unused files
         run: |
@@ -139,11 +148,13 @@ jobs:
         with:
           path: ${{ github.workspace }}/.ctcache
           key: clang-tidy-cache-${{ github.run_id }}.${{ github.run_attempt }}
-      - uses: actions4gh/setup-gh@v1
+      - uses: sersoft-gmbh/setup-gh-cli-action@v2
       - name: Prune caches
         run: |
           .github/prune-caches.sh clang-tidy-cache
           .github/prune-caches.sh ccache-${{ github.job }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   coverage:
     name: "Analyze Test Coverage"
@@ -176,9 +187,11 @@ jobs:
         with:
           name: ${{ github.job }}
           path: ${{ github.workspace }}/ccache-debug
-      - uses: actions4gh/setup-gh@v1
+      - uses: sersoft-gmbh/setup-gh-cli-action@v2
       - name: Prune caches
         run: .github/prune-caches.sh ccache-${{ github.job }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
   build-linux:
@@ -230,9 +243,11 @@ jobs:
         with:
           name: ${{ github.job }}-${{ env.GH_COMPILER_NAME }}-${{ matrix.mode }}
           path: ${{ github.workspace }}/ccache-debug
-      - uses: actions4gh/setup-gh@v1
+      - uses: sersoft-gmbh/setup-gh-cli-action@v2
       - name: Prune caches
         run: .github/prune-caches.sh ccache-${{ github.job }}-${{ matrix.compiler }}-${{ matrix.mode }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   build-macos:
     name: "Test ${{ matrix.mode }} build on MacOS"
@@ -271,6 +286,8 @@ jobs:
           path: ${{ github.workspace }}/ccache-debug
       - name: Prune caches
         run: .github/prune-caches.sh ccache-${{ github.job }}-${{ matrix.mode }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   build-windows:
     name: "Test ${{ matrix.mode }} build on Windows"
@@ -299,6 +316,8 @@ jobs:
           path: ${{ github.workspace }}/ccache-debug
       - name: Prune caches
         run: .github/prune-caches.sh ccache-${{ github.job }}-${{ matrix.mode }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
   # this is mostly used to keep the required status checks for PR merging simple
