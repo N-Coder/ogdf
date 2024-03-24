@@ -2,6 +2,7 @@ name: Check, Build and Test
 
 on:
   pull_request:
+  push:
 
 # # Debug setup:
 # env:
@@ -11,7 +12,17 @@ on:
 #   VERBOSE: 1
 
 jobs:
+  # workflows skipped due to filters block PRs from being merged (their required jobs count as "pending")
+  # while jobs skipped due to conditions still count as success
+  precheck:
+    name: "Check whether to run the CI"
+    runs-on: ubuntu-latest
+    if: github.event.repository.full_name != 'ogdf/ogdf' || github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name != 'ogdf/ogdf'
+    steps:
+      - run: echo "Running CI pipeline!"
+
   style:
+    needs: [ precheck ]
     name: "Check code style"
     runs-on: ubuntu-latest
     container: docker.io/ogdf/clang:15
@@ -31,6 +42,7 @@ jobs:
       - run: util/style/test_indent_comments.sh
 
   dirs:
+    needs: [ precheck ]
     name: "Check directory structure"
     runs-on: ubuntu-latest
     steps:
@@ -39,6 +51,7 @@ jobs:
         run: util/test_directory_structure.sh
 
   docs:
+    needs: [ precheck ]
     name: "Check Doxygen"
     runs-on: ubuntu-latest
     container: docker.io/ogdf/clang:15
@@ -47,6 +60,7 @@ jobs:
       - run: util/test_doxygen.sh
 
   self-sufficiency:
+    needs: [ precheck ]
     name: "Test self-sufficiency"
     runs-on: ubuntu-latest
     env:
