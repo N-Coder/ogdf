@@ -144,6 +144,16 @@ jobs:
         with:
           name: static-analysis
           path: static-analysis/
+      - name: Clean binaries
+        run: |
+          cd build-static-analysis
+          make clean
+      - name: Store static analysis results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: build-static-analysis
+          path: build-static-analysis/
       - uses: actions/upload-artifact@v4
         name: Upload ccache debug info
         if: ${{ env.CCACHE_DEBUG == 1 || env.CTCACHE_DUMP == 1 }}
