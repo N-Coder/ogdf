@@ -73,6 +73,8 @@ jobs:
           key: ${{ github.job }}
       - name: Test self-sufficiency
         run: |
+          # the script calls gcc directly, so ensure that it find the ccache version instead
+          export PATH="/usr/lib/ccache:/usr/local/opt/ccache/libexec:$PATH"
           util/test_self-sufficiency.sh
       - uses: actions/upload-artifact@v4
         name: Upload ccache debug info
@@ -113,7 +115,7 @@ jobs:
         with:
           key: ${{ github.job }}
       - name: Restore clang-tidy cache
-        uses: actions/cache/restore@v3
+        uses: actions/cache/restore@v4
         with:
           path: ${{ github.workspace }}/.ctcache
           key: clang-tidy-cache-${{ github.run_id }}.${{ github.run_attempt }}
@@ -163,7 +165,7 @@ jobs:
             ${{ github.workspace }}/ccache-debug
             ${{ github.workspace }}/ctcache-debug
       - name: Save clang-tidy cache
-        uses: actions/cache/save@v3
+        uses: actions/cache/save@v4
         if: always()
         with:
           path: ${{ github.workspace }}/.ctcache
