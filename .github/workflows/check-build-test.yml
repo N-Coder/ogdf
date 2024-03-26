@@ -326,10 +326,10 @@ jobs:
       - run: echo "Everything worked!"
 
   prune-caches:
-    needs: [ build-linux, build-macos, build-windows, static-analysis, coverage ]
+    needs: [ build-linux, build-macos, build-windows, static-analysis, coverage, precheck ]
     name: "Prune Caches"
     runs-on: ubuntu-latest
-    if: always()
+    if: always() && needs.precheck.result == 'success'
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
