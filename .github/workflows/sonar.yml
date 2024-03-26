@@ -22,6 +22,8 @@ jobs:
           echo
           env
 
+      - name: "Add workspace as a safe directory in containers"
+        run: git config --system --add safe.directory $GITHUB_WORKSPACE
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
