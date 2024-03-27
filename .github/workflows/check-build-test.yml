@@ -328,27 +328,3 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Everything worked!"
-
-  prune-caches:
-    needs: [ build-linux, build-macos, build-windows, static-analysis, coverage, precheck ]
-    name: "Prune Caches"
-    runs-on: ubuntu-latest
-    if: always() && needs.precheck.result == 'success'
-    env:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    steps:
-      - uses: actions/checkout@v4
-      - run: .github/prune-caches.sh ccache-self-sufficiency
-      - run: .github/prune-caches.sh ccache-coverage
-      - run: .github/prune-caches.sh clang-tidy-cache
-      - run: .github/prune-caches.sh ccache-static-analysis
-      - run: .github/prune-caches.sh ccache-build-linux-gcc:9-debug
-      - run: .github/prune-caches.sh ccache-build-linux-gcc:9-release
-      - run: .github/prune-caches.sh ccache-build-linux-gcc:13-debug
-      - run: .github/prune-caches.sh ccache-build-linux-gcc:13-release
-      - run: .github/prune-caches.sh ccache-build-linux-clang:15-debug
-      - run: .github/prune-caches.sh ccache-build-linux-clang:15-release
-      - run: .github/prune-caches.sh ccache-build-macos-debug
-      - run: .github/prune-caches.sh ccache-build-macos-release
-      - run: .github/prune-caches.sh ccache-build-windows-debug
-      - run: .github/prune-caches.sh ccache-build-windows-release
