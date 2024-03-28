@@ -1,0 +1,3568 @@
+{
+  "issues": [
+    {
+      "engineId": "clang-tidy",
+      "ruleId": "clang-analyzer-core.uninitialized.Branch",
+      "primaryLocation": {
+        "message": "Branch condition evaluates to a garbage value",
+        "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+        "textRange": {
+          "startLine": 208,
+          "endLine": 208,
+          "startColumn": 1,
+          "endColumn": 2
+        }
+      },
+      "type": "CODE_SMELL",
+      "severity": "MAJOR",
+      "secondaryLocations": [
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Calling 'ClusterOrthoLayout::call'",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 67,
+            "endLine": 67,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Assuming field 'm_align' is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 77,
+            "endLine": 77,
+            "startColumn": 13,
+            "endColumn": 14
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 35,
+            "endColumn": 36
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 26,
+            "endColumn": 27
+          }
+        },
+        {
+          "message": "'?' condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 77,
+            "endLine": 77,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Assuming the condition is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 80,
+            "endLine": 80,
+            "startColumn": 5,
+            "endColumn": 6
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 80,
+            "endLine": 80,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "'?' condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 92,
+            "endLine": 92,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "'?' condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 95,
+            "endLine": 95,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Assuming the condition is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 100,
+            "endLine": 100,
+            "startColumn": 5,
+            "endColumn": 6
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 100,
+            "endLine": 100,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Loop condition is true.  Entering loop body",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 110,
+            "endLine": 110,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 112,
+            "endLine": 112,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Taking true branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 112,
+            "endLine": 112,
+            "startColumn": 2,
+            "endColumn": 3
+          }
+        },
+        {
+          "message": "Assuming 'asSize' is <= 'maximum'",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 114,
+            "endLine": 114,
+            "startColumn": 7,
+            "endColumn": 8
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 114,
+            "endLine": 114,
+            "startColumn": 3,
+            "endColumn": 4
+          }
+        },
+        {
+          "message": "Assuming 'atSize' is > 'maximum'",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 119,
+            "endLine": 119,
+            "startColumn": 7,
+            "endColumn": 8
+          }
+        },
+        {
+          "message": "Taking true branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 119,
+            "endLine": 119,
+            "startColumn": 3,
+            "endColumn": 4
+          }
+        },
+        {
+          "message": "Loop condition is false. Execution continues on line 126",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 110,
+            "endLine": 110,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 130,
+            "endLine": 130,
+            "startColumn": 13,
+            "endColumn": 14
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 35,
+            "endColumn": 36
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 26,
+            "endColumn": 27
+          }
+        },
+        {
+          "message": "'?' condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 130,
+            "endLine": 130,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Assuming field 'm_useScalingCompaction' is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 137,
+            "endLine": 137,
+            "startColumn": 5,
+            "endColumn": 6
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 137,
+            "endLine": 137,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Assuming field 'm_orthoStyle' is > 0",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 158,
+            "endLine": 158,
+            "startColumn": 17,
+            "endColumn": 18
+          }
+        },
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 168,
+            "endLine": 168,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "'?' condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 168,
+            "endLine": 168,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "'?' condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 175,
+            "endLine": 175,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 181,
+            "endLine": 181,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "'?' condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 181,
+            "endLine": 181,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 191,
+            "endLine": 191,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "'?' condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 191,
+            "endLine": 191,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "'pInfoExp' declared without an initial value",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 201,
+            "endLine": 201,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Branch condition evaluates to a garbage value",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp",
+          "textRange": {
+            "startLine": 208,
+            "endLine": 208,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        }
+      ]
+    },
+    {
+      "engineId": "clang-tidy",
+      "ruleId": "clang-analyzer-security.insecureAPI.strcpy",
+      "primaryLocation": {
+        "message": "Call to function 'strcpy' is insecure as it does not provide bounding of the memory buffer. Replace unbounded copy functions with analogous functions that support length arguments such as 'strlcpy'. CWE-119",
+        "filePath": "/__w/ogdf/ogdf/src/ogdf/fileformats/GmlParser.cpp",
+        "textRange": {
+          "startLine": 128,
+          "endLine": 128,
+          "startColumn": 3,
+          "endColumn": 4
+        }
+      },
+      "type": "CODE_SMELL",
+      "severity": "MAJOR",
+      "secondaryLocations": [
+        {
+          "message": "Call to function 'strcpy' is insecure as it does not provide bounding of the memory buffer. Replace unbounded copy functions with analogous functions that support length arguments such as 'strlcpy'. CWE-119",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/fileformats/GmlParser.cpp",
+          "textRange": {
+            "startLine": 128,
+            "endLine": 128,
+            "startColumn": 3,
+            "endColumn": 4
+          }
+        }
+      ]
+    },
+    {
+      "engineId": "clang-tidy",
+      "ruleId": "clang-analyzer-cplusplus.NewDelete",
+      "primaryLocation": {
+        "message": "Use of memory after it is freed",
+        "filePath": "/usr/local/include/CGAL/Handle_for.h",
+        "textRange": {
+          "startLine": 167,
+          "endLine": 167,
+          "startColumn": 10,
+          "endColumn": 11
+        }
+      },
+      "type": "CODE_SMELL",
+      "severity": "MAJOR",
+      "secondaryLocations": [
+        {
+          "message": "Calling 'ogdf_attributes_to_geometric_drawing<CGAL::Simple_cartesian<CGAL::Gmpq>, ogdf::internal::gcm::graph::OGDFGraphWrapper>'",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/geometric/CrossingMinimalPosition.cpp",
+          "textRange": {
+            "startLine": 68,
+            "endLine": 68,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/geometric/cr_min/graph/GeometricDrawing.h",
+          "textRange": {
+            "startLine": 259,
+            "endLine": 259,
+            "startColumn": 13,
+            "endColumn": 14
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 35,
+            "endColumn": 36
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 26,
+            "endColumn": 27
+          }
+        },
+        {
+          "message": "'?' condition is true",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/geometric/cr_min/graph/GeometricDrawing.h",
+          "textRange": {
+            "startLine": 259,
+            "endLine": 259,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Calling constructor for 'Point_2<CGAL::Simple_cartesian<CGAL::Gmpq>>'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/geometric/cr_min/graph/GeometricDrawing.h",
+          "textRange": {
+            "startLine": 261,
+            "endLine": 261,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "Calling constructor for 'Gmpq'",
+          "filePath": "/usr/local/include/CGAL/Point_2.h",
+          "textRange": {
+            "startLine": 83,
+            "endLine": 83,
+            "startColumn": 64,
+            "endColumn": 65
+          }
+        },
+        {
+          "message": "Calling default constructor for 'Handle_for<CGAL::Gmpq_rep, std::allocator<CGAL::Gmpq_rep>>'",
+          "filePath": "/usr/local/include/CGAL/GMP/Gmpq_type.h",
+          "textRange": {
+            "startLine": 162,
+            "endLine": 162,
+            "startColumn": 2,
+            "endColumn": 3
+          }
+        },
+        {
+          "message": "Calling 'new_allocator::allocate'",
+          "filePath": "/usr/local/include/CGAL/Handle_for.h",
+          "textRange": {
+            "startLine": 65,
+            "endLine": 65,
+            "startColumn": 20,
+            "endColumn": 21
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/ext/new_allocator.h",
+          "textRange": {
+            "startLine": 105,
+            "endLine": 105,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/ext/new_allocator.h",
+          "textRange": {
+            "startLine": 109,
+            "endLine": 109,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Memory is allocated",
+          "filePath": "/usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/ext/new_allocator.h",
+          "textRange": {
+            "startLine": 115,
+            "endLine": 115,
+            "startColumn": 26,
+            "endColumn": 27
+          }
+        },
+        {
+          "message": "Returned allocated memory",
+          "filePath": "/usr/local/include/CGAL/Handle_for.h",
+          "textRange": {
+            "startLine": 65,
+            "endLine": 65,
+            "startColumn": 20,
+            "endColumn": 21
+          }
+        },
+        {
+          "message": "Returning from default constructor for 'Handle_for<CGAL::Gmpq_rep, std::allocator<CGAL::Gmpq_rep>>'",
+          "filePath": "/usr/local/include/CGAL/GMP/Gmpq_type.h",
+          "textRange": {
+            "startLine": 162,
+            "endLine": 162,
+            "startColumn": 2,
+            "endColumn": 3
+          }
+        },
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/usr/local/include/CGAL/GMP/Gmpq_type.h",
+          "textRange": {
+            "startLine": 164,
+            "endLine": 164,
+            "startColumn": 4,
+            "endColumn": 5
+          }
+        },
+        {
+          "message": "expanded from macro 'CGAL_assertion'",
+          "filePath": "/usr/local/include/CGAL/assertions.h",
+          "textRange": {
+            "startLine": 92,
+            "endLine": 92,
+            "startColumn": 4,
+            "endColumn": 5
+          }
+        },
+        {
+          "message": "'?' condition is true",
+          "filePath": "/usr/local/include/CGAL/GMP/Gmpq_type.h",
+          "textRange": {
+            "startLine": 164,
+            "endLine": 164,
+            "startColumn": 4,
+            "endColumn": 5
+          }
+        },
+        {
+          "message": "expanded from macro 'CGAL_assertion'",
+          "filePath": "/usr/local/include/CGAL/assertions.h",
+          "textRange": {
+            "startLine": 92,
+            "endLine": 92,
+            "startColumn": 4,
+            "endColumn": 5
+          }
+        },
+        {
+          "message": "Returning from constructor for 'Gmpq'",
+          "filePath": "/usr/local/include/CGAL/Point_2.h",
+          "textRange": {
+            "startLine": 83,
+            "endLine": 83,
+            "startColumn": 64,
+            "endColumn": 65
+          }
+        },
+        {
+          "message": "Calling 'Construct_point_2::operator()'",
+          "filePath": "/usr/local/include/CGAL/Point_2.h",
+          "textRange": {
+            "startLine": 83,
+            "endLine": 83,
+            "startColumn": 10,
+            "endColumn": 11
+          }
+        },
+        {
+          "message": "Calling constructor for 'PointC2<CGAL::Simple_cartesian<CGAL::Gmpq>>'",
+          "filePath": "/usr/local/include/CGAL/Cartesian/function_objects.h",
+          "textRange": {
+            "startLine": 3069,
+            "endLine": 3069,
+            "startColumn": 13,
+            "endColumn": 14
+          }
+        },
+        {
+          "message": "Calling constructor for 'Vector_2<CGAL::Simple_cartesian<CGAL::Gmpq>>'",
+          "filePath": "/usr/local/include/CGAL/Cartesian/Point_2.h",
+          "textRange": {
+            "startLine": 48,
+            "endLine": 48,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Calling 'Construct_vector_2::operator()'",
+          "filePath": "/usr/local/include/CGAL/Vector_2.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 18,
+            "endColumn": 19
+          }
+        },
+        {
+          "message": "Calling constructor for 'VectorC2<CGAL::Simple_cartesian<CGAL::Gmpq>>'",
+          "filePath": "/usr/local/include/CGAL/Cartesian/function_objects.h",
+          "textRange": {
+            "startLine": 3553,
+            "endLine": 3553,
+            "startColumn": 13,
+            "endColumn": 14
+          }
+        },
+        {
+          "message": "Calling 'make_array<CGAL::Gmpq, CGAL::Gmpq>'",
+          "filePath": "/usr/local/include/CGAL/Cartesian/Vector_2.h",
+          "textRange": {
+            "startLine": 53,
+            "endLine": 53,
+            "startColumn": 11,
+            "endColumn": 12
+          }
+        },
+        {
+          "message": "Calling implicit destructor for 'Gmpq'",
+          "filePath": "/usr/local/include/CGAL/array.h",
+          "textRange": {
+            "startLine": 53,
+            "endLine": 53,
+            "startColumn": 69,
+            "endColumn": 70
+          }
+        },
+        {
+          "message": "Calling '~Handle_for'",
+          "filePath": "/usr/local/include/CGAL/array.h",
+          "textRange": {
+            "startLine": 53,
+            "endLine": 53,
+            "startColumn": 69,
+            "endColumn": 70
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/usr/local/include/CGAL/Handle_for.h",
+          "textRange": {
+            "startLine": 150,
+            "endLine": 150,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/usr/local/include/CGAL/Handle_for.h",
+          "textRange": {
+            "startLine": 161,
+            "endLine": 161,
+            "startColumn": 12,
+            "endColumn": 13
+          }
+        },
+        {
+          "message": "Left side of '||' is true",
+          "filePath": "/usr/local/include/CGAL/Handle_for.h",
+          "textRange": {
+            "startLine": 162,
+            "endLine": 162,
+            "startColumn": 12,
+            "endColumn": 13
+          }
+        },
+        {
+          "message": "Calling 'new_allocator::deallocate'",
+          "filePath": "/usr/local/include/CGAL/Handle_for.h",
+          "textRange": {
+            "startLine": 168,
+            "endLine": 168,
+            "startColumn": 10,
+            "endColumn": 11
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/ext/new_allocator.h",
+          "textRange": {
+            "startLine": 123,
+            "endLine": 123,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Memory is released",
+          "filePath": "/usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/ext/new_allocator.h",
+          "textRange": {
+            "startLine": 133,
+            "endLine": 133,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Returning; memory was released via 1st parameter",
+          "filePath": "/usr/local/include/CGAL/Handle_for.h",
+          "textRange": {
+            "startLine": 168,
+            "endLine": 168,
+            "startColumn": 10,
+            "endColumn": 11
+          }
+        },
+        {
+          "message": "Returning from '~Handle_for'",
+          "filePath": "/usr/local/include/CGAL/array.h",
+          "textRange": {
+            "startLine": 53,
+            "endLine": 53,
+            "startColumn": 69,
+            "endColumn": 70
+          }
+        },
+        {
+          "message": "Returning from destructor for 'Gmpq'",
+          "filePath": "/usr/local/include/CGAL/array.h",
+          "textRange": {
+            "startLine": 53,
+            "endLine": 53,
+            "startColumn": 69,
+            "endColumn": 70
+          }
+        },
+        {
+          "message": "Returning; memory was released",
+          "filePath": "/usr/local/include/CGAL/Cartesian/Vector_2.h",
+          "textRange": {
+            "startLine": 53,
+            "endLine": 53,
+            "startColumn": 11,
+            "endColumn": 12
+          }
+        },
+        {
+          "message": "Returning from constructor for 'VectorC2<CGAL::Simple_cartesian<CGAL::Gmpq>>'",
+          "filePath": "/usr/local/include/CGAL/Cartesian/function_objects.h",
+          "textRange": {
+            "startLine": 3553,
+            "endLine": 3553,
+            "startColumn": 13,
+            "endColumn": 14
+          }
+        },
+        {
+          "message": "Returning; memory was released",
+          "filePath": "/usr/local/include/CGAL/Vector_2.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 18,
+            "endColumn": 19
+          }
+        },
+        {
+          "message": "Returning from constructor for 'Vector_2<CGAL::Simple_cartesian<CGAL::Gmpq>>'",
+          "filePath": "/usr/local/include/CGAL/Cartesian/Point_2.h",
+          "textRange": {
+            "startLine": 48,
+            "endLine": 48,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Returning from constructor for 'PointC2<CGAL::Simple_cartesian<CGAL::Gmpq>>'",
+          "filePath": "/usr/local/include/CGAL/Cartesian/function_objects.h",
+          "textRange": {
+            "startLine": 3069,
+            "endLine": 3069,
+            "startColumn": 13,
+            "endColumn": 14
+          }
+        },
+        {
+          "message": "Returning; memory was released",
+          "filePath": "/usr/local/include/CGAL/Point_2.h",
+          "textRange": {
+            "startLine": 83,
+            "endLine": 83,
+            "startColumn": 10,
+            "endColumn": 11
+          }
+        },
+        {
+          "message": "Calling implicit destructor for 'Gmpq'",
+          "filePath": "/usr/local/include/CGAL/Point_2.h",
+          "textRange": {
+            "startLine": 83,
+            "endLine": 83,
+            "startColumn": 64,
+            "endColumn": 65
+          }
+        },
+        {
+          "message": "Calling '~Handle_for'",
+          "filePath": "/usr/local/include/CGAL/Point_2.h",
+          "textRange": {
+            "startLine": 83,
+            "endLine": 83,
+            "startColumn": 64,
+            "endColumn": 65
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/usr/local/include/CGAL/Handle_for.h",
+          "textRange": {
+            "startLine": 150,
+            "endLine": 150,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/usr/local/include/CGAL/Handle_for.h",
+          "textRange": {
+            "startLine": 161,
+            "endLine": 161,
+            "startColumn": 12,
+            "endColumn": 13
+          }
+        },
+        {
+          "message": "Left side of '||' is true",
+          "filePath": "/usr/local/include/CGAL/Handle_for.h",
+          "textRange": {
+            "startLine": 162,
+            "endLine": 162,
+            "startColumn": 12,
+            "endColumn": 13
+          }
+        },
+        {
+          "message": "Use of memory after it is freed",
+          "filePath": "/usr/local/include/CGAL/Handle_for.h",
+          "textRange": {
+            "startLine": 167,
+            "endLine": 167,
+            "startColumn": 10,
+            "endColumn": 11
+          }
+        }
+      ]
+    },
+    {
+      "engineId": "clang-tidy",
+      "ruleId": "clang-analyzer-core.CallAndMessage",
+      "primaryLocation": {
+        "message": "2nd function call argument is an uninitialized value",
+        "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+        "textRange": {
+          "startLine": 960,
+          "endLine": 960,
+          "startColumn": 47,
+          "endColumn": 48
+        }
+      },
+      "type": "CODE_SMELL",
+      "severity": "MAJOR",
+      "secondaryLocations": [
+        {
+          "message": "Loop condition is false. Execution continues on line 797",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 776,
+            "endLine": 776,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "expanded from macro 'forall_postOrderClusters'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/cluster/ClusterGraph.h",
+          "textRange": {
+            "startLine": 297,
+            "endLine": 297,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Assuming 'i' is >= field 'm_numLayers'",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 814,
+            "endLine": 814,
+            "startColumn": 13,
+            "endColumn": 14
+          }
+        },
+        {
+          "message": "Loop condition is false. Execution continues on line 874",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 814,
+            "endLine": 814,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "'i' is >= field 'm_numLayers'",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 913,
+            "endLine": 913,
+            "startColumn": 13,
+            "endColumn": 14
+          }
+        },
+        {
+          "message": "Loop condition is false. Execution continues on line 920",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 913,
+            "endLine": 913,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 923,
+            "endLine": 923,
+            "startColumn": 13,
+            "endColumn": 14
+          }
+        },
+        {
+          "message": "Loop condition is true.  Entering loop body",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 923,
+            "endLine": 923,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 945,
+            "endLine": 945,
+            "startColumn": 8,
+            "endColumn": 9
+          }
+        },
+        {
+          "message": "Left side of '&&' is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 945,
+            "endLine": 945,
+            "startColumn": 8,
+            "endColumn": 9
+          }
+        },
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 945,
+            "endLine": 945,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "Taking true branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 945,
+            "endLine": 945,
+            "startColumn": 4,
+            "endColumn": 5
+          }
+        },
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 950,
+            "endLine": 950,
+            "startColumn": 12,
+            "endColumn": 13
+          }
+        },
+        {
+          "message": "Loop condition is true.  Entering loop body",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 950,
+            "endLine": 950,
+            "startColumn": 5,
+            "endColumn": 6
+          }
+        },
+        {
+          "message": "'aChild' declared without an initial value",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 954,
+            "endLine": 954,
+            "startColumn": 19,
+            "endColumn": 20
+          }
+        },
+        {
+          "message": "Calling 'ExtendedNestingGraph::lca'",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 956,
+            "endLine": 956,
+            "startColumn": 9,
+            "endColumn": 10
+          }
+        },
+        {
+          "message": "'?' condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1411,
+            "endLine": 1411,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "'?' condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1412,
+            "endLine": 1412,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Left side of '||' is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1425,
+            "endLine": 1425,
+            "startColumn": 26,
+            "endColumn": 27
+          }
+        },
+        {
+          "message": "Taking true branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1426,
+            "endLine": 1426,
+            "startColumn": 2,
+            "endColumn": 3
+          }
+        },
+        {
+          "message": "Assuming the condition is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1427,
+            "endLine": 1427,
+            "startColumn": 7,
+            "endColumn": 8
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1427,
+            "endLine": 1427,
+            "startColumn": 3,
+            "endColumn": 4
+          }
+        },
+        {
+          "message": "Assuming the condition is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1439,
+            "endLine": 1439,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1439,
+            "endLine": 1439,
+            "startColumn": 2,
+            "endColumn": 3
+          }
+        },
+        {
+          "message": "Left side of '||' is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1425,
+            "endLine": 1425,
+            "startColumn": 26,
+            "endColumn": 27
+          }
+        },
+        {
+          "message": "Taking true branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1426,
+            "endLine": 1426,
+            "startColumn": 2,
+            "endColumn": 3
+          }
+        },
+        {
+          "message": "Assuming the condition is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1427,
+            "endLine": 1427,
+            "startColumn": 7,
+            "endColumn": 8
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1427,
+            "endLine": 1427,
+            "startColumn": 3,
+            "endColumn": 4
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1439,
+            "endLine": 1439,
+            "startColumn": 2,
+            "endColumn": 3
+          }
+        },
+        {
+          "message": "Assuming the condition is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1425,
+            "endLine": 1425,
+            "startColumn": 8,
+            "endColumn": 9
+          }
+        },
+        {
+          "message": "Left side of '||' is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1425,
+            "endLine": 1425,
+            "startColumn": 8,
+            "endColumn": 9
+          }
+        },
+        {
+          "message": "Loop condition is false. Execution continues on line 1454",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1425,
+            "endLine": 1425,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Returning without writing to '*uChild'",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1454,
+            "endLine": 1454,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Returning from 'ExtendedNestingGraph::lca'",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 956,
+            "endLine": 956,
+            "startColumn": 9,
+            "endColumn": 10
+          }
+        },
+        {
+          "message": "Left side of '&&' is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 957,
+            "endLine": 957,
+            "startColumn": 11,
+            "endColumn": 12
+          }
+        },
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 958,
+            "endLine": 958,
+            "startColumn": 12,
+            "endColumn": 13
+          }
+        },
+        {
+          "message": "Taking true branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 957,
+            "endLine": 957,
+            "startColumn": 7,
+            "endColumn": 8
+          }
+        },
+        {
+          "message": "2nd function call argument is an uninitialized value",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 960,
+            "endLine": 960,
+            "startColumn": 47,
+            "endColumn": 48
+          }
+        }
+      ]
+    },
+    {
+      "engineId": "clang-tidy",
+      "ruleId": "clang-analyzer-core.CallAndMessage",
+      "primaryLocation": {
+        "message": "2nd function call argument is an uninitialized value",
+        "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+        "textRange": {
+          "startLine": 980,
+          "endLine": 980,
+          "startColumn": 47,
+          "endColumn": 48
+        }
+      },
+      "type": "CODE_SMELL",
+      "severity": "MAJOR",
+      "secondaryLocations": [
+        {
+          "message": "Loop condition is false. Execution continues on line 797",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 776,
+            "endLine": 776,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "expanded from macro 'forall_postOrderClusters'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/cluster/ClusterGraph.h",
+          "textRange": {
+            "startLine": 297,
+            "endLine": 297,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Assuming 'i' is >= field 'm_numLayers'",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 814,
+            "endLine": 814,
+            "startColumn": 13,
+            "endColumn": 14
+          }
+        },
+        {
+          "message": "Loop condition is false. Execution continues on line 874",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 814,
+            "endLine": 814,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "'i' is >= field 'm_numLayers'",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 913,
+            "endLine": 913,
+            "startColumn": 13,
+            "endColumn": 14
+          }
+        },
+        {
+          "message": "Loop condition is false. Execution continues on line 920",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 913,
+            "endLine": 913,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 923,
+            "endLine": 923,
+            "startColumn": 13,
+            "endColumn": 14
+          }
+        },
+        {
+          "message": "Loop condition is true.  Entering loop body",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 923,
+            "endLine": 923,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 945,
+            "endLine": 945,
+            "startColumn": 8,
+            "endColumn": 9
+          }
+        },
+        {
+          "message": "Left side of '&&' is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 945,
+            "endLine": 945,
+            "startColumn": 8,
+            "endColumn": 9
+          }
+        },
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 945,
+            "endLine": 945,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "Taking true branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 945,
+            "endLine": 945,
+            "startColumn": 4,
+            "endColumn": 5
+          }
+        },
+        {
+          "message": "Assuming the condition is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 950,
+            "endLine": 950,
+            "startColumn": 12,
+            "endColumn": 13
+          }
+        },
+        {
+          "message": "Loop condition is false. Execution continues on line 966",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 950,
+            "endLine": 950,
+            "startColumn": 5,
+            "endColumn": 6
+          }
+        },
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 970,
+            "endLine": 970,
+            "startColumn": 12,
+            "endColumn": 13
+          }
+        },
+        {
+          "message": "Loop condition is true.  Entering loop body",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 970,
+            "endLine": 970,
+            "startColumn": 5,
+            "endColumn": 6
+          }
+        },
+        {
+          "message": "'aChild' declared without an initial value",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 974,
+            "endLine": 974,
+            "startColumn": 19,
+            "endColumn": 20
+          }
+        },
+        {
+          "message": "Calling 'ExtendedNestingGraph::lca'",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 976,
+            "endLine": 976,
+            "startColumn": 9,
+            "endColumn": 10
+          }
+        },
+        {
+          "message": "'?' condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1411,
+            "endLine": 1411,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "'?' condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1412,
+            "endLine": 1412,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Left side of '||' is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1425,
+            "endLine": 1425,
+            "startColumn": 26,
+            "endColumn": 27
+          }
+        },
+        {
+          "message": "Taking true branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1426,
+            "endLine": 1426,
+            "startColumn": 2,
+            "endColumn": 3
+          }
+        },
+        {
+          "message": "Assuming the condition is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1427,
+            "endLine": 1427,
+            "startColumn": 7,
+            "endColumn": 8
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1427,
+            "endLine": 1427,
+            "startColumn": 3,
+            "endColumn": 4
+          }
+        },
+        {
+          "message": "Assuming the condition is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1439,
+            "endLine": 1439,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1439,
+            "endLine": 1439,
+            "startColumn": 2,
+            "endColumn": 3
+          }
+        },
+        {
+          "message": "Left side of '||' is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1425,
+            "endLine": 1425,
+            "startColumn": 26,
+            "endColumn": 27
+          }
+        },
+        {
+          "message": "Taking true branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1426,
+            "endLine": 1426,
+            "startColumn": 2,
+            "endColumn": 3
+          }
+        },
+        {
+          "message": "Assuming the condition is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1427,
+            "endLine": 1427,
+            "startColumn": 7,
+            "endColumn": 8
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1427,
+            "endLine": 1427,
+            "startColumn": 3,
+            "endColumn": 4
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1439,
+            "endLine": 1439,
+            "startColumn": 2,
+            "endColumn": 3
+          }
+        },
+        {
+          "message": "Assuming the condition is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1425,
+            "endLine": 1425,
+            "startColumn": 8,
+            "endColumn": 9
+          }
+        },
+        {
+          "message": "Left side of '||' is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1425,
+            "endLine": 1425,
+            "startColumn": 8,
+            "endColumn": 9
+          }
+        },
+        {
+          "message": "Loop condition is false. Execution continues on line 1454",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1425,
+            "endLine": 1425,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Returning without writing to '*uChild'",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 1454,
+            "endLine": 1454,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Returning from 'ExtendedNestingGraph::lca'",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 976,
+            "endLine": 976,
+            "startColumn": 9,
+            "endColumn": 10
+          }
+        },
+        {
+          "message": "Left side of '&&' is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 977,
+            "endLine": 977,
+            "startColumn": 11,
+            "endColumn": 12
+          }
+        },
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 978,
+            "endLine": 978,
+            "startColumn": 12,
+            "endColumn": 13
+          }
+        },
+        {
+          "message": "Taking true branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 977,
+            "endLine": 977,
+            "startColumn": 7,
+            "endColumn": 8
+          }
+        },
+        {
+          "message": "2nd function call argument is an uninitialized value",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp",
+          "textRange": {
+            "startLine": 980,
+            "endLine": 980,
+            "startColumn": 47,
+            "endColumn": 48
+          }
+        }
+      ]
+    },
+    {
+      "engineId": "clang-tidy",
+      "ruleId": "clang-analyzer-core.uninitialized.Branch",
+      "primaryLocation": {
+        "message": "Branch condition evaluates to a garbage value",
+        "filePath": "/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp",
+        "textRange": {
+          "startLine": 139,
+          "endLine": 139,
+          "startColumn": 1,
+          "endColumn": 2
+        }
+      },
+      "type": "CODE_SMELL",
+      "severity": "MAJOR",
+      "secondaryLocations": [
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp",
+          "textRange": {
+            "startLine": 56,
+            "endLine": 56,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Assuming the condition is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp",
+          "textRange": {
+            "startLine": 60,
+            "endLine": 60,
+            "startColumn": 5,
+            "endColumn": 6
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp",
+          "textRange": {
+            "startLine": 60,
+            "endLine": 60,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Assuming field 'm_useScalingCompaction' is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp",
+          "textRange": {
+            "startLine": 74,
+            "endLine": 74,
+            "startColumn": 5,
+            "endColumn": 6
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp",
+          "textRange": {
+            "startLine": 74,
+            "endLine": 74,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Assuming field 'm_progressive' is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 17,
+            "endColumn": 18
+          }
+        },
+        {
+          "message": "'?' condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp",
+          "textRange": {
+            "startLine": 104,
+            "endLine": 104,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Assuming the condition is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp",
+          "textRange": {
+            "startLine": 119,
+            "endLine": 119,
+            "startColumn": 5,
+            "endColumn": 6
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp",
+          "textRange": {
+            "startLine": 119,
+            "endLine": 119,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Assuming the condition is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp",
+          "textRange": {
+            "startLine": 122,
+            "endLine": 122,
+            "startColumn": 5,
+            "endColumn": 6
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp",
+          "textRange": {
+            "startLine": 122,
+            "endLine": 122,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "'pInfoExp' declared without an initial value",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp",
+          "textRange": {
+            "startLine": 132,
+            "endLine": 132,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Branch condition evaluates to a garbage value",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp",
+          "textRange": {
+            "startLine": 139,
+            "endLine": 139,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        }
+      ]
+    },
+    {
+      "engineId": "clang-tidy",
+      "ruleId": "clang-analyzer-core.CallAndMessage",
+      "primaryLocation": {
+        "message": "Called C++ object pointer is null",
+        "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/PlanarizerChordlessCycle.cpp",
+        "textRange": {
+          "startLine": 98,
+          "endLine": 98,
+          "startColumn": 11,
+          "endColumn": 12
+        }
+      },
+      "type": "CODE_SMELL",
+      "severity": "MAJOR",
+      "secondaryLocations": [
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/PlanarizerChordlessCycle.cpp",
+          "textRange": {
+            "startLine": 206,
+            "endLine": 206,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "'?' condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/PlanarizerChordlessCycle.cpp",
+          "textRange": {
+            "startLine": 206,
+            "endLine": 206,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Calling 'PlanarizerChordlessCycle::findChordlessCycle'",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/PlanarizerChordlessCycle.cpp",
+          "textRange": {
+            "startLine": 219,
+            "endLine": 219,
+            "startColumn": 18,
+            "endColumn": 19
+          }
+        },
+        {
+          "message": "'connectingEdge' initialized to a null pointer value",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/PlanarizerChordlessCycle.cpp",
+          "textRange": {
+            "startLine": 65,
+            "endLine": 65,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Assuming the condition is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/PlanarizerChordlessCycle.cpp",
+          "textRange": {
+            "startLine": 90,
+            "endLine": 90,
+            "startColumn": 5,
+            "endColumn": 6
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/PlanarizerChordlessCycle.cpp",
+          "textRange": {
+            "startLine": 90,
+            "endLine": 90,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Called C++ object pointer is null",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/PlanarizerChordlessCycle.cpp",
+          "textRange": {
+            "startLine": 98,
+            "endLine": 98,
+            "startColumn": 11,
+            "endColumn": 12
+          }
+        }
+      ]
+    },
+    {
+      "engineId": "clang-tidy",
+      "ruleId": "clang-analyzer-core.CallAndMessage",
+      "primaryLocation": {
+        "message": "Called C++ object pointer is null",
+        "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp",
+        "textRange": {
+          "startLine": 369,
+          "endLine": 369,
+          "startColumn": 21,
+          "endColumn": 22
+        }
+      },
+      "type": "CODE_SMELL",
+      "severity": "MAJOR",
+      "secondaryLocations": [
+        {
+          "message": "'?' condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp",
+          "textRange": {
+            "startLine": 405,
+            "endLine": 405,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Assuming '__begin1' is not equal to '__end1'",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp",
+          "textRange": {
+            "startLine": 433,
+            "endLine": 433,
+            "startColumn": 20,
+            "endColumn": 21
+          }
+        },
+        {
+          "message": "Assuming the condition is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp",
+          "textRange": {
+            "startLine": 434,
+            "endLine": 434,
+            "startColumn": 22,
+            "endColumn": 23
+          }
+        },
+        {
+          "message": "Left side of '&&' is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp",
+          "textRange": {
+            "startLine": 443,
+            "endLine": 443,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp",
+          "textRange": {
+            "startLine": 443,
+            "endLine": 443,
+            "startColumn": 2,
+            "endColumn": 3
+          }
+        },
+        {
+          "message": "Calling 'StarInserter::updateMemberData'",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp",
+          "textRange": {
+            "startLine": 450,
+            "endLine": 450,
+            "startColumn": 2,
+            "endColumn": 3
+          }
+        },
+        {
+          "message": "Assuming the condition is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp",
+          "textRange": {
+            "startLine": 354,
+            "endLine": 354,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp",
+          "textRange": {
+            "startLine": 354,
+            "endLine": 354,
+            "startColumn": 2,
+            "endColumn": 3
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp",
+          "textRange": {
+            "startLine": 362,
+            "endLine": 362,
+            "startColumn": 2,
+            "endColumn": 3
+          }
+        },
+        {
+          "message": "Assuming the condition is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp",
+          "textRange": {
+            "startLine": 354,
+            "endLine": 354,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp",
+          "textRange": {
+            "startLine": 354,
+            "endLine": 354,
+            "startColumn": 2,
+            "endColumn": 3
+          }
+        },
+        {
+          "message": "Taking true branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp",
+          "textRange": {
+            "startLine": 362,
+            "endLine": 362,
+            "startColumn": 2,
+            "endColumn": 3
+          }
+        },
+        {
+          "message": "'crossing' initialized to a null pointer value",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp",
+          "textRange": {
+            "startLine": 368,
+            "endLine": 368,
+            "startColumn": 3,
+            "endColumn": 4
+          }
+        },
+        {
+          "message": "Called C++ object pointer is null",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp",
+          "textRange": {
+            "startLine": 369,
+            "endLine": 369,
+            "startColumn": 21,
+            "endColumn": 22
+          }
+        }
+      ]
+    },
+    {
+      "engineId": "clang-tidy",
+      "ruleId": "clang-analyzer-core.StackAddressEscape",
+      "primaryLocation": {
+        "message": "Address of stack memory associated with local variable 'refPoint' is still referred to by the stack variable 'pc' upon returning to the caller.  This will be a dangling reference",
+        "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp",
+        "textRange": {
+          "startLine": 47,
+          "endLine": 47,
+          "startColumn": 20,
+          "endColumn": 21
+        }
+      },
+      "type": "CODE_SMELL",
+      "severity": "MAJOR",
+      "secondaryLocations": [
+        {
+          "message": "Assuming 'reuseAGEmbedding' is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp",
+          "textRange": {
+            "startLine": 77,
+            "endLine": 77,
+            "startColumn": 5,
+            "endColumn": 6
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp",
+          "textRange": {
+            "startLine": 77,
+            "endLine": 77,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Taking true branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp",
+          "textRange": {
+            "startLine": 111,
+            "endLine": 111,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Calling 'TopologyModule::planarizeFromLayout'",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp",
+          "textRange": {
+            "startLine": 117,
+            "endLine": 117,
+            "startColumn": 2,
+            "endColumn": 3
+          }
+        },
+        {
+          "message": "Assuming the condition is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp",
+          "textRange": {
+            "startLine": 342,
+            "endLine": 342,
+            "startColumn": 30,
+            "endColumn": 31
+          }
+        },
+        {
+          "message": "Loop condition is false. Execution continues on line 415",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp",
+          "textRange": {
+            "startLine": 342,
+            "endLine": 342,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp",
+          "textRange": {
+            "startLine": 415,
+            "endLine": 415,
+            "startColumn": 8,
+            "endColumn": 9
+          }
+        },
+        {
+          "message": "Loop condition is true.  Entering loop body",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp",
+          "textRange": {
+            "startLine": 415,
+            "endLine": 415,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Loop condition is false. Execution continues on line 494",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp",
+          "textRange": {
+            "startLine": 427,
+            "endLine": 427,
+            "startColumn": 2,
+            "endColumn": 3
+          }
+        },
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp",
+          "textRange": {
+            "startLine": 494,
+            "endLine": 494,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Taking true branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp",
+          "textRange": {
+            "startLine": 494,
+            "endLine": 494,
+            "startColumn": 2,
+            "endColumn": 3
+          }
+        },
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp",
+          "textRange": {
+            "startLine": 497,
+            "endLine": 497,
+            "startColumn": 7,
+            "endColumn": 8
+          }
+        },
+        {
+          "message": "Taking true branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp",
+          "textRange": {
+            "startLine": 497,
+            "endLine": 497,
+            "startColumn": 3,
+            "endColumn": 4
+          }
+        },
+        {
+          "message": "Calling constructor for 'PointComparer'",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp",
+          "textRange": {
+            "startLine": 500,
+            "endLine": 500,
+            "startColumn": 18,
+            "endColumn": 19
+          }
+        },
+        {
+          "message": "Address of stack memory associated with local variable 'refPoint' is still referred to by the stack variable 'pc' upon returning to the caller.  This will be a dangling reference",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp",
+          "textRange": {
+            "startLine": 47,
+            "endLine": 47,
+            "startColumn": 20,
+            "endColumn": 21
+          }
+        }
+      ]
+    },
+    {
+      "engineId": "clang-tidy",
+      "ruleId": "clang-analyzer-cplusplus.NewDeleteLeaks",
+      "primaryLocation": {
+        "message": "Potential leak of memory pointed to by 'findKuratowskis'",
+        "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp",
+        "textRange": {
+          "startLine": 639,
+          "endLine": 639,
+          "startColumn": 13,
+          "endColumn": 14
+        }
+      },
+      "type": "CODE_SMELL",
+      "severity": "MAJOR",
+      "secondaryLocations": [
+        {
+          "message": "Calling 'BoyerMyrvoldPlanar::embed'",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp",
+          "textRange": {
+            "startLine": 860,
+            "endLine": 860,
+            "startColumn": 8,
+            "endColumn": 9
+          }
+        },
+        {
+          "message": "'?' condition is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp",
+          "textRange": {
+            "startLine": 586,
+            "endLine": 586,
+            "startColumn": 3,
+            "endColumn": 4
+          }
+        },
+        {
+          "message": "Memory is allocated",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp",
+          "textRange": {
+            "startLine": 586,
+            "endLine": 586,
+            "startColumn": 63,
+            "endColumn": 64
+          }
+        },
+        {
+          "message": "Assuming 'i' is >= 1",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp",
+          "textRange": {
+            "startLine": 589,
+            "endLine": 589,
+            "startColumn": 36,
+            "endColumn": 37
+          }
+        },
+        {
+          "message": "Loop condition is true.  Entering loop body",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp",
+          "textRange": {
+            "startLine": 589,
+            "endLine": 589,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp",
+          "textRange": {
+            "startLine": 626,
+            "endLine": 626,
+            "startColumn": 9,
+            "endColumn": 10
+          }
+        },
+        {
+          "message": "Loop condition is true.  Entering loop body",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp",
+          "textRange": {
+            "startLine": 626,
+            "endLine": 626,
+            "startColumn": 2,
+            "endColumn": 3
+          }
+        },
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp",
+          "textRange": {
+            "startLine": 627,
+            "endLine": 627,
+            "startColumn": 15,
+            "endColumn": 16
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 35,
+            "endColumn": 36
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 26,
+            "endColumn": 27
+          }
+        },
+        {
+          "message": "'?' condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp",
+          "textRange": {
+            "startLine": 627,
+            "endLine": 627,
+            "startColumn": 3,
+            "endColumn": 4
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Field 'm_extractSubgraph' is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp",
+          "textRange": {
+            "startLine": 629,
+            "endLine": 629,
+            "startColumn": 8,
+            "endColumn": 9
+          }
+        },
+        {
+          "message": "Taking true branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp",
+          "textRange": {
+            "startLine": 629,
+            "endLine": 629,
+            "startColumn": 3,
+            "endColumn": 4
+          }
+        },
+        {
+          "message": "'result' is not equal to 2",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp",
+          "textRange": {
+            "startLine": 630,
+            "endLine": 630,
+            "startColumn": 8,
+            "endColumn": 9
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp",
+          "textRange": {
+            "startLine": 630,
+            "endLine": 630,
+            "startColumn": 4,
+            "endColumn": 5
+          }
+        },
+        {
+          "message": "'result' is equal to 1",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp",
+          "textRange": {
+            "startLine": 634,
+            "endLine": 634,
+            "startColumn": 15,
+            "endColumn": 16
+          }
+        },
+        {
+          "message": "Taking true branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp",
+          "textRange": {
+            "startLine": 634,
+            "endLine": 634,
+            "startColumn": 11,
+            "endColumn": 12
+          }
+        }
+      ]
+    },
+    {
+      "engineId": "clang-tidy",
+      "ruleId": "clang-analyzer-core.uninitialized.Branch",
+      "primaryLocation": {
+        "message": "Branch condition evaluates to a garbage value",
+        "filePath": "/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp",
+        "textRange": {
+          "startLine": 172,
+          "endLine": 172,
+          "startColumn": 1,
+          "endColumn": 2
+        }
+      },
+      "type": "CODE_SMELL",
+      "severity": "MAJOR",
+      "secondaryLocations": [
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Assuming the condition is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp",
+          "textRange": {
+            "startLine": 67,
+            "endLine": 67,
+            "startColumn": 5,
+            "endColumn": 6
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp",
+          "textRange": {
+            "startLine": 67,
+            "endLine": 67,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Assuming field 'm_align' is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp",
+          "textRange": {
+            "startLine": 80,
+            "endLine": 80,
+            "startColumn": 5,
+            "endColumn": 6
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp",
+          "textRange": {
+            "startLine": 80,
+            "endLine": 80,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Assuming field 'm_useScalingCompaction' is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp",
+          "textRange": {
+            "startLine": 85,
+            "endLine": 85,
+            "startColumn": 5,
+            "endColumn": 6
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp",
+          "textRange": {
+            "startLine": 85,
+            "endLine": 85,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Assuming field 'm_orthoStyle' is > 0",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp",
+          "textRange": {
+            "startLine": 111,
+            "endLine": 111,
+            "startColumn": 17,
+            "endColumn": 18
+          }
+        },
+        {
+          "message": "Loop condition is false. Execution continues on line 131",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp",
+          "textRange": {
+            "startLine": 119,
+            "endLine": 119,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "'?' condition is true",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp",
+          "textRange": {
+            "startLine": 133,
+            "endLine": 133,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Assuming the condition is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp",
+          "textRange": {
+            "startLine": 150,
+            "endLine": 150,
+            "startColumn": 5,
+            "endColumn": 6
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp",
+          "textRange": {
+            "startLine": 150,
+            "endLine": 150,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Assuming the condition is false",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp",
+          "textRange": {
+            "startLine": 153,
+            "endLine": 153,
+            "startColumn": 5,
+            "endColumn": 6
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp",
+          "textRange": {
+            "startLine": 153,
+            "endLine": 153,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "'pInfoExp' declared without an initial value",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp",
+          "textRange": {
+            "startLine": 164,
+            "endLine": 164,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Branch condition evaluates to a garbage value",
+          "filePath": "/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp",
+          "textRange": {
+            "startLine": 172,
+            "endLine": 172,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        }
+      ]
+    },
+    {
+      "engineId": "clang-tidy",
+      "ruleId": "clang-analyzer-core.CallAndMessage",
+      "primaryLocation": {
+        "message": "1st function call argument is an uninitialized value",
+        "filePath": "/__w/ogdf/ogdf/test/src/basic/graph.cpp",
+        "textRange": {
+          "startLine": 791,
+          "endLine": 791,
+          "startColumn": 16,
+          "endColumn": 17
+        }
+      },
+      "type": "CODE_SMELL",
+      "severity": "MAJOR",
+      "secondaryLocations": [
+        {
+          "message": "expanded from macro 'AssertThat'",
+          "filePath": "/__w/ogdf/ogdf/test/include/bandit/assertion_frameworks/snowhouse/assert.h",
+          "textRange": {
+            "startLine": 18,
+            "endLine": 18,
+            "startColumn": 25,
+            "endColumn": 26
+          }
+        },
+        {
+          "message": "expanded from macro 'SNOWHOUSE_ASSERT_THAT'",
+          "filePath": "/__w/ogdf/ogdf/test/include/bandit/assertion_frameworks/snowhouse/assert.h",
+          "textRange": {
+            "startLine": 14,
+            "endLine": 14,
+            "startColumn": 58,
+            "endColumn": 59
+          }
+        },
+        {
+          "message": "Assuming the condition is false",
+          "filePath": "/__w/ogdf/ogdf/test/src/basic/graph.cpp",
+          "textRange": {
+            "startLine": 772,
+            "endLine": 772,
+            "startColumn": 12,
+            "endColumn": 13
+          }
+        },
+        {
+          "message": "Loop condition is false. Execution continues on line 776",
+          "filePath": "/__w/ogdf/ogdf/test/src/basic/graph.cpp",
+          "textRange": {
+            "startLine": 772,
+            "endLine": 772,
+            "startColumn": 5,
+            "endColumn": 6
+          }
+        },
+        {
+          "message": "Taking true branch",
+          "filePath": "/__w/ogdf/ogdf/test/src/basic/graph.cpp",
+          "textRange": {
+            "startLine": 783,
+            "endLine": 783,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/test/src/basic/graph.cpp",
+          "textRange": {
+            "startLine": 783,
+            "endLine": 783,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/test/src/basic/graph.cpp",
+          "textRange": {
+            "startLine": 783,
+            "endLine": 783,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "'count' is >= 3",
+          "filePath": "/__w/ogdf/ogdf/test/src/basic/graph.cpp",
+          "textRange": {
+            "startLine": 789,
+            "endLine": 789,
+            "startColumn": 17,
+            "endColumn": 18
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 35,
+            "endColumn": 36
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 26,
+            "endColumn": 27
+          }
+        },
+        {
+          "message": "'?' condition is true",
+          "filePath": "/__w/ogdf/ogdf/test/src/basic/graph.cpp",
+          "textRange": {
+            "startLine": 789,
+            "endLine": 789,
+            "startColumn": 5,
+            "endColumn": 6
+          }
+        },
+        {
+          "message": "expanded from macro 'OGDF_ASSERT'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/basic.h",
+          "textRange": {
+            "startLine": 54,
+            "endLine": 54,
+            "startColumn": 28,
+            "endColumn": 29
+          }
+        },
+        {
+          "message": "expanded from macro 'assert'",
+          "filePath": "/usr/include/assert.h",
+          "textRange": {
+            "startLine": 93,
+            "endLine": 93,
+            "startColumn": 6,
+            "endColumn": 7
+          }
+        },
+        {
+          "message": "1st function call argument is an uninitialized value",
+          "filePath": "/__w/ogdf/ogdf/test/src/basic/graph.cpp",
+          "textRange": {
+            "startLine": 791,
+            "endLine": 791,
+            "startColumn": 16,
+            "endColumn": 17
+          }
+        },
+        {
+          "message": "expanded from macro 'AssertThat'",
+          "filePath": "/__w/ogdf/ogdf/test/include/bandit/assertion_frameworks/snowhouse/assert.h",
+          "textRange": {
+            "startLine": 18,
+            "endLine": 18,
+            "startColumn": 25,
+            "endColumn": 26
+          }
+        },
+        {
+          "message": "expanded from macro 'SNOWHOUSE_ASSERT_THAT'",
+          "filePath": "/__w/ogdf/ogdf/test/include/bandit/assertion_frameworks/snowhouse/assert.h",
+          "textRange": {
+            "startLine": 14,
+            "endLine": 14,
+            "startColumn": 58,
+            "endColumn": 59
+          }
+        }
+      ]
+    },
+    {
+      "engineId": "clang-tidy",
+      "ruleId": "clang-analyzer-cplusplus.NewDelete",
+      "primaryLocation": {
+        "message": "Use of memory after it is freed",
+        "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h",
+        "textRange": {
+          "startLine": 215,
+          "endLine": 215,
+          "startColumn": 16,
+          "endColumn": 17
+        }
+      },
+      "type": "CODE_SMELL",
+      "severity": "MAJOR",
+      "secondaryLocations": [
+        {
+          "message": "Loop condition is true.  Entering loop body",
+          "filePath": "/__w/ogdf/ogdf/test/src/basic/heap.cpp",
+          "textRange": {
+            "startLine": 538,
+            "endLine": 538,
+            "startColumn": 3,
+            "endColumn": 4
+          }
+        },
+        {
+          "message": "Calling 'RadixHeap::pop'",
+          "filePath": "/__w/ogdf/ogdf/test/src/basic/heap.cpp",
+          "textRange": {
+            "startLine": 539,
+            "endLine": 539,
+            "startColumn": 22,
+            "endColumn": 23
+          }
+        },
+        {
+          "message": "Assuming the condition is false",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h",
+          "textRange": {
+            "startLine": 171,
+            "endLine": 171,
+            "startColumn": 5,
+            "endColumn": 6
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h",
+          "textRange": {
+            "startLine": 171,
+            "endLine": 171,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Assuming 'ind' is equal to 0",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h",
+          "textRange": {
+            "startLine": 188,
+            "endLine": 188,
+            "startColumn": 5,
+            "endColumn": 6
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h",
+          "textRange": {
+            "startLine": 188,
+            "endLine": 188,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h",
+          "textRange": {
+            "startLine": 194,
+            "endLine": 194,
+            "startColumn": 26,
+            "endColumn": 27
+          }
+        },
+        {
+          "message": "Loop condition is true.  Entering loop body",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h",
+          "textRange": {
+            "startLine": 194,
+            "endLine": 194,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "'it->priority' is >= 'min->priority'",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h",
+          "textRange": {
+            "startLine": 195,
+            "endLine": 195,
+            "startColumn": 10,
+            "endColumn": 11
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h",
+          "textRange": {
+            "startLine": 195,
+            "endLine": 195,
+            "startColumn": 2,
+            "endColumn": 3
+          }
+        },
+        {
+          "message": "Assuming the condition is false",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h",
+          "textRange": {
+            "startLine": 194,
+            "endLine": 194,
+            "startColumn": 26,
+            "endColumn": 27
+          }
+        },
+        {
+          "message": "Loop condition is false. Execution continues on line 200",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h",
+          "textRange": {
+            "startLine": 194,
+            "endLine": 194,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Assuming the condition is true",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h",
+          "textRange": {
+            "startLine": 200,
+            "endLine": 200,
+            "startColumn": 5,
+            "endColumn": 6
+          }
+        },
+        {
+          "message": "Taking true branch",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h",
+          "textRange": {
+            "startLine": 200,
+            "endLine": 200,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Taking false branch",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h",
+          "textRange": {
+            "startLine": 206,
+            "endLine": 206,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Memory is released",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h",
+          "textRange": {
+            "startLine": 212,
+            "endLine": 212,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Loop condition is true.  Entering loop body",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h",
+          "textRange": {
+            "startLine": 214,
+            "endLine": 214,
+            "startColumn": 1,
+            "endColumn": 2
+          }
+        },
+        {
+          "message": "Use of memory after it is freed",
+          "filePath": "/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h",
+          "textRange": {
+            "startLine": 215,
+            "endLine": 215,
+            "startColumn": 16,
+            "endColumn": 17
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1020 @@
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:208:2: warning: Branch condition evaluates to a garbage value [clang-analyzer-core.uninitialized.Branch]
+        OGDF_ASSERT(pInfoExp);
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:67:2: note: Calling 'ClusterOrthoLayout::call'
+        call(PG, adjExternal, drawing, origEdges, G);
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:77:14: note: Assuming field 'm_align' is false
+        OGDF_ASSERT(!m_align);
+                    ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:36: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                                ^~~~
+/usr/include/assert.h:93:27: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+                          ^~~~
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:77:2: note: '?' condition is true
+        OGDF_ASSERT(!m_align);
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:80:6: note: Assuming the condition is false
+        if (PG.numberOfNodes() == 1) {
+            ^~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:80:2: note: Taking false branch
+        if (PG.numberOfNodes() == 1) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:92:2: note: '?' condition is true
+        OGDF_ASSERT(PG.representsCombEmbedding());
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:95:2: note: '?' condition is true
+        OGDF_ASSERT(PG.representsCombEmbedding());
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:100:6: note: Assuming the condition is false
+        if (!origEdges.empty()) {
+            ^~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:100:2: note: Taking false branch
+        if (!origEdges.empty()) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:110:2: note: Loop condition is true.  Entering loop body
+        for (e = PG.firstEdge(); e; e = eSucc) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:112:7: note: Assuming the condition is true
+                if (PG.clusterOfEdge(e) == PG.getClusterGraph().rootCluster()) {
+                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:112:3: note: Taking true branch
+                if (PG.clusterOfEdge(e) == PG.getClusterGraph().rootCluster()) {
+                ^
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:114:8: note: Assuming 'asSize' is <= 'maximum'
+                        if (asSize > maximum) {
+                            ^~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:114:4: note: Taking false branch
+                        if (asSize > maximum) {
+                        ^
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:119:8: note: Assuming 'atSize' is > 'maximum'
+                        if (atSize > maximum) {
+                            ^~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:119:4: note: Taking true branch
+                        if (atSize > maximum) {
+                        ^
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:110:2: note: Loop condition is false. Execution continues on line 126
+        for (e = PG.firstEdge(); e; e = eSucc) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:130:14: note: Assuming the condition is true
+        OGDF_ASSERT(adjExternal != nullptr);
+                    ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:36: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                                ^~~~
+/usr/include/assert.h:93:27: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+                          ^~~~
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:130:2: note: '?' condition is true
+        OGDF_ASSERT(adjExternal != nullptr);
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:137:6: note: Assuming field 'm_useScalingCompaction' is false
+        if (m_useScalingCompaction) {
+            ^~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:137:2: note: Taking false branch
+        if (m_useScalingCompaction) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:158:18: note: Assuming field 'm_orthoStyle' is > 0
+        COF.traditional(m_orthoStyle <= 0); //prefer 90/270 degree angles over 180/180
+                        ^~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:168:2: note: Assuming the condition is true
+        OGDF_ASSERT(OR.check(msg));
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^~~~~~~~~~~~
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:168:2: note: '?' condition is true
+        OGDF_ASSERT(OR.check(msg));
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:175:2: note: '?' condition is true
+        OGDF_ASSERT(PG.representsCombEmbedding());
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:181:2: note: Assuming the condition is true
+        OGDF_ASSERT(OR.check(msg));
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^~~~~~~~~~~~
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:181:2: note: '?' condition is true
+        OGDF_ASSERT(OR.check(msg));
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:191:2: note: Assuming the condition is true
+        OGDF_ASSERT(OR.check(msg));
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^~~~~~~~~~~~
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:191:2: note: '?' condition is true
+        OGDF_ASSERT(OR.check(msg));
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:201:2: note: 'pInfoExp' declared without an initial value
+        const OrthoRep::VertexInfoUML* pInfoExp;
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/cluster/ClusterOrthoLayout.cpp:208:2: note: Branch condition evaluates to a garbage value
+        OGDF_ASSERT(pInfoExp);
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^      ~~~~
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^                   ~~~~
+/__w/ogdf/ogdf/src/ogdf/fileformats/GmlParser.cpp:128:4: warning: Call to function 'strcpy' is insecure as it does not provide bounding of the memory buffer. Replace unbounded copy functions with analogous functions that support length arguments such as 'strlcpy'. CWE-119 [clang-analyzer-security.insecureAPI.strcpy]
+                        strcpy(pChar,
+                        ^~~~~~
+/__w/ogdf/ogdf/src/ogdf/fileformats/GmlParser.cpp:128:4: note: Call to function 'strcpy' is insecure as it does not provide bounding of the memory buffer. Replace unbounded copy functions with analogous functions that support length arguments such as 'strlcpy'. CWE-119
+                        strcpy(pChar,
+                        ^~~~~~
+/usr/local/include/CGAL/Handle_for.h:167:11: warning: Use of memory after it is freed [clang-analyzer-cplusplus.NewDelete]
+          Allocator_traits::destroy(allocator, ptr_);
+          ^
+/__w/ogdf/ogdf/src/ogdf/geometric/CrossingMinimalPosition.cpp:68:2: note: Calling 'ogdf_attributes_to_geometric_drawing<CGAL::Simple_cartesian<CGAL::Gmpq>, ogdf::internal::gcm::graph::OGDFGraphWrapper>'
+        graph::ogdf_attributes_to_geometric_drawing(GA, drawing);
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/include/ogdf/geometric/cr_min/graph/GeometricDrawing.h:259:14: note: Assuming the condition is true
+        OGDF_ASSERT(&d.get_graph().get_ogdf_graph() == &ga.constGraph());
+                    ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:36: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                                ^~~~
+/usr/include/assert.h:93:27: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+                          ^~~~
+/__w/ogdf/ogdf/include/ogdf/geometric/cr_min/graph/GeometricDrawing.h:259:2: note: '?' condition is true
+        OGDF_ASSERT(&d.get_graph().get_ogdf_graph() == &ga.constGraph());
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^
+/__w/ogdf/ogdf/include/ogdf/geometric/cr_min/graph/GeometricDrawing.h:261:29: note: Calling constructor for 'Point_2<CGAL::Simple_cartesian<CGAL::Gmpq>>'
+                geometry::Point_t<Kernel> p(ga.x(v), ga.y(v));
+                                          ^~~~~~~~~~~~~~~~~~~
+/usr/local/include/CGAL/Point_2.h:83:65: note: Calling constructor for 'Gmpq'
+    : Rep(typename R::Construct_point_2()(Return_base_tag(), x, y))
+                                                                ^
+/usr/local/include/CGAL/GMP/Gmpq_type.h:162:3: note: Calling default constructor for 'Handle_for<CGAL::Gmpq_rep, std::allocator<CGAL::Gmpq_rep>>'
+  Gmpq(double d)
+  ^~~~
+/usr/local/include/CGAL/Handle_for.h:65:21: note: Calling 'new_allocator::allocate'
+        pointer p = allocator.allocate(1);
+                    ^~~~~~~~~~~~~~~~~~~~~
+/usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/ext/new_allocator.h:105:2: note: Taking false branch
+        if (__n > this->_M_max_size())
+        ^
+/usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/ext/new_allocator.h:109:2: note: Taking false branch
+        if (alignof(_Tp) > __STDCPP_DEFAULT_NEW_ALIGNMENT__)
+        ^
+/usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/ext/new_allocator.h:115:27: note: Memory is allocated
+        return static_cast<_Tp*>(::operator new(__n * sizeof(_Tp)));
+                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/CGAL/Handle_for.h:65:21: note: Returned allocated memory
+        pointer p = allocator.allocate(1);
+                    ^~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/CGAL/GMP/Gmpq_type.h:162:3: note: Returning from default constructor for 'Handle_for<CGAL::Gmpq_rep, std::allocator<CGAL::Gmpq_rep>>'
+  Gmpq(double d)
+  ^~~~
+/usr/local/include/CGAL/GMP/Gmpq_type.h:164:5: note: Assuming the condition is true
+    CGAL_assertion(is_finite(d));
+    ^
+/usr/local/include/CGAL/assertions.h:92:5: note: expanded from macro 'CGAL_assertion'
+   (CGAL::possibly(EX)?(static_cast<void>(0)): ::CGAL::assertion_fail( # EX , __FILE__, __LINE__))
+    ^~~~~~~~~~~~~~~~~~
+/usr/local/include/CGAL/GMP/Gmpq_type.h:164:5: note: '?' condition is true
+    CGAL_assertion(is_finite(d));
+    ^
+/usr/local/include/CGAL/assertions.h:92:5: note: expanded from macro 'CGAL_assertion'
+   (CGAL::possibly(EX)?(static_cast<void>(0)): ::CGAL::assertion_fail( # EX , __FILE__, __LINE__))
+    ^
+/usr/local/include/CGAL/Point_2.h:83:65: note: Returning from constructor for 'Gmpq'
+    : Rep(typename R::Construct_point_2()(Return_base_tag(), x, y))
+                                                                ^
+/usr/local/include/CGAL/Point_2.h:83:11: note: Calling 'Construct_point_2::operator()'
+    : Rep(typename R::Construct_point_2()(Return_base_tag(), x, y))
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/CGAL/Cartesian/function_objects.h:3069:14: note: Calling constructor for 'PointC2<CGAL::Simple_cartesian<CGAL::Gmpq>>'
+    { return Rep(x, y); }
+             ^~~~~~~~~
+/usr/local/include/CGAL/Cartesian/Point_2.h:48:7: note: Calling constructor for 'Vector_2<CGAL::Simple_cartesian<CGAL::Gmpq>>'
+    : base(x, y) {}
+      ^~~~~~~~~~
+/usr/local/include/CGAL/Vector_2.h:93:19: note: Calling 'Construct_vector_2::operator()'
+      : RVector_2(typename R::Construct_vector_2()(Return_base_tag(), x,y)) {}
+                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/CGAL/Cartesian/function_objects.h:3553:14: note: Calling constructor for 'VectorC2<CGAL::Simple_cartesian<CGAL::Gmpq>>'
+    { return Rep(x, y); }
+             ^~~~~~~~~
+/usr/local/include/CGAL/Cartesian/Vector_2.h:53:12: note: Calling 'make_array<CGAL::Gmpq, CGAL::Gmpq>'
+    : base(CGAL::make_array(x, y)) {}
+           ^~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/CGAL/array.h:53:70: note: Calling implicit destructor for 'Gmpq'
+  std::array< T, 1 + sizeof...(Args) > a = { { t, static_cast<T>(args)... } };
+                                                                     ^
+/usr/local/include/CGAL/array.h:53:70: note: Calling '~Handle_for'
+/usr/local/include/CGAL/Handle_for.h:150:7: note: Taking false branch
+      if (is_currently_single_threaded()) {
+      ^
+/usr/local/include/CGAL/Handle_for.h:161:13: note: Assuming the condition is true
+        if (ptr_->count.load(std::memory_order_relaxed) == 1
+            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/CGAL/Handle_for.h:162:13: note: Left side of '||' is true
+            || ptr_->count.fetch_sub(1, std::memory_order_release) == 1) {
+            ^
+/usr/local/include/CGAL/Handle_for.h:168:11: note: Calling 'new_allocator::deallocate'
+          allocator.deallocate(ptr_, 1);
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/ext/new_allocator.h:123:2: note: Taking false branch
+        if (alignof(_Tp) > __STDCPP_DEFAULT_NEW_ALIGNMENT__)
+        ^
+/usr/bin/../lib/gcc/x86_64-linux-gnu/10/../../../../include/c++/10/ext/new_allocator.h:133:2: note: Memory is released
+        ::operator delete(__p
+        ^~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/CGAL/Handle_for.h:168:11: note: Returning; memory was released via 1st parameter
+          allocator.deallocate(ptr_, 1);
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/CGAL/array.h:53:70: note: Returning from '~Handle_for'
+  std::array< T, 1 + sizeof...(Args) > a = { { t, static_cast<T>(args)... } };
+                                                                     ^
+/usr/local/include/CGAL/array.h:53:70: note: Returning from destructor for 'Gmpq'
+/usr/local/include/CGAL/Cartesian/Vector_2.h:53:12: note: Returning; memory was released
+    : base(CGAL::make_array(x, y)) {}
+           ^~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/CGAL/Cartesian/function_objects.h:3553:14: note: Returning from constructor for 'VectorC2<CGAL::Simple_cartesian<CGAL::Gmpq>>'
+    { return Rep(x, y); }
+             ^~~~~~~~~
+/usr/local/include/CGAL/Vector_2.h:93:19: note: Returning; memory was released
+      : RVector_2(typename R::Construct_vector_2()(Return_base_tag(), x,y)) {}
+                  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/CGAL/Cartesian/Point_2.h:48:7: note: Returning from constructor for 'Vector_2<CGAL::Simple_cartesian<CGAL::Gmpq>>'
+    : base(x, y) {}
+      ^~~~~~~~~~
+/usr/local/include/CGAL/Cartesian/function_objects.h:3069:14: note: Returning from constructor for 'PointC2<CGAL::Simple_cartesian<CGAL::Gmpq>>'
+    { return Rep(x, y); }
+             ^~~~~~~~~
+/usr/local/include/CGAL/Point_2.h:83:11: note: Returning; memory was released
+    : Rep(typename R::Construct_point_2()(Return_base_tag(), x, y))
+          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/CGAL/Point_2.h:83:65: note: Calling implicit destructor for 'Gmpq'
+    : Rep(typename R::Construct_point_2()(Return_base_tag(), x, y))
+                                                                ^
+/usr/local/include/CGAL/Point_2.h:83:65: note: Calling '~Handle_for'
+/usr/local/include/CGAL/Handle_for.h:150:7: note: Taking false branch
+      if (is_currently_single_threaded()) {
+      ^
+/usr/local/include/CGAL/Handle_for.h:161:13: note: Assuming the condition is true
+        if (ptr_->count.load(std::memory_order_relaxed) == 1
+            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/local/include/CGAL/Handle_for.h:162:13: note: Left side of '||' is true
+            || ptr_->count.fetch_sub(1, std::memory_order_release) == 1) {
+            ^
+/usr/local/include/CGAL/Handle_for.h:167:11: note: Use of memory after it is freed
+          Allocator_traits::destroy(allocator, ptr_);
+          ^                                    ~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:960:48: warning: 2nd function call argument is an uninitialized value [clang-analyzer-core.CallAndMessage]
+                                                                cNode->m_upperClusterCrossing.pushBack(LHTreeNode::ClusterCrossing(
+                                                                                                       ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:776:2: note: Loop condition is false. Execution continues on line 797
+        forall_postOrderClusters(c, m_CGC) {
+        ^
+/__w/ogdf/ogdf/include/ogdf/cluster/ClusterGraph.h:297:2: note: expanded from macro 'forall_postOrderClusters'
+        for ((c) = (C).firstPostOrderCluster(); (c); (c) = (c)->pSucc())
+        ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:814:14: note: Assuming 'i' is >= field 'm_numLayers'
+        for (i = 0; i < m_numLayers; ++i) {
+                    ^~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:814:2: note: Loop condition is false. Execution continues on line 874
+        for (i = 0; i < m_numLayers; ++i) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:913:14: note: 'i' is >= field 'm_numLayers'
+        for (i = 0; i < m_numLayers; ++i) {
+                    ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:913:2: note: Loop condition is false. Execution continues on line 920
+        for (i = 0; i < m_numLayers; ++i) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:923:14: note: Assuming the condition is true
+        for (i = 0; i < m_numLayers - 1; ++i) {
+                    ^~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:923:2: note: Loop condition is true.  Entering loop body
+        for (i = 0; i < m_numLayers - 1; ++i) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:945:9: note: Assuming the condition is true
+                                if (e->source() == u && origEdge(e) == nullptr) {
+                                    ^~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:945:9: note: Left side of '&&' is true
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:945:29: note: Assuming the condition is true
+                                if (e->source() == u && origEdge(e) == nullptr) {
+                                                        ^~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:945:5: note: Taking true branch
+                                if (e->source() == u && origEdge(e) == nullptr) {
+                                ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:950:13: note: Assuming the condition is true
+                                        for (; aParent != nullptr; aParent = aParent->parent()) {
+                                               ^~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:950:6: note: Loop condition is true.  Entering loop body
+                                        for (; aParent != nullptr; aParent = aParent->parent()) {
+                                        ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:954:20: note: 'aChild' declared without an initial value
+                                                        LHTreeNode *aChild, *vChild, *h1, *h2;
+                                                                    ^~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:956:10: note: Calling 'ExtendedNestingGraph::lca'
+                                                                        lca(aNode, treeNode[e_tup->target()], &aChild, &vChild);
+                                                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1411:2: note: '?' condition is true
+        OGDF_ASSERT(!uNode->isCompound());
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1412:2: note: '?' condition is true
+        OGDF_ASSERT(!vNode->isCompound());
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1425:27: note: Left side of '||' is true
+        while (cuNode != nullptr || cvNode != nullptr) {
+                                 ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1426:3: note: Taking true branch
+                if (cuNode != nullptr) {
+                ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1427:8: note: Assuming the condition is false
+                        if (m_markTree[cuNode->originalCluster()] != nullptr) {
+                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1427:4: note: Taking false branch
+                        if (m_markTree[cuNode->originalCluster()] != nullptr) {
+                        ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1439:7: note: Assuming the condition is false
+                if (cvNode != nullptr) {
+                    ^~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1439:3: note: Taking false branch
+                if (cvNode != nullptr) {
+                ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1425:27: note: Left side of '||' is true
+        while (cuNode != nullptr || cvNode != nullptr) {
+                                 ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1426:3: note: Taking true branch
+                if (cuNode != nullptr) {
+                ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1427:8: note: Assuming the condition is false
+                        if (m_markTree[cuNode->originalCluster()] != nullptr) {
+                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1427:4: note: Taking false branch
+                        if (m_markTree[cuNode->originalCluster()] != nullptr) {
+                        ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1439:3: note: Taking false branch
+                if (cvNode != nullptr) {
+                ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1425:9: note: Assuming the condition is false
+        while (cuNode != nullptr || cvNode != nullptr) {
+               ^~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1425:9: note: Left side of '||' is false
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1425:2: note: Loop condition is false. Execution continues on line 1454
+        while (cuNode != nullptr || cvNode != nullptr) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1454:2: note: Returning without writing to '*uChild'
+        return nullptr; // error; not found!
+        ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:956:10: note: Returning from 'ExtendedNestingGraph::lca'
+                                                                        lca(aNode, treeNode[e_tup->target()], &aChild, &vChild);
+                                                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:957:12: note: Left side of '&&' is true
+                                                        if (cNode != aNode->parent()
+                                                            ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:958:13: note: Assuming the condition is true
+                                                                        && lca(aNode, treeNode[e_tup->source()], &h1, &h2)->originalCluster()
+                                                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:957:8: note: Taking true branch
+                                                        if (cNode != aNode->parent()
+                                                        ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:960:48: note: 2nd function call argument is an uninitialized value
+                                                                cNode->m_upperClusterCrossing.pushBack(LHTreeNode::ClusterCrossing(
+                                                                                                       ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:980:48: warning: 2nd function call argument is an uninitialized value [clang-analyzer-core.CallAndMessage]
+                                                                cNode->m_lowerClusterCrossing.pushBack(LHTreeNode::ClusterCrossing(
+                                                                                                       ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:776:2: note: Loop condition is false. Execution continues on line 797
+        forall_postOrderClusters(c, m_CGC) {
+        ^
+/__w/ogdf/ogdf/include/ogdf/cluster/ClusterGraph.h:297:2: note: expanded from macro 'forall_postOrderClusters'
+        for ((c) = (C).firstPostOrderCluster(); (c); (c) = (c)->pSucc())
+        ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:814:14: note: Assuming 'i' is >= field 'm_numLayers'
+        for (i = 0; i < m_numLayers; ++i) {
+                    ^~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:814:2: note: Loop condition is false. Execution continues on line 874
+        for (i = 0; i < m_numLayers; ++i) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:913:14: note: 'i' is >= field 'm_numLayers'
+        for (i = 0; i < m_numLayers; ++i) {
+                    ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:913:2: note: Loop condition is false. Execution continues on line 920
+        for (i = 0; i < m_numLayers; ++i) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:923:14: note: Assuming the condition is true
+        for (i = 0; i < m_numLayers - 1; ++i) {
+                    ^~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:923:2: note: Loop condition is true.  Entering loop body
+        for (i = 0; i < m_numLayers - 1; ++i) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:945:9: note: Assuming the condition is true
+                                if (e->source() == u && origEdge(e) == nullptr) {
+                                    ^~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:945:9: note: Left side of '&&' is true
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:945:29: note: Assuming the condition is true
+                                if (e->source() == u && origEdge(e) == nullptr) {
+                                                        ^~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:945:5: note: Taking true branch
+                                if (e->source() == u && origEdge(e) == nullptr) {
+                                ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:950:13: note: Assuming the condition is false
+                                        for (; aParent != nullptr; aParent = aParent->parent()) {
+                                               ^~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:950:6: note: Loop condition is false. Execution continues on line 966
+                                        for (; aParent != nullptr; aParent = aParent->parent()) {
+                                        ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:970:13: note: Assuming the condition is true
+                                        for (; aParent != nullptr; aParent = aParent->parent()) {
+                                               ^~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:970:6: note: Loop condition is true.  Entering loop body
+                                        for (; aParent != nullptr; aParent = aParent->parent()) {
+                                        ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:974:20: note: 'aChild' declared without an initial value
+                                                        LHTreeNode *aChild, *vChild, *h1, *h2;
+                                                                    ^~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:976:10: note: Calling 'ExtendedNestingGraph::lca'
+                                                                        lca(aNode, treeNode[e_tup->source()], &aChild, &vChild);
+                                                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1411:2: note: '?' condition is true
+        OGDF_ASSERT(!uNode->isCompound());
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1412:2: note: '?' condition is true
+        OGDF_ASSERT(!vNode->isCompound());
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1425:27: note: Left side of '||' is true
+        while (cuNode != nullptr || cvNode != nullptr) {
+                                 ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1426:3: note: Taking true branch
+                if (cuNode != nullptr) {
+                ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1427:8: note: Assuming the condition is false
+                        if (m_markTree[cuNode->originalCluster()] != nullptr) {
+                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1427:4: note: Taking false branch
+                        if (m_markTree[cuNode->originalCluster()] != nullptr) {
+                        ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1439:7: note: Assuming the condition is false
+                if (cvNode != nullptr) {
+                    ^~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1439:3: note: Taking false branch
+                if (cvNode != nullptr) {
+                ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1425:27: note: Left side of '||' is true
+        while (cuNode != nullptr || cvNode != nullptr) {
+                                 ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1426:3: note: Taking true branch
+                if (cuNode != nullptr) {
+                ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1427:8: note: Assuming the condition is false
+                        if (m_markTree[cuNode->originalCluster()] != nullptr) {
+                            ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1427:4: note: Taking false branch
+                        if (m_markTree[cuNode->originalCluster()] != nullptr) {
+                        ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1439:3: note: Taking false branch
+                if (cvNode != nullptr) {
+                ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1425:9: note: Assuming the condition is false
+        while (cuNode != nullptr || cvNode != nullptr) {
+               ^~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1425:9: note: Left side of '||' is false
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1425:2: note: Loop condition is false. Execution continues on line 1454
+        while (cuNode != nullptr || cvNode != nullptr) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:1454:2: note: Returning without writing to '*uChild'
+        return nullptr; // error; not found!
+        ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:976:10: note: Returning from 'ExtendedNestingGraph::lca'
+                                                                        lca(aNode, treeNode[e_tup->source()], &aChild, &vChild);
+                                                                        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:977:12: note: Left side of '&&' is true
+                                                        if (cNode != aNode->parent()
+                                                            ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:978:13: note: Assuming the condition is true
+                                                                        && lca(aNode, treeNode[e_tup->target()], &h1, &h2)->originalCluster()
+                                                                           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:977:8: note: Taking true branch
+                                                        if (cNode != aNode->parent()
+                                                        ^
+/__w/ogdf/ogdf/src/ogdf/layered/ExtendedNestingGraph.cpp:980:48: note: 2nd function call argument is an uninitialized value
+                                                                cNode->m_lowerClusterCrossing.pushBack(LHTreeNode::ClusterCrossing(
+                                                                                                       ^
+/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp:139:2: warning: Branch condition evaluates to a garbage value [clang-analyzer-core.uninitialized.Branch]
+        OGDF_ASSERT(pInfoExp);
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^      ~~~~
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^                   ~~~~
+/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp:56:2: note: Taking false branch
+        if (PG.empty()) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp:60:6: note: Assuming the condition is false
+        if (PG.numberOfNodes() == 1) {
+            ^~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp:60:2: note: Taking false branch
+        if (PG.numberOfNodes() == 1) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp:74:6: note: Assuming field 'm_useScalingCompaction' is false
+        if (m_useScalingCompaction) {
+            ^~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp:74:2: note: Taking false branch
+        if (m_useScalingCompaction) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp:93:18: note: Assuming field 'm_progressive' is true
+        OFG.traditional(!m_progressive);
+                        ^~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp:104:2: note: '?' condition is true
+        OGDF_ASSERT(PG.representsCombEmbedding());
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^
+/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp:119:6: note: Assuming the condition is false
+        if (m_cOverhang < 0.05) {
+            ^~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp:119:2: note: Taking false branch
+        if (m_cOverhang < 0.05) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp:122:6: note: Assuming the condition is false
+        if (m_cOverhang > 0.5) {
+            ^~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp:122:2: note: Taking false branch
+        if (m_cOverhang > 0.5) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp:132:2: note: 'pInfoExp' declared without an initial value
+        const OrthoRep::VertexInfoUML* pInfoExp;
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/orthogonal/OrthoLayout.cpp:139:2: note: Branch condition evaluates to a garbage value
+        OGDF_ASSERT(pInfoExp);
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^      ~~~~
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^                   ~~~~
+/__w/ogdf/ogdf/src/ogdf/planarity/PlanarizerChordlessCycle.cpp:98:12: warning: Called C++ object pointer is null [clang-analyzer-core.CallAndMessage]
+        node cur {connectingEdge->source()};
+                  ^
+/__w/ogdf/ogdf/src/ogdf/planarity/PlanarizerChordlessCycle.cpp:206:2: note: Assuming the condition is true
+        OGDF_ASSERT(isSimpleUndirected(pr));
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^~~~~~~~~~~~
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/planarity/PlanarizerChordlessCycle.cpp:206:2: note: '?' condition is true
+        OGDF_ASSERT(isSimpleUndirected(pr));
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^
+/__w/ogdf/ogdf/src/ogdf/planarity/PlanarizerChordlessCycle.cpp:219:19: note: Calling 'PlanarizerChordlessCycle::findChordlessCycle'
+        bool cycleFound {findChordlessCycle(G, cycle)};
+                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/planarity/PlanarizerChordlessCycle.cpp:65:2: note: 'connectingEdge' initialized to a null pointer value
+        edge connectingEdge {nullptr};
+        ^~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/planarity/PlanarizerChordlessCycle.cpp:90:6: note: Assuming the condition is false
+        if (queue.empty()) {
+            ^~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/planarity/PlanarizerChordlessCycle.cpp:90:2: note: Taking false branch
+        if (queue.empty()) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/planarity/PlanarizerChordlessCycle.cpp:98:12: note: Called C++ object pointer is null
+        node cur {connectingEdge->source()};
+                  ^~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp:369:22: warning: Called C++ object pointer is null [clang-analyzer-core.CallAndMessage]
+                        edge edgeToSplit {crossing->firstAdj()->theEdge()};
+                                          ^
+/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp:405:2: note: '?' condition is true
+        OGDF_ASSERT(graphCopy.representsCombEmbedding());
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^
+/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp:433:21: note: Assuming '__begin1' is not equal to '__end1'
+        for (edge origEdge : sortedEdges) {
+                           ^
+/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp:434:23: note: Assuming the condition is false
+                bool startAtSource {origEdge->source() == origNode};
+                                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp:443:7: note: Left side of '&&' is true
+                if (dummyEdge == nullptr && createdEdge != nullptr) {
+                    ^
+/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp:443:3: note: Taking false branch
+                if (dummyEdge == nullptr && createdEdge != nullptr) {
+                ^
+/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp:450:3: note: Calling 'StarInserter::updateMemberData'
+                updateMemberData(origEdge, startAtSource);
+                ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp:354:7: note: Assuming the condition is false
+                if ((*m_newToOldFace)[oldFace] == nullptr) {
+                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp:354:3: note: Taking false branch
+                if ((*m_newToOldFace)[oldFace] == nullptr) {
+                ^
+/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp:362:3: note: Taking false branch
+                if (prevCopyEdge != nullptr) {
+                ^
+/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp:354:7: note: Assuming the condition is false
+                if ((*m_newToOldFace)[oldFace] == nullptr) {
+                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp:354:3: note: Taking false branch
+                if ((*m_newToOldFace)[oldFace] == nullptr) {
+                ^
+/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp:362:3: note: Taking true branch
+                if (prevCopyEdge != nullptr) {
+                ^
+/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp:368:4: note: 'crossing' initialized to a null pointer value
+                        node crossing {copyEdge->commonNode(prevCopyEdge)};
+                        ^~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/planarity/StarInserter.cpp:369:22: note: Called C++ object pointer is null
+                        edge edgeToSplit {crossing->firstAdj()->theEdge()};
+                                          ^~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp:47:21: warning: Address of stack memory associated with local variable 'refPoint' is still referred to by the stack variable 'pc' upon returning to the caller.  This will be a dangling reference [clang-analyzer-core.StackAddressEscape]
+                : GenericComparer([&](const ListIterator<EdgeLeg*>& it) {
+                                  ^
+/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp:77:6: note: Assuming 'reuseAGEmbedding' is true
+        if (!reuseAGEmbedding) {
+            ^~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp:77:2: note: Taking false branch
+        if (!reuseAGEmbedding) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp:111:2: note: Taking true branch
+        if (!PG.representsCombEmbedding()) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp:117:3: note: Calling 'TopologyModule::planarizeFromLayout'
+                planarizeFromLayout(PG, GA);
+                ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp:342:31: note: Assuming the condition is false
+        for (int i = PG.startEdge(); i < PG.stopEdge(); ++i) {
+                                     ^~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp:342:2: note: Loop condition is false. Execution continues on line 415
+        for (int i = PG.startEdge(); i < PG.stopEdge(); ++i) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp:415:9: note: Assuming the condition is true
+        while (legList.size() > 0) {
+               ^~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp:415:2: note: Loop condition is true.  Entering loop body
+        while (legList.size() > 0) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp:427:3: note: Loop condition is false. Execution continues on line 494
+                while (runIt.valid()) {
+                ^
+/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp:494:7: note: Assuming the condition is true
+                if (iterList.size() > 0) {
+                    ^~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp:494:3: note: Taking true branch
+                if (iterList.size() > 0) {
+                ^
+/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp:497:8: note: Assuming the condition is true
+                        if (iterList.size() > 1) {
+                            ^~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp:497:4: note: Taking true branch
+                        if (iterList.size() > 1) {
+                        ^
+/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp:500:19: note: Calling constructor for 'PointComparer'
+                                PointComparer pc(crossLeg->start());
+                                              ^~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/planarity/TopologyModule.cpp:47:21: note: Address of stack memory associated with local variable 'refPoint' is still referred to by the stack variable 'pc' upon returning to the caller.  This will be a dangling reference
+                : GenericComparer([&](const ListIterator<EdgeLeg*>& it) {
+                                  ^
+/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp:639:14: warning: Potential leak of memory pointed to by 'findKuratowskis' [clang-analyzer-cplusplus.NewDeleteLeaks]
+                                                return false;
+                                                       ^
+/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp:860:9: note: Calling 'BoyerMyrvoldPlanar::embed'
+        return embed();
+               ^~~~~~~
+/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp:586:4: note: '?' condition is false
+                        (m_embeddingGrade <= EmbeddingGrade::doNotFind) ? nullptr : new FindKuratowskis(this);
+                        ^
+/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp:586:64: note: Memory is allocated
+                        (m_embeddingGrade <= EmbeddingGrade::doNotFind) ? nullptr : new FindKuratowskis(this);
+                                                                                    ^~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp:589:37: note: Assuming 'i' is >= 1
+        for (int i = m_nodeFromDFI.high(); i >= 1; --i) {
+                                           ^~~~~~
+/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp:589:2: note: Loop condition is true.  Entering loop body
+        for (int i = m_nodeFromDFI.high(); i >= 1; --i) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp:626:10: note: Assuming the condition is true
+                while (!pert.empty()) {
+                       ^~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp:626:3: note: Loop condition is true.  Entering loop body
+                while (!pert.empty()) {
+                ^
+/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp:627:16: note: Assuming the condition is true
+                        OGDF_ASSERT(pert.front()->degree() == 1);
+                                    ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:36: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                                ^~~~
+/usr/include/assert.h:93:27: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+                          ^~~~
+/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp:627:4: note: '?' condition is true
+                        OGDF_ASSERT(pert.front()->degree() == 1);
+                        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^
+/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp:629:9: note: Field 'm_extractSubgraph' is false
+                        if (!m_extractSubgraph) {
+                             ^
+/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp:629:4: note: Taking true branch
+                        if (!m_extractSubgraph) {
+                        ^
+/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp:630:9: note: 'result' is not equal to 2
+                                if (result == 2) {
+                                    ^~~~~~
+/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp:630:5: note: Taking false branch
+                                if (result == 2) {
+                                ^
+/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp:634:16: note: 'result' is equal to 1
+                                } else if (result == 1) {
+                                           ^~~~~~
+/__w/ogdf/ogdf/src/ogdf/planarity/boyer_myrvold/BoyerMyrvoldPlanar.cpp:634:12: note: Taking true branch
+                                } else if (result == 1) {
+                                       ^
+/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp:172:2: warning: Branch condition evaluates to a garbage value [clang-analyzer-core.uninitialized.Branch]
+        OGDF_ASSERT(pInfoExp);
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^      ~~~~
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^                   ~~~~
+/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp:67:6: note: Assuming the condition is false
+        if (PG.numberOfNodes() == 1) {
+            ^~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp:67:2: note: Taking false branch
+        if (PG.numberOfNodes() == 1) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp:80:6: note: Assuming field 'm_align' is false
+        if (m_align) {
+            ^~~~~~~
+/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp:80:2: note: Taking false branch
+        if (m_align) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp:85:6: note: Assuming field 'm_useScalingCompaction' is false
+        if (m_useScalingCompaction) {
+            ^~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp:85:2: note: Taking false branch
+        if (m_useScalingCompaction) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp:111:18: note: Assuming field 'm_orthoStyle' is > 0
+        OFG.traditional(m_orthoStyle <= 0); //prefer 90/270 degree angles over 180/180
+                        ^~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp:119:2: note: Loop condition is false. Execution continues on line 131
+        for (e = PG.firstEdge(); e; e = eSucc) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp:133:2: note: '?' condition is true
+        OGDF_ASSERT(PG.representsCombEmbedding());
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^
+/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp:150:6: note: Assuming the condition is false
+        if (m_cOverhang < 0.05) {
+            ^~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp:150:2: note: Taking false branch
+        if (m_cOverhang < 0.05) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp:153:6: note: Assuming the condition is false
+        if (m_cOverhang > 0.5) {
+            ^~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp:153:2: note: Taking false branch
+        if (m_cOverhang > 0.5) {
+        ^
+/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp:164:2: note: 'pInfoExp' declared without an initial value
+        const OrthoRep::VertexInfoUML* pInfoExp;
+        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/src/ogdf/uml/OrthoLayoutUML.cpp:172:2: note: Branch condition evaluates to a garbage value
+        OGDF_ASSERT(pInfoExp);
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^      ~~~~
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^                   ~~~~
+/__w/ogdf/ogdf/test/src/basic/graph.cpp:791:17: warning: 1st function call argument is an uninitialized value [clang-analyzer-core.CallAndMessage]
+                                        AssertThat(adjs[0]->isBetween(adjs[2], adjs[1]), IsTrue());
+                                                   ^
+/__w/ogdf/ogdf/test/include/bandit/assertion_frameworks/snowhouse/assert.h:18:26: note: expanded from macro 'AssertThat'
+  SNOWHOUSE_ASSERT_THAT((P1), (P2), ::snowhouse::DefaultFailureHandler)
+                         ^~
+/__w/ogdf/ogdf/test/include/bandit/assertion_frameworks/snowhouse/assert.h:14:59: note: expanded from macro 'SNOWHOUSE_ASSERT_THAT'
+  ::snowhouse::ConfigurableAssert<FAILURE_HANDLER>::That((P1), (P2), __FILE__, __LINE__)
+                                                          ^~
+/__w/ogdf/ogdf/test/src/basic/graph.cpp:772:13: note: Assuming the condition is false
+                                        while (graph.numberOfNodes() < 12) {
+                                               ^~~~~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/test/src/basic/graph.cpp:772:6: note: Loop condition is false. Execution continues on line 776
+                                        while (graph.numberOfNodes() < 12) {
+                                        ^
+/__w/ogdf/ogdf/test/src/basic/graph.cpp:783:7: note: Taking true branch
+                                                if (count % 3 == 0) {
+                                                ^
+/__w/ogdf/ogdf/test/src/basic/graph.cpp:783:7: note: Taking false branch
+/__w/ogdf/ogdf/test/src/basic/graph.cpp:783:7: note: Taking false branch
+/__w/ogdf/ogdf/test/src/basic/graph.cpp:789:18: note: 'count' is >= 3
+                                        OGDF_ASSERT(count >= 3);
+                                                    ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:36: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                                ^~~~
+/usr/include/assert.h:93:27: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+                          ^~~~
+/__w/ogdf/ogdf/test/src/basic/graph.cpp:789:6: note: '?' condition is true
+                                        OGDF_ASSERT(count >= 3);
+                                        ^
+/__w/ogdf/ogdf/include/ogdf/basic/basic.h:54:29: note: expanded from macro 'OGDF_ASSERT'
+#               define OGDF_ASSERT(expr) assert(expr)
+                                         ^
+/usr/include/assert.h:93:7: note: expanded from macro 'assert'
+     (static_cast <bool> (expr)                                         \
+      ^
+/__w/ogdf/ogdf/test/src/basic/graph.cpp:791:17: note: 1st function call argument is an uninitialized value
+                                        AssertThat(adjs[0]->isBetween(adjs[2], adjs[1]), IsTrue());
+                                                   ^
+/__w/ogdf/ogdf/test/include/bandit/assertion_frameworks/snowhouse/assert.h:18:26: note: expanded from macro 'AssertThat'
+  SNOWHOUSE_ASSERT_THAT((P1), (P2), ::snowhouse::DefaultFailureHandler)
+                         ^~
+/__w/ogdf/ogdf/test/include/bandit/assertion_frameworks/snowhouse/assert.h:14:59: note: expanded from macro 'SNOWHOUSE_ASSERT_THAT'
+  ::snowhouse::ConfigurableAssert<FAILURE_HANDLER>::That((P1), (P2), __FILE__, __LINE__)
+                                                          ^~
+/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h:215:17: warning: Use of memory after it is freed [clang-analyzer-cplusplus.NewDelete]
+                Bucket next = bucket->next;
+                              ^
+/__w/ogdf/ogdf/test/src/basic/heap.cpp:538:4: note: Loop condition is true.  Entering loop body
+                        while (!heap->empty()) {
+                        ^
+/__w/ogdf/ogdf/test/src/basic/heap.cpp:539:23: note: Calling 'RadixHeap::pop'
+                                std::string str = heap->pop();
+                                                  ^~~~~~~~~~~
+/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h:171:6: note: Assuming the condition is false
+        if (m_buckets[0] != nullptr) {
+            ^~~~~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h:171:2: note: Taking false branch
+        if (m_buckets[0] != nullptr) {
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h:188:6: note: Assuming 'ind' is equal to 0
+        if (ind != 0) {
+            ^~~~~~~~
+/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h:188:2: note: Taking false branch
+        if (ind != 0) {
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h:194:27: note: Assuming the condition is true
+        for (Bucket it = bucket; it != nullptr; it = it->next) {
+                                 ^~~~~~~~~~~~~
+/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h:194:2: note: Loop condition is true.  Entering loop body
+        for (Bucket it = bucket; it != nullptr; it = it->next) {
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h:195:11: note: 'it->priority' is >= 'min->priority'
+                if (it->priority < min->priority) {
+                        ^
+/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h:195:3: note: Taking false branch
+                if (it->priority < min->priority) {
+                ^
+/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h:194:27: note: Assuming the condition is false
+        for (Bucket it = bucket; it != nullptr; it = it->next) {
+                                 ^~~~~~~~~~~~~
+/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h:194:2: note: Loop condition is false. Execution continues on line 200
+        for (Bucket it = bucket; it != nullptr; it = it->next) {
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h:200:6: note: Assuming the condition is true
+        if (min->prev != nullptr) {
+            ^~~~~~~~~~~~~~~~~~~~
+/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h:200:2: note: Taking true branch
+        if (min->prev != nullptr) {
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h:206:2: note: Taking false branch
+        if (min->next != nullptr) {
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h:212:2: note: Memory is released
+        delete min;
+        ^~~~~~~~~~
+/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h:214:2: note: Loop condition is true.  Entering loop body
+        while (bucket != nullptr) {
+        ^
+/__w/ogdf/ogdf/include/ogdf/basic/heap/RadixHeap.h:215:17: note: Use of memory after it is freed
+                Bucket next = bucket->next;
+                              ^~~~~~~~~~~~

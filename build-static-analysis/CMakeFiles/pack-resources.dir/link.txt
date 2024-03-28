@@ -1,0 +1,1 @@
+/usr/bin/clang++   -march=haswell -g -O1   CMakeFiles/pack-resources.dir/test/src/pack-resources.cpp.o  -o test/pack-resources 

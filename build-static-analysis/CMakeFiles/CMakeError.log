@@ -1,0 +1,68 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /__w/ogdf/ogdf/build-static-analysis/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_e1012/fast 
+/usr/bin/gmake -f CMakeFiles/cmTC_e1012.dir/build.make CMakeFiles/cmTC_e1012.dir/build
+gmake[1]: Entering directory '/__w/ogdf/ogdf/build-static-analysis/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_e1012.dir/CheckSymbolExists.cxx.o
+/usr/bin/clang++    -march=haswell    -std=gnu++17 -o CMakeFiles/cmTC_e1012.dir/CheckSymbolExists.cxx.o -c /__w/ogdf/ogdf/build-static-analysis/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+Linking CXX executable cmTC_e1012
+/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e1012.dir/link.txt --verbose=1
+/usr/bin/clang++   -march=haswell     CMakeFiles/cmTC_e1012.dir/CheckSymbolExists.cxx.o  -o cmTC_e1012 
+/usr/bin/ld: CMakeFiles/cmTC_e1012.dir/CheckSymbolExists.cxx.o: in function `main':
+CheckSymbolExists.cxx:(.text+0x19): undefined reference to `pthread_create'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+gmake[1]: *** [CMakeFiles/cmTC_e1012.dir/build.make:87: cmTC_e1012] Error 1
+gmake[1]: Leaving directory '/__w/ogdf/ogdf/build-static-analysis/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:121: cmTC_e1012/fast] Error 2
+
+File /__w/ogdf/ogdf/build-static-analysis/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the mallinfo2 exist failed with the following output:
+Change Dir: /__w/ogdf/ogdf/build-static-analysis/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_66fc8/fast 
+/usr/bin/gmake -f CMakeFiles/cmTC_66fc8.dir/build.make CMakeFiles/cmTC_66fc8.dir/build
+gmake[1]: Entering directory '/__w/ogdf/ogdf/build-static-analysis/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_66fc8.dir/CheckSymbolExists.cxx.o
+/usr/bin/clang++    -march=haswell    -std=gnu++17 -o CMakeFiles/cmTC_66fc8.dir/CheckSymbolExists.cxx.o -c /__w/ogdf/ogdf/build-static-analysis/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx
+/__w/ogdf/ogdf/build-static-analysis/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:8:19: error: use of undeclared identifier 'mallinfo2'; did you mean 'mallinfo'?
+  return ((int*)(&mallinfo2))[argc];
+                  ^~~~~~~~~
+                  mallinfo
+/usr/include/malloc.h:101:24: note: 'mallinfo' declared here
+extern struct mallinfo mallinfo (void) __THROW;
+                       ^
+1 error generated.
+gmake[1]: *** [CMakeFiles/cmTC_66fc8.dir/build.make:66: CMakeFiles/cmTC_66fc8.dir/CheckSymbolExists.cxx.o] Error 1
+gmake[1]: Leaving directory '/__w/ogdf/ogdf/build-static-analysis/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:121: cmTC_66fc8/fast] Error 2
+
+File /__w/ogdf/ogdf/build-static-analysis/CMakeFiles/CMakeTmp/CheckSymbolExists.cxx:
+/* */
+#include <malloc.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef mallinfo2
+  return ((int*)(&mallinfo2))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
