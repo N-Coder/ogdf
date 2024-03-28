@@ -1,0 +1,1 @@
+/usr/bin/clang++   -march=haswell -g -O1   CMakeFiles/ex-check-build-mode.dir/doc/examples/special/check-build-mode.cpp.o  -o ../doc/examples/special/ex-check-build-mode -Wl,-rpath,/__w/ogdf/ogdf/build-static-analysis libOGDF.so libCOIN.so -lpthread -pthread /usr/lib/x86_64-linux-gnu/libgmpxx.so /usr/lib/x86_64-linux-gnu/libmpfr.so /usr/lib/x86_64-linux-gnu/libgmp.so 
