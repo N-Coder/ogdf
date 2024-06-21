@@ -141,9 +141,15 @@ void GraphCopySimple::setOriginalEmbedding() {
 		newAdjOrder.reserve(v->degree());
 		// add from original according to their order
 		for (adjEntry adj : v->adjEntries) {
-			edge e = copy(adj->theEdge());
-			if (e != nullptr && e->isIncident(u)) {
-				newAdjOrder.push_back(e->getAdj(u));
+			// this should both handle edges that got reversed in the copy and self-loops
+			adjEntry cadj = copy(adj);
+			if (cadj != nullptr && cadj->theNode() == u) {
+				newAdjOrder.push_back(cadj);
+			} else {
+				cadj = copy(adj->twin());
+				if (cadj != nullptr && cadj->theNode() == u) {
+					newAdjOrder.push_back(cadj);
+				}
 			}
 		}
 		// add remaining dummy edges to the end, also retaining their order
@@ -168,13 +174,24 @@ void GraphCopy::setOriginalEmbedding() {
 		newAdjOrder.reserve(v->degree());
 		// add from original according to their order
 		for (adjEntry adj : v->adjEntries) {
-			if (copy(adj) != nullptr) {
-				newAdjOrder.push_back(copy(adj));
+			// this should both handle edges that got reversed in the copy and self-loops
+			adjEntry cadj = copy(adj);
+			if (cadj != nullptr && cadj->theNode() == u) {
+				newAdjOrder.push_back(cadj);
+			} else {
+				cadj = copy(adj->twin());
+				if (cadj != nullptr && cadj->theNode() == u) {
+					newAdjOrder.push_back(cadj);
+				}
 			}
 		}
 		// add remaining dummy edges to the end, also retaining their order
 		for (adjEntry adj : u->adjEntries) {
-			if (isDummy(adj)) {
+			edge orig = original(adj->theEdge());
+			if (orig == nullptr
+					|| (!chain(orig).empty()
+							&& !(chain(orig).front()->isIncident(u)
+									|| chain(orig).back()->isIncident(u)))) {
 				newAdjOrder.push_back(adj);
 			}
 		}
