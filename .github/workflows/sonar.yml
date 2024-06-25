@@ -32,8 +32,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          repository: ${{ github.event.workflow_run.head_repository.full_name }}
-          ref: ${{ github.event.workflow_run.head_branch }}
           fetch-depth: 0
       - name: Download Artifacts
         uses: actions/download-artifact@v4
@@ -75,33 +73,24 @@ jobs:
       - name: Checkout PR base branch
         if: github.event.workflow_run.event == 'pull_request'
         run: |
-          git remote add upstream ${{ github.event.repository.clone_url }}
-          git fetch upstream
-          git checkout -B ${{ steps.pr-info.outputs.base-ref }} upstream/${{ steps.pr-info.outputs.base-ref }}
-          git checkout ${{ github.event.workflow_run.head_branch }}
-          git checkout upstream/${{ steps.pr-info.outputs.base-ref }} -- sonar-project.properties
+          # PR runs are against a synthetic merge commit *ontop* of the to-be-merged branch's head
+          # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull_request
+          gh pr checkout ${{ steps.pr-info.outputs.pr-number }}
+
+      - name: Checkout non-PR base branch
+        if: github.event.workflow_run.event != 'pull_request'
+        run: |
+          git switch ${{ github.event.workflow_run.head_branch }}
+      - name: Ensure sonar config from master is used
+        run: |
+          git checkout ${{ github.ref }} -- sonar-project.properties
 
       - name: Install sonar-scanner
         uses: SonarSource/sonarcloud-github-c-cpp@v3
         with:
           cache-binaries: false
 
-      - name: SonarCloud PR Scan
-        if: github.event.workflow_run.event == 'pull_request'
-        run: >
-          sonar-scanner
-          -Dsonar.links.ci=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          -Dsonar.scm.revision=${{ github.event.workflow_run.head_sha }}
-          -Dsonar.pullrequest.key=${{ steps.pr-info.outputs.pr-number }}
-          -Dsonar.pullrequest.branch=${{ github.event.workflow_run.head_branch }}
-          -Dsonar.pullrequest.base=${{ steps.pr-info.outputs.base-ref }}
-          -Dproject.settings=sonar-project.properties
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: SonarCloud non-PR Scan
-        if: github.event.workflow_run.event != 'pull_request'
+      - name: SonarCloud Scan
         run: >
           sonar-scanner
           -Dsonar.links.ci=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
