@@ -192,15 +192,6 @@ void ComponentSplitterLayout::reassembleDrawings(GraphAttributes& GA,
 		//adapt positions to origin
 		int count = 0;
 		//assume same order of vertices and positions
-		for (node v : nodesInCC[j]) {
-			//TODO: I am not sure if we need to update both
-			GA.x(v) = GA.x(v) - avg_x;
-			GA.y(v) = GA.y(v) - avg_y;
-			points.at(count).m_x -= avg_x;
-			points.at(count).m_y -= avg_y;
-
-			count++;
-		}
 
 		// calculate convex hull
 		DPolygon hull = CH.call(points);
