@@ -84,6 +84,7 @@ jobs:
       - name: Ensure sonar config from master is used
         run: |
           git checkout ${{ github.ref }} -- sonar-project.properties
+          git status
 
       - name: Install sonar-scanner
         uses: SonarSource/sonarcloud-github-c-cpp@v3
@@ -92,7 +93,7 @@ jobs:
 
       - name: SonarCloud Scan
         run: >
-          sonar-scanner
+          sonar-scanner -X
           -Dsonar.links.ci=https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
           -Dproject.settings=sonar-project.properties
         env:

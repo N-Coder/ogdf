@@ -210,44 +210,7 @@ void ComponentSplitterLayout::reassembleDrawings(GraphAttributes& GA,
 		double best_width = 0.0;
 		double best_height = 0.0;
 
-		// find best rotation by using every face as rectangle border once.
-		for (DPolygon::iterator iter = hull.begin(); iter != hull.end(); ++iter) {
-			DPolygon::iterator k = hull.cyclicSucc(iter);
-
-			double dist = 0.0;
-			DPoint norm = CH.calcNormal(*k, *iter);
-			for (const DPoint& z : hull) {
-				double d = CH.leftOfLine(norm, z, *k);
-				if (d > dist) {
-					dist = d;
-				}
-			}
-
-			double left = 0.0;
-			double right = 0.0;
-			norm = CH.calcNormal(DPoint(0, 0), norm);
-			for (const DPoint& z : hull) {
-				double d = CH.leftOfLine(norm, z, *k);
-				if (d > left) {
-					left = d;
-				} else if (d < right) {
-					right = d;
-				}
-			}
-			double width = left - right;
-
-			Math::updateMax(dist, 1.0);
-			Math::updateMax(width, 1.0);
-
-			double area = dist * width;
-
-			if (area <= best_area) {
-				best_height = dist;
-				best_width = width;
-				best_area = area;
-				best_normal = CH.calcNormal(*k, *iter);
-			}
-		}
+		// FIXME broken stuff missing here
 
 		if (hull.size() <= 1) {
 			best_height = 1.0;
