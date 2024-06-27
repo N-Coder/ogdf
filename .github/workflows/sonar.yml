@@ -1,5 +1,5 @@
 name: Sonarcloud Scan
-#run-name: "${{ fromJSON(inputs.event).display_title }} [${{ fromJSON(inputs.event).event }} ${{ fromJSON(inputs.event).head_branch }}]"
+run-name: "${{ fromJSON(inputs.event).display_title }} [${{ fromJSON(inputs.event).event }} ${{ fromJSON(inputs.event).head_branch }}]"
 
 on:
   workflow_dispatch:
@@ -77,15 +77,24 @@ jobs:
         with:
           ref: refs/pull/${{ steps.pr-info.outputs.pr-number }}/merge
           fetch-depth: 0
+          path: 'checkout'
       - name: Checkout repository branch
         if: fromJSON(inputs.event).event != 'pull_request'
         uses: actions/checkout@v4
         with:
           ref: ${{ fromJSON(inputs.event).head_branch }}
           fetch-depth: 0
+          path: 'checkout'
       - name: Ensure sonar config from master is used
+        shell: bash
         run: |
-          git checkout ${{ github.ref }} -- sonar-project.properties
+          shopt -s dotglob
+          mv checkout/* .
+          rmdir checkout
+          git checkout origin/${{ github.ref_name }} -- sonar-project.properties
+          git status
+          echo
+          ls -al *
 
       - name: Install sonar-scanner
         uses: SonarSource/sonarcloud-github-c-cpp@v3
