@@ -1,8 +1,7 @@
 name: Check, Build and Test
 
 on:
-  pull_request:
-  push:
+  workflow_dispatch:
 
 # # Debug setup:
 # env:
