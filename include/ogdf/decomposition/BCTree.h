@@ -313,7 +313,6 @@ protected:
 	 * with.
 	 */
 	void init(node vG);
-	//! @}
 
 	/**
 	 * Initialization for not connected graphs
@@ -345,25 +344,6 @@ protected:
 	 * (1973).
 	 */
 	void biComp(adjEntry adjuG, node vG);
-
-	/** @{
-	 * Returns the parent of a given BC-tree-vertex.
-	 * \param vB is a vertex of the BC-tree or \a nullptr.
-	 * \return the parent of \p vB in the BC-tree structure, if \p vB is not the
-	 * root of the BC-tree, and \c nullptr, if \p vB is \c nullptr or the root of the
-	 * BC-tree.
-	 */
-	virtual node parent(node vB) const;
-
-	/**
-	 * Calculates the nearest common ancestor of two vertices of the
-	 * BC-tree.
-	 * \param uB is a vertex of the BC-tree.
-	 * \param vB is a vertex of the BC-tree.
-	 * \return the nearest common ancestor of \p uB and \p vB.
-	 */
-	node findNCA(node uB, node vB) const;
-
 	//! @}
 
 public:
@@ -557,6 +537,65 @@ public:
 	const SList<edge>& hEdges(node vB) const { return m_bNode_hEdges[vB]; }
 
 	/**
+	 * Returns the parent of a given BC-tree-vertex.
+	 * \param vB is a vertex of the BC-tree or \a nullptr.
+	 * \return the parent of \p vB in the BC-tree structure, if \p vB is not the
+	 * root of the BC-tree, and \c nullptr, if \p vB is \c nullptr or the root of the
+	 * BC-tree.
+	 */
+	virtual node parent(node vB) const;
+
+	/**
+	 * Calculates the nearest common ancestor of two vertices of the
+	 * BC-tree.
+	 * \param uB is a vertex of the BC-tree.
+	 * \param vB is a vertex of the BC-tree.
+	 * \return the nearest common ancestor of \p uB and \p vB.
+	 */
+	node findNCA(node uB, node vB) const;
+
+	/**
+	 * Returns for each BC-tree-vertex the representantive of its
+	 * parent within the subgraph in the biconnected components graph belonging to
+	 * the biconnected component represented by the respective BC-tree-vertex.
+	 *
+	 * For each vertex \a vB of the BC-tree:
+	 * - If \a vB is representing a B-component and \a vB is the root of the
+	 *   BC-tree, then hRefNode(\a vB) is \a nullptr.
+	 * - If \a vB is representing a B-component and \a vB is not the root of the
+	 *   BC-tree, then hRefNode(\a vB) is the very vertex of the
+	 *   biconnected components graph which is the duplicate of the cut-vertex
+	 *   represented by the parent of \a vB <em>in the copy of the B-component
+	 *   represented by</em> \a vB.
+	 * - If \a vB is representing a C-component, then hRefNode(\a vB)
+	 *   is the single isolated vertex of the biconnected components graph
+	 *   corresponding to the cut-vertex which the C-component consists of,
+	 *   irrespective of whether \a vB is the root of the BC-tree or not.
+	 */
+	node hRefNode(node vB) const { return m_bNode_hRefNode[vB]; }
+
+	/**
+	 * Returns for each BC-tree-vertex the representant of
+	 * itself within the subgraph in the biconnected components graph belonging to
+	 * the biconnected component represented by the parent of the respective
+	 * BC-tree-vertex.
+	 *
+	 * - If \a vB is the root of the BC-tree, then hParNode(\a vB) is
+	 *   \a nullptr.
+	 * - If \a vB is representing a B-component and \a vB is not the root of the
+	 *   BC-tree, then hParNode(\a vB) is the single isolated vertex
+	 *   of the biconnected components graph corresponding to the very cut-vertex,
+	 *   which the C-component represented by <em>the parent of</em> \a vB consists
+	 *   of.
+	 * - If \a vB is representing to a C-component and \a vB is not the root of the
+	 *   BC-tree, then hParNode(\a vB) is the very vertex of the
+	 *   biconnected components graph, which is the duplicate of the cut-vertex,
+	 *   which the C-component consists of, <em>in the copy of the B-component
+	 *   represented by the parent of</em> \a vB.
+	 */
+	node hParNode(node vB) const { return m_bNode_hParNode[vB]; }
+
+	/**
 	 * Returns the number of edges belonging to the biconnected component
 	 * represented by a given BC-tree-vertex.
 	 * \param vB is a vertex of the BC-tree.
@@ -657,7 +696,6 @@ public:
 	 * - Otherwise, cutVertex(\p uB, \p vB) returns \a nullptr.
 	 */
 	virtual node cutVertex(node uB, node vB) const;
-
 	//! @}
 
 #ifdef OGDF_DEBUG
