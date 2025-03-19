@@ -42,11 +42,9 @@ void get_stacktrace(std::ostream& stream) {
 #ifdef OGDF_USE_ASSERT_EXCEPTIONS_WITH_STACKTRACE
 	stream << "\n";
 	backward::StackTrace st;
-	st.load_here(24);
+	st.load_here();
 	st.skip_n_firsts(3); // skip this function and backward
 	backward::Printer p;
-	p.color = false;
-	p.inliner_context_size = p.trace_context_size = 3;
 	p.print(st, stream);
 #endif
 }
