@@ -67,8 +67,12 @@ if ! command -v "$CLANG_FORMAT_COMMAND" > /dev/null 2>&1; then
 
   # Run this script in a docker container.
   repo_dir="$(pwd)"
+  git_repo_dir="$(git rev-parse --show-superproject-working-tree)" # map the whole git tree if we are in a submodule
+  if [ -z "$git_repo_dir" ]; then
+    git_repo_dir="$(pwd)"
+  fi
   $DOCKER_RUN_CMD --rm -ti -w "$repo_dir" \
-    -v "$repo_dir":"$repo_dir":rw,z \
+    -v "$git_repo_dir":"$git_repo_dir":rw,z \
     "$DOCKER_IMAGE" \
     "$0" $original_args
   exit_code=$?
