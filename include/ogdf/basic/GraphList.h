@@ -134,13 +134,17 @@ public:
 		GraphElement *pxPrev = pX->m_prev, *pxNext = pX->m_next;
 
 		if (pxPrev) {
+			OGDF_ASSERT(pxPrev->m_next == pX);
 			pxPrev->m_next = pxNext;
 		} else {
+			OGDF_ASSERT(m_head == pX);
 			m_head = pxNext;
 		}
 		if (pxNext) {
+			OGDF_ASSERT(pxNext->m_prev == pX);
 			pxNext->m_prev = pxPrev;
 		} else {
+			OGDF_ASSERT(m_tail == pX);
 			m_tail = pxPrev;
 		}
 		m_size--;
