@@ -707,13 +707,59 @@ void Graph::HiddenEdgeSet::restore() {
 	}
 }
 
-int Graph::HiddenEdgeSet::size() { return m_edges.size(); }
+int Graph::HiddenEdgeSet::size() const { return m_edges.size(); }
 
-bool Graph::HiddenEdgeSet::empty() { return m_edges.empty(); }
+bool Graph::HiddenEdgeSet::empty() const { return m_edges.empty(); }
 
-internal::GraphList<EdgeElement>::iterator Graph::HiddenEdgeSet::begin() { return m_edges.begin(); }
+internal::GraphList<EdgeElement>::iterator Graph::HiddenEdgeSet::begin() const {
+	return m_edges.begin();
+}
 
-internal::GraphList<EdgeElement>::iterator Graph::HiddenEdgeSet::end() { return m_edges.end(); }
+internal::GraphList<EdgeElement>::iterator Graph::HiddenEdgeSet::end() const {
+	return m_edges.end();
+}
+
+void Graph::DynamicHiddenEdgeSet::hide(edge e) {
+	HiddenEdgeSet::hide(e);
+	m_adjs[e->m_src].pushBack(e->m_adjSrc);
+	m_adjs[e->m_tgt].pushBack(e->m_adjTgt);
+}
+
+void Graph::DynamicHiddenEdgeSet::restore(edge e) {
+	m_adjs[e->m_src].delPure(e->m_adjSrc);
+	m_adjs[e->m_tgt].delPure(e->m_adjTgt);
+	HiddenEdgeSet::restore(e);
+}
+
+void Graph::DynamicHiddenEdgeSet::restore(node n) {
+	while (!m_adjs[n].empty()) {
+		restore(m_adjs[n].head()->theEdge());
+	}
+}
+
+void Graph::DynamicHiddenEdgeSet::nodeDeleted(node v) {
+	while (!m_adjs[v].empty()) {
+		edge e = m_adjs[v].head()->theEdge();
+		restore(e);
+		m_graph->delEdge(e);
+	}
+}
+
+void Graph::DynamicHiddenEdgeSet::cleared() { m_adjs.init(*m_graph); }
+
+int Graph::DynamicHiddenEdgeSet::hiddenDegree(node n) const { return m_adjs[n].size(); }
+
+const internal::GraphList<AdjElement>& Graph::DynamicHiddenEdgeSet::adjEntries(node n) const {
+	return m_adjs[n];
+}
+
+internal::GraphList<AdjElement>::iterator Graph::DynamicHiddenEdgeSet::begin(node n) const {
+	return m_adjs[n].begin();
+}
+
+internal::GraphList<AdjElement>::iterator Graph::DynamicHiddenEdgeSet::end(node n) const {
+	return m_adjs[n].end();
+}
 
 std::ostream& operator<<(std::ostream& os, const Graph::EdgeType& et) {
 	switch (et) {

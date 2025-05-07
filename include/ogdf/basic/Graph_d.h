@@ -1203,25 +1203,30 @@ public:
 	/**
 	 * @brief Functionality for temporarily hiding edges in constant time.
 	 *
-	 * Hidden edges are removed from the
-	 * list of all edges and their corresponding adjacency entries from the repsective
-	 * adjacency lists, but the edge objects themselves are not destroyed. Hidden edges
-	 * can later be reactivated using #restore(). Restoring edges will not preserve the adjacency order.
+	 * Hidden edges are removed from the list of all edges and their corresponding adjacency entries from the respective
+	 * adjacency lists, but the edge objects themselves are not destroyed.
+	 * Hidden edges can later be reactivated using #restore().
+	 * Restoring edges will not preserve the adjacency order.
+	 * Note that all hidden edges are restored when the HiddenEdgeSet is deconstructed.
 	 *
 	 * Hiding or restoring an edge takes constant time.
 	 * Thus, hiding edges may be more performant than creating a ogdf::GraphCopy and modifying it.
 	 *
-	 * Hidden edge sets can be restored as a whole. Alternatively a single edge of a such a set can be restored.
+	 * Do not delete any nodes incident to hidden edges (otherwise see DynamicHiddenEdgeSet).
+	 * When iterating over an edge or adjacency list and hiding some of its entries, the same precautions
+	 * as for deleting entries need to be taken, see e.g. safeForEach().
+	 * Note that the adjEntries of all edges that are in a HiddenEdgeSet will be invalid.
 	 *
-	 * Note that all hidden edges are restored when the set of hidden edges is destroyed.
-	 *
-	 * Do not delete any nodes incident to hidden edges.
-	 * Do not hide edges while iterating over the edges of a ogdf::Graph.
-	 * Instead, iterate over a copied list of all edges.
+	 * @sa DynamicHiddenEdgeSet
 	 */
 	class OGDF_EXPORT HiddenEdgeSet {
 		friend class Graph;
 		friend class EdgeElement;
+
+	protected:
+		internal::GraphList<EdgeElement> m_edges;
+		ListIterator<HiddenEdgeSet*> m_it;
+		Graph* m_graph;
 
 	public:
 		/**
@@ -1243,13 +1248,16 @@ public:
 			}
 		}
 
+		OGDF_NO_COPY(HiddenEdgeSet)
+		OGDF_NO_MOVE(HiddenEdgeSet)
+
 		/**
 		 * Hides the given edge.
 		 *
 		 * \pre the edge is currently not hidden.
 		 * \pre the graph associated with this set does still exist.
 		 */
-		void hide(edge e);
+		virtual void hide(edge e);
 
 		/**
 		 * Reveals the given edge.
@@ -1257,7 +1265,7 @@ public:
 		 * \pre the edge is currently hidden using this set.
 		 * \pre the graph associated with this set does still exist.
 		 */
-		void restore(edge e);
+		virtual void restore(edge e);
 
 		/**
 		 * Restores all edges contained in this set.
@@ -1268,23 +1276,56 @@ public:
 		void restore();
 
 		//! Returns the number of edges contained in this set.
-		int size();
+		int size() const;
 
 		//! Checks whether this set is empty.
-		bool empty();
+		bool empty() const;
 
 		//! Return an iterator to the first hidden edge in this set.
-		internal::GraphList<EdgeElement>::iterator begin();
+		internal::GraphList<EdgeElement>::iterator begin() const;
 
 		//! Return an iterator one past the last hidden edge in this set.
-		internal::GraphList<EdgeElement>::iterator end();
+		internal::GraphList<EdgeElement>::iterator end() const;
+	};
 
-	private:
-		internal::GraphList<EdgeElement> m_edges;
-		ListIterator<HiddenEdgeSet*> m_it;
-		Graph* m_graph;
+	/**
+	 * This is a HiddenEdgeSet for which it is safe to delete vertices that are incident to
+	 * hidden edges. This is achieved by storing a per-node list of hidden edges (or rather their
+	 * adjEntries) and using a GraphObserver to delete hidden edges upon node deletion.
+	* These per-node hidden adjacency lists, which use the adjEntries of each
+	 * hidden edge, are also made accessible.
+	 */
+	class OGDF_EXPORT DynamicHiddenEdgeSet : public HiddenEdgeSet, private GraphObserver {
+		NodeArray<internal::GraphList<AdjElement>> m_adjs;
 
-		OGDF_NO_COPY(HiddenEdgeSet)
+	public:
+		explicit DynamicHiddenEdgeSet(Graph& graph)
+			: HiddenEdgeSet(graph), m_adjs(graph), GraphObserver() {
+			reregister(&graph);
+		}
+
+		void hide(edge e) override;
+		void restore(edge e) override;
+		void restore(node n);
+
+		int hiddenDegree(node n) const;
+		const internal::GraphList<AdjElement>& adjEntries(node n) const;
+
+		//! Return an iterator to the first hidden edge in this set.
+		internal::GraphList<AdjElement>::iterator begin(node n) const;
+
+		//! Return an iterator one past the last hidden edge in this set.
+		internal::GraphList<AdjElement>::iterator end(node n) const;
+
+		using HiddenEdgeSet::begin;
+		using HiddenEdgeSet::end;
+
+	protected:
+		void nodeDeleted(node v) override;
+		void nodeAdded(node v) override { };
+		void edgeDeleted(edge e) override { };
+		void edgeAdded(edge e) override { };
+		void cleared() override;
 	};
 
 	/**
