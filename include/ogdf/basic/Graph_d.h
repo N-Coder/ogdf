@@ -1221,7 +1221,6 @@ public:
 	 */
 	class OGDF_EXPORT HiddenEdgeSet {
 		friend class Graph;
-		friend class EdgeElement;
 
 	protected:
 		internal::GraphList<EdgeElement> m_edges;
@@ -1241,7 +1240,7 @@ public:
 		/**
 		 * Restores all hidden edges.
 		 */
-		~HiddenEdgeSet() {
+		virtual ~HiddenEdgeSet() {
 			if (m_graph) {
 				restore();
 				m_graph->m_hiddenEdgeSets.del(m_it);
@@ -1292,7 +1291,7 @@ public:
 	 * This is a HiddenEdgeSet for which it is safe to delete vertices that are incident to
 	 * hidden edges. This is achieved by storing a per-node list of hidden edges (or rather their
 	 * adjEntries) and using a GraphObserver to delete hidden edges upon node deletion.
-	* These per-node hidden adjacency lists, which use the adjEntries of each
+	 * These per-node hidden adjacency lists, which use the adjEntries of each
 	 * hidden edge, are also made accessible.
 	 */
 	class OGDF_EXPORT DynamicHiddenEdgeSet : public HiddenEdgeSet, private GraphObserver {
@@ -1300,7 +1299,7 @@ public:
 
 	public:
 		explicit DynamicHiddenEdgeSet(Graph& graph)
-			: HiddenEdgeSet(graph), m_adjs(graph), GraphObserver() {
+			: HiddenEdgeSet(graph), GraphObserver(), m_adjs(graph) {
 			reregister(&graph);
 		}
 
@@ -1322,9 +1321,9 @@ public:
 
 	protected:
 		void nodeDeleted(node v) override;
-		void nodeAdded(node v) override { };
-		void edgeDeleted(edge e) override { };
-		void edgeAdded(edge e) override { };
+		void nodeAdded(node v) override {};
+		void edgeDeleted(edge e) override {};
+		void edgeAdded(edge e) override {};
 		void cleared() override;
 	};
 

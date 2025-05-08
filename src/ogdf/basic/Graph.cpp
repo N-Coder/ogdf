@@ -61,7 +61,11 @@ Graph::Graph(const Graph& G)
 
 Graph::~Graph() {
 	clearObservers();
-	restoreAllEdges();
+	while (!m_hiddenEdgeSets.empty()) {
+		HiddenEdgeSet* set = m_hiddenEdgeSets.popFrontRet();
+		set->restore();
+		set->m_graph = nullptr;
+	}
 
 	// this is only necessary because GraphObjectContainer simply deallocs its memory without calling destructors
 	for (node v = nodes.head(); v; v = v->succ()) {
@@ -394,10 +398,8 @@ edge Graph::searchEdge(node v, node w, bool directed) const {
 }
 
 void Graph::restoreAllEdges() {
-	while (!m_hiddenEdgeSets.empty()) {
-		HiddenEdgeSet* set = m_hiddenEdgeSets.popFrontRet();
+	for (auto& set : m_hiddenEdgeSets) {
 		set->restore();
-		set->m_graph = nullptr;
 	}
 }
 
@@ -726,6 +728,8 @@ void Graph::DynamicHiddenEdgeSet::hide(edge e) {
 }
 
 void Graph::DynamicHiddenEdgeSet::restore(edge e) {
+	OGDF_ASSERT(e->graphOf() == m_graph);
+	OGDF_ASSERT(e->m_hidden);
 	m_adjs[e->m_src].delPure(e->m_adjSrc);
 	m_adjs[e->m_tgt].delPure(e->m_adjTgt);
 	HiddenEdgeSet::restore(e);
@@ -738,6 +742,9 @@ void Graph::DynamicHiddenEdgeSet::restore(node n) {
 }
 
 void Graph::DynamicHiddenEdgeSet::nodeDeleted(node v) {
+	OGDF_ASSERT(m_graph != nullptr);
+	OGDF_ASSERT(m_graph == m_adjs.graphOf());
+	OGDF_ASSERT(m_graph == getObserved());
 	while (!m_adjs[v].empty()) {
 		edge e = m_adjs[v].head()->theEdge();
 		restore(e);
@@ -745,7 +752,12 @@ void Graph::DynamicHiddenEdgeSet::nodeDeleted(node v) {
 	}
 }
 
-void Graph::DynamicHiddenEdgeSet::cleared() { m_adjs.init(*m_graph); }
+void Graph::DynamicHiddenEdgeSet::cleared() {
+	OGDF_ASSERT(m_graph != nullptr);
+	OGDF_ASSERT(m_graph == m_adjs.graphOf());
+	OGDF_ASSERT(m_graph == getObserved());
+	m_adjs.init(*m_graph);
+}
 
 int Graph::DynamicHiddenEdgeSet::hiddenDegree(node n) const { return m_adjs[n].size(); }
 
