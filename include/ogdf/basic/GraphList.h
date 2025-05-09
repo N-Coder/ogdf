@@ -34,6 +34,7 @@
 #include <ogdf/basic/Array.h>
 #include <ogdf/basic/basic.h>
 #include <ogdf/basic/internal/config_autogen.h>
+#include <ogdf/basic/internal/copy_move.h>
 #include <ogdf/basic/internal/graph_iterators.h>
 #include <ogdf/basic/memory.h>
 
@@ -65,6 +66,10 @@ protected:
 	GraphElement* m_next = nullptr; //!< The successor in the list.
 	GraphElement* m_prev = nullptr; //!< The predecessor in the list.
 
+	GraphElement() { }
+	OGDF_NO_COPY(GraphElement)
+	OGDF_NO_MOVE(GraphElement)
+
 	OGDF_NEW_DELETE
 };
 
@@ -84,6 +89,24 @@ public:
 
 	//! Destruction
 	~GraphListBase() { }
+
+	OGDF_NO_COPY(GraphListBase)
+
+	OGDF_SWAP_OP(GraphListBase) {
+		std::swap(first.m_head, second.m_head);
+		std::swap(first.m_tail, second.m_tail);
+		std::swap(first.m_size, second.m_size);
+	}
+
+	OGDF_MOVE_CONSTR(GraphListBase) {
+		using std::swap;
+		swap(*this, move);
+	}
+
+	OGDF_MOVE_OP(GraphListBase) {
+		using std::swap;
+		swap(*this, move);
+	}
 
 	//! Returns the size of the list.
 	int size() const { return m_size; }
@@ -319,6 +342,14 @@ public:
 		if (m_head) {
 			OGDF_ALLOCATOR::deallocateList(sizeof(T), m_head, m_tail);
 		}
+	}
+
+	OGDF_NO_COPY(GraphList);
+	OGDF_DEFAULT_MOVE(GraphList);
+
+	OGDF_SWAP_OP(GraphList) {
+		using std::swap;
+		swap(static_cast<GraphListBase&>(first), static_cast<GraphListBase&>(second));
 	}
 
 	using GraphListBase::empty;

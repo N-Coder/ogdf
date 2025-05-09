@@ -1295,7 +1295,7 @@ public:
 	 * hidden edge, are also made accessible.
 	 */
 	class OGDF_EXPORT DynamicHiddenEdgeSet : public HiddenEdgeSet, private GraphObserver {
-		NodeArray<internal::GraphList<AdjElement>> m_adjs;
+		NodeArray<internal::GraphList<AdjElement>, false> m_adjs;
 
 	public:
 		explicit DynamicHiddenEdgeSet(Graph& graph)
