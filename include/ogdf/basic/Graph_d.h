@@ -1303,9 +1303,18 @@ public:
 			reregister(&graph);
 		}
 
+		~DynamicHiddenEdgeSet() override {
+			if (m_graph) {
+				// ensure m_adjs is empty before its ~GraphList destructors are run,
+				// which would otherwise directly delete all AdjElements
+				restore();
+			}
+		}
+
 		void hide(edge e) override;
 		void restore(edge e) override;
 		void restore(node n);
+		using HiddenEdgeSet::restore;
 
 		int hiddenDegree(node n) const;
 		const internal::GraphList<AdjElement>& adjEntries(node n) const;

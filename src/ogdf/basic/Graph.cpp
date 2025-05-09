@@ -112,6 +112,7 @@ void Graph::move(edge e, adjEntry adjSrc, Direction dirSrc, adjEntry adjTgt, Dir
 	OGDF_ASSERT(adjSrc != e->m_adjTgt);
 	OGDF_ASSERT(adjTgt != e->m_adjSrc);
 	OGDF_ASSERT(adjTgt != e->m_adjTgt);
+	OGDF_ASSERT(!e->m_hidden);
 
 	node v = adjSrc->m_node, w = adjTgt->m_node;
 	adjEntry adj1 = e->m_adjSrc, adj2 = e->m_adjTgt;
@@ -131,6 +132,7 @@ void Graph::move(edge e, adjEntry adjSrc, Direction dirSrc, adjEntry adjTgt, Dir
 void Graph::moveTarget(edge e, node v) {
 	OGDF_ASSERT(e->graphOf() == this);
 	OGDF_ASSERT(v->graphOf() == this);
+	OGDF_ASSERT(!e->m_hidden);
 
 	adjEntry adj = e->m_adjTgt;
 	e->m_tgt->adjEntries.move(adj, v->adjEntries);
@@ -145,6 +147,7 @@ void Graph::moveTarget(edge e, adjEntry adjTgt, Direction dir) {
 
 	OGDF_ASSERT(e->graphOf() == this);
 	OGDF_ASSERT(v->graphOf() == this);
+	OGDF_ASSERT(!e->m_hidden);
 
 	adjEntry adj = e->m_adjTgt;
 	e->m_tgt->adjEntries.move(adj, v->adjEntries, adjTgt, dir);
@@ -158,6 +161,7 @@ void Graph::moveTarget(edge e, adjEntry adjTgt, Direction dir) {
 void Graph::moveSource(edge e, node v) {
 	OGDF_ASSERT(e->graphOf() == this);
 	OGDF_ASSERT(v->graphOf() == this);
+	OGDF_ASSERT(!e->m_hidden);
 
 	adjEntry adj = e->m_adjSrc;
 	e->m_src->adjEntries.move(adj, v->adjEntries);
@@ -172,6 +176,7 @@ void Graph::moveSource(edge e, adjEntry adjSrc, Direction dir) {
 
 	OGDF_ASSERT(e->graphOf() == this);
 	OGDF_ASSERT(v->graphOf() == this);
+	OGDF_ASSERT(!e->m_hidden);
 
 	adjEntry adj = e->m_adjSrc;
 	e->m_src->adjEntries.move(adj, v->adjEntries, adjSrc, dir);
@@ -184,6 +189,7 @@ void Graph::moveSource(edge e, adjEntry adjSrc, Direction dir) {
 edge Graph::split(edge e) {
 	OGDF_ASSERT(e != nullptr);
 	OGDF_ASSERT(e->graphOf() == this);
+	OGDF_ASSERT(!e->m_hidden);
 
 	node /* src = e->source(), */ tgt = e->target();
 	adjEntry eadjSrc = e->adjSource(), eadjTgt = e->adjTarget();
@@ -249,6 +255,9 @@ void Graph::unsplit(node u) {
 }
 
 void Graph::unsplit(edge eIn, edge eOut) {
+	OGDF_ASSERT(!eIn->m_hidden);
+	OGDF_ASSERT(!eOut->m_hidden);
+	OGDF_ASSERT(eIn->graphOf() == eOut->graphOf());
 	node u = eIn->target();
 
 	// u must be a node with exactly one incoming edge eIn and one outgoing
@@ -318,6 +327,7 @@ void Graph::delNode(node v) {
 void Graph::delEdge(edge e) {
 	OGDF_ASSERT(e != nullptr);
 	OGDF_ASSERT(e->graphOf() == this);
+	OGDF_ASSERT(!e->m_hidden);
 
 	m_regAdjArrays.keyRemoved(e->adjSource());
 	m_regAdjArrays.keyRemoved(e->adjTarget());
@@ -339,6 +349,7 @@ void Graph::delEdge(edge e) {
 void Graph::reverseEdge(edge e) {
 	OGDF_ASSERT(e != nullptr);
 	OGDF_ASSERT(e->graphOf() == this);
+	OGDF_ASSERT(!e->m_hidden);
 	node &src = e->m_src, &tgt = e->m_tgt;
 
 	std::swap(src, tgt);
@@ -536,6 +547,7 @@ node Graph::splitNode(adjEntry adjStartLeft, adjEntry adjStartRight) {
 }
 
 node Graph::contract(edge e, bool keepSelfLoops) {
+	OGDF_ASSERT(!e->m_hidden);
 	adjEntry adjSrc = e->adjSource();
 	adjEntry adjTgt = e->adjTarget();
 	node v = e->source();
@@ -558,6 +570,9 @@ node Graph::contract(edge e, bool keepSelfLoops) {
 }
 
 void Graph::moveAdj(adjEntry adj, node w) {
+	OGDF_ASSERT(adj->graphOf() == this);
+	OGDF_ASSERT(w->graphOf() == this);
+	OGDF_ASSERT(!adj->theEdge()->m_hidden);
 	node v = adj->m_node;
 
 	v->adjEntries.move(adj, w->adjEntries);
@@ -753,6 +768,7 @@ void Graph::DynamicHiddenEdgeSet::nodeDeleted(node v) {
 }
 
 void Graph::DynamicHiddenEdgeSet::cleared() {
+	// Graph::clear() calls HES::restore() for each HES
 	OGDF_ASSERT(m_graph != nullptr);
 	OGDF_ASSERT(m_graph == m_adjs.graphOf());
 	OGDF_ASSERT(m_graph == getObserved());
