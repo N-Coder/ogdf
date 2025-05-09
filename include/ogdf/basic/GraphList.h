@@ -106,6 +106,7 @@ public:
 	OGDF_MOVE_OP(GraphListBase) {
 		using std::swap;
 		swap(*this, move);
+		return *this;
 	}
 
 	//! Returns the size of the list.
