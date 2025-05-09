@@ -187,7 +187,7 @@ public:
 	adjHypergraphEntry lastAdj() const { return m_adjHypernodes.tail(); }
 
 	//! Returns the incident hypernodes of the hyperedge.
-	internal::GraphList<AdjHypergraphElement> incidentHypernodes() const { return m_adjHypernodes; }
+	const internal::GraphList<AdjHypergraphElement>& incidentHypernodes() const { return m_adjHypernodes; }
 
 	//! Returns a list with all incident hypernodes of the hyperedge.
 	template<class NODELIST>
@@ -292,6 +292,9 @@ public:
 
 	//! Returns the last entry in the adjacency list.
 	adjHypergraphEntry lastAdj() const { return m_adjHyperedges.tail(); }
+
+	//! Returns the incident hyperedges of the hypernode.
+	const internal::GraphList<AdjHypergraphElement>& incidentHyperedges() const { return m_adjHyperedges; }
 
 	//! Returns a list with all incident hyperedges of the hypernode.
 	template<class NODELIST>
